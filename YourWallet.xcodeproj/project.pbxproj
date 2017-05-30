@@ -26,6 +26,8 @@
 		0A384E901EDCC648006CEAA9 /* SearchTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E8F1EDCC648006CEAA9 /* SearchTransactionViewController.swift */; };
 		0A384E921EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E911EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift */; };
 		0A384E941EDCDF57006CEAA9 /* SelectWallet_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */; };
+		0A4D56A51EDDC9E80009779A /* BookHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D56A41EDDC9E80009779A /* BookHeaderCell.swift */; };
+		0A4D56A71EDDCA260009779A /* BookTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D56A61EDDCA260009779A /* BookTransactionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		0A384E8F1EDCC648006CEAA9 /* SearchTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTransactionViewController.swift; sourceTree = "<group>"; };
 		0A384E911EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTimeRange_ViewController.swift; sourceTree = "<group>"; };
 		0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWallet_ViewController.swift; sourceTree = "<group>"; };
+		0A4D56A41EDDC9E80009779A /* BookHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookHeaderCell.swift; sourceTree = "<group>"; };
+		0A4D56A61EDDCA260009779A /* BookTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTransactionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +113,7 @@
 		0A384E701EDC7D51006CEAA9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0A384E851EDCC239006CEAA9 /* BookViewController.swift */,
+				0A4D56A81EDDCA300009779A /* Book */,
 				0A384E871EDCC24E006CEAA9 /* WalletViewController.swift */,
 				0A384E891EDCC275006CEAA9 /* StatisticsViewController.swift */,
 				0A384E8B1EDCC29A006CEAA9 /* SettingViewController.swift */,
@@ -155,6 +159,16 @@
 				0A384E821EDC7E42006CEAA9 /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0A4D56A81EDDCA300009779A /* Book */ = {
+			isa = PBXGroup;
+			children = (
+				0A384E851EDCC239006CEAA9 /* BookViewController.swift */,
+				0A4D56A41EDDC9E80009779A /* BookHeaderCell.swift */,
+				0A4D56A61EDDCA260009779A /* BookTransactionCell.swift */,
+			);
+			name = Book;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +250,8 @@
 				0A384E7B1EDC7D51006CEAA9 /* FileManagerExtension.swift in Sources */,
 				0A384E941EDCDF57006CEAA9 /* SelectWallet_ViewController.swift in Sources */,
 				0A384E7E1EDC7D51006CEAA9 /* UIExtension.swift in Sources */,
+				0A4D56A71EDDCA260009779A /* BookTransactionCell.swift in Sources */,
+				0A4D56A51EDDC9E80009779A /* BookHeaderCell.swift in Sources */,
 				0A384E8A1EDCC275006CEAA9 /* StatisticsViewController.swift in Sources */,
 				0A384E5C1EDC7CFF006CEAA9 /* AppDelegate.swift in Sources */,
 				0A384E861EDCC239006CEAA9 /* BookViewController.swift in Sources */,
@@ -412,6 +428,7 @@
 				0A384E6E1EDC7CFF006CEAA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
