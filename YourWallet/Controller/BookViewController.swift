@@ -15,51 +15,63 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var previousDay_Button: UIButton!
     @IBOutlet weak var currentDay_Button: UIButton!
     @IBOutlet weak var nextDay_Button: UIButton!
+    @IBOutlet weak var SelectWallet_Button: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormattor.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormattor.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
         Copy_DB_To_DocURL(dbName: DBName, type: DBType)
         
-        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+        getWalletCurrent()
         
-        //       let querysql = "INSERT INTO GiaoDich VALUES(null, 'Phồng tôm', 5000, datetime('now', 'localtime'), 0, 1)"
-        //        if Query(Sql: querysql,database: database){
-        //            print(querysql)
-        //        }
-        //        let querysql = "INSERT INTO NganSach VALUES(null, 1500000, '2017-06-01 00:00:00', '2017-06-30  00:00:00', 0, 1)"
-        //        if Query(Sql: querysql,database: database){
-        //            print(querysql)
-        //        }
         
-        let Transactions = GetTransactionsFromSQLite(query: "SELECT * FROM GiaoDich",database: database)
-        print(Transactions[0])
+        dateFormattor.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormattor.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
         
-        let Budgets = GetBudgetsFromSQLite(query: "SELECT * FROM NganSach", database: database)
-        print(Budgets[0])
-        
-        let Categories = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom", database: database)
-        print(Categories[0])
-        
-        let Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: database)
-        print(Wallets[0])
-        
-        let Currencies = GetCurrenciesFromSQLite(query: "SELECT * FROM TienTe", database: database)
-        print(Currencies[1])
-        
-        sqlite3_close(database)
+//        
+//        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+//        
+//        //       let querysql = "INSERT INTO GiaoDich VALUES(null, 'Phồng tôm', 5000, datetime('now', 'localtime'), 0, 1)"
+//        //        if Query(Sql: querysql,database: database){
+//        //            print(querysql)
+//        //        }
+//        //        let querysql = "INSERT INTO NganSach VALUES(null, 1500000, '2017-06-01 00:00:00', '2017-06-30  00:00:00', 0, 1)"
+//        //        if Query(Sql: querysql,database: database){
+//        //            print(querysql)
+//        //        }
+//        
+//        let Transactions = GetTransactionsFromSQLite(query: "SELECT * FROM GiaoDich",database: database)
+//        print(Transactions[0])
+//        
+//        let Budgets = GetBudgetsFromSQLite(query: "SELECT * FROM NganSach", database: database)
+//        print(Budgets[0])
+//        
+//        let Categories = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom", database: database)
+//        print(Categories[0])
+//        
+//        let Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: database)
+//        print(Wallets[0])
+//        
+//        let Currencies = GetCurrenciesFromSQLite(query: "SELECT * FROM TienTe", database: database)
+//        print(Currencies[1])
+//        
+//        sqlite3_close(database)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        isSelectWallet = false
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        //self.navigationController?.navigationBar.barTintColor = UIColor.green
+        
+        SelectWallet_Button.imageView?.image = wallet_GV != nil ? UIImage(named: (wallet_GV?.Icon)!):#imageLiteral(resourceName: "All-Wallet-icon")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func SelectWallet_ButtonTapped(_ sender: Any) {
+        isSelectWallet = true
+        pushToVC(withStoryboardID: "WalletVC",animated: true)
+    }
     @IBAction func SwipeRight_Gesture(_ sender: Any) {
         previousDay_Button.setTitle("29/05/2017", for: .normal)
         currentDay_Button.setTitle("HÔM QUA", for: .normal)
@@ -100,7 +112,23 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return cell
         
     }
-    
+    func  getWalletCurrent() {
+        if UserDefaults.standard.value(forKey: "Wallet") != nil{
+            let ID:Int = UserDefaults.standard.value(forKey: "Wallet") as! Int
+            if ID == -1{
+                wallet_GV = nil
+            }else{
+                let db = Connect_DB_SQLite(dbName: DBName, type: DBType)
+                let w = GetWalletsFromSQLite(query: "SELECT * FROM ViTien WHERE Ma = \(ID)", database: db)
+                sqlite3_close(db)
+                wallet_GV = w[0]
+            }
+            print("Lấy loại ví hiện tại: \(String(describing: wallet_GV?.Name))")
+        }else{
+            UserDefaults.standard.setValue(-1, forKey: "Wallet")
+            print("Ví tiền chưa được chọn!")
+        }
+    }
     /*
     // MARK: - Navigation
 

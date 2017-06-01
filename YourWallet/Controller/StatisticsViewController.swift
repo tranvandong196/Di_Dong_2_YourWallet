@@ -10,21 +10,28 @@ import UIKit
 
 class StatisticsViewController: UIViewController {
 
+    @IBOutlet weak var SelectWallet_Button: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        isSelectWallet = false
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        //self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 0, green: 164/255, blue: 0, alpha: 0)
+        
+        SelectWallet_Button.imageView?.image = wallet_GV != nil ? UIImage(named: (wallet_GV?.Icon)!):#imageLiteral(resourceName: "All-Wallet-icon")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func SelectWallet_ButtonTapped(_ sender: Any) {
+        isSelectWallet = true
+        pushToVC(withStoryboardID: "WalletVC",animated: true)
+    }
 
     /*
     // MARK: - Navigation

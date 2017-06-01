@@ -24,7 +24,7 @@ func Copy_DB_To_DocURL(dbName:String, type:String){
     } catch{
         //print("File exists! Can not copy file")
     }
-    print("\nDatabase has been stored at: \(storePath)\n")
+    print("\nDatabase has been stored at: \(storePath)\n\n")
 }
 //Database pointer
 func Connect_DB_SQLite( dbName:String, type:String)->OpaquePointer{

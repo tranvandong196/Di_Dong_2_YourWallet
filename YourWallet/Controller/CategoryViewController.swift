@@ -1,56 +1,56 @@
 //
-//  MoreViewController.swift
+//  CategoryViewController.swift
 //  YourWallet
 //
-//  Created by Tran Van Dong on 1/6/17.
+//  Created by Tran Van Dong on 2/6/17.
 //  Copyright © 2017 Tran Van Dong. All rights reserved.
 //
 
 import UIKit
 
-class MoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    @IBOutlet weak var More_TableView: UITableView!
+    @IBOutlet weak var KindOfCategoryTitle_Label: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        More_TableView.reloadData()
-    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    override func viewWillAppear(_ animated: Bool) {
+        category_GV = nil
     }
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
-
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? "Chi tiêu":"Thu nhập"
+    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.textAlignment = .center
+        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 2:1
+        return section == 0 ? 4:2
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 46
+        return 56
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.section == 0 {
-            let cellIden = indexPath.row == 0 ? "Budgets-Cell":"Categories-Cell"
-            return tableView.dequeueReusableCell(withIdentifier: cellIden, for: indexPath)
-            
-        }
-        if indexPath.section == 1{
-            return tableView.dequeueReusableCell(withIdentifier: "SetCurrency-Cell", for: indexPath)
-        }else{
-            return tableView.dequeueReusableCell(withIdentifier: "AboutUs-Cell", for: indexPath)
-        }
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Category-Cell")
+        return cell!
     }
+
+
     /*
     // MARK: - Navigation
 

@@ -24,6 +24,16 @@
 		0A384E901EDCC648006CEAA9 /* SearchTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E8F1EDCC648006CEAA9 /* SearchTransactionViewController.swift */; };
 		0A384E921EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E911EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift */; };
 		0A384E941EDCDF57006CEAA9 /* SelectWallet_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */; };
+		0A39DC571EE06C3E00EE8917 /* AddAmountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC561EE06C3E00EE8917 /* AddAmountCell.swift */; };
+		0A39DC591EE0701200EE8917 /* SelectCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC581EE0701200EE8917 /* SelectCategoryCell.swift */; };
+		0A39DC5B1EE0705400EE8917 /* AddNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC5A1EE0705400EE8917 /* AddNodeCell.swift */; };
+		0A39DC5D1EE070AB00EE8917 /* ChangeTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC5C1EE070AB00EE8917 /* ChangeTimeCell.swift */; };
+		0A39DC5F1EE070BC00EE8917 /* SelectWalletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC5E1EE070BC00EE8917 /* SelectWalletCell.swift */; };
+		0A39DC611EE08B5000EE8917 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC601EE08B5000EE8917 /* CategoryViewController.swift */; };
+		0A39DC641EE09D0700EE8917 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC631EE09D0700EE8917 /* CategoryCell.swift */; };
+		0A39DC661EE0A78C00EE8917 /* Global variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC651EE0A78C00EE8917 /* Global variable.swift */; };
+		0A39DC681EE0BFCE00EE8917 /* AllWalletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC671EE0BFCE00EE8917 /* AllWalletCell.swift */; };
+		0A39DC6A1EE0BFED00EE8917 /* WalletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC691EE0BFED00EE8917 /* WalletCell.swift */; };
 		0A4D56A51EDDC9E80009779A /* BookHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D56A41EDDC9E80009779A /* BookHeaderCell.swift */; };
 		0A4D56A71EDDCA260009779A /* BookTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D56A61EDDCA260009779A /* BookTransactionCell.swift */; };
 		0A799C2D1EDF3F8200A22A0C /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C2C1EDF3F8200A22A0C /* Transaction.swift */; };
@@ -56,6 +66,16 @@
 		0A384E8F1EDCC648006CEAA9 /* SearchTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTransactionViewController.swift; sourceTree = "<group>"; };
 		0A384E911EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTimeRange_ViewController.swift; sourceTree = "<group>"; };
 		0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWallet_ViewController.swift; sourceTree = "<group>"; };
+		0A39DC561EE06C3E00EE8917 /* AddAmountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAmountCell.swift; sourceTree = "<group>"; };
+		0A39DC581EE0701200EE8917 /* SelectCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryCell.swift; sourceTree = "<group>"; };
+		0A39DC5A1EE0705400EE8917 /* AddNodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNodeCell.swift; sourceTree = "<group>"; };
+		0A39DC5C1EE070AB00EE8917 /* ChangeTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeTimeCell.swift; sourceTree = "<group>"; };
+		0A39DC5E1EE070BC00EE8917 /* SelectWalletCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWalletCell.swift; sourceTree = "<group>"; };
+		0A39DC601EE08B5000EE8917 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		0A39DC631EE09D0700EE8917 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		0A39DC651EE0A78C00EE8917 /* Global variable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global variable.swift"; sourceTree = "<group>"; };
+		0A39DC671EE0BFCE00EE8917 /* AllWalletCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllWalletCell.swift; sourceTree = "<group>"; };
+		0A39DC691EE0BFED00EE8917 /* WalletCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletCell.swift; sourceTree = "<group>"; };
 		0A4D56A41EDDC9E80009779A /* BookHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookHeaderCell.swift; sourceTree = "<group>"; };
 		0A4D56A61EDDCA260009779A /* BookTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTransactionCell.swift; sourceTree = "<group>"; };
 		0A799C2C1EDF3F8200A22A0C /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -129,9 +149,10 @@
 			isa = PBXGroup;
 			children = (
 				0A4D56A81EDDCA300009779A /* Book */,
+				0A39DC621EE08B5900EE8917 /* Category */,
 				0A799C3A1EDF872B00A22A0C /* Wallet */,
-				0A799C3C1EDF87BE00A22A0C /* Transaction */,
 				0A799C3B1EDF875000A22A0C /* Statistics */,
+				0A799C3C1EDF87BE00A22A0C /* Transaction */,
 				0A384E911EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift */,
 				0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */,
 			);
@@ -145,6 +166,7 @@
 				0A384E731EDC7D51006CEAA9 /* NotificationExtension.swift */,
 				0A384E741EDC7D51006CEAA9 /* SimpleTypeExtension.swift */,
 				0A384E751EDC7D51006CEAA9 /* UIExtension.swift */,
+				0A39DC651EE0A78C00EE8917 /* Global variable.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -174,6 +196,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0A39DC621EE08B5900EE8917 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0A39DC601EE08B5000EE8917 /* CategoryViewController.swift */,
+				0A39DC631EE09D0700EE8917 /* CategoryCell.swift */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		0A4D56A81EDDCA300009779A /* Book */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +220,8 @@
 			children = (
 				0A384E871EDCC24E006CEAA9 /* WalletViewController.swift */,
 				0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */,
+				0A39DC671EE0BFCE00EE8917 /* AllWalletCell.swift */,
+				0A39DC691EE0BFED00EE8917 /* WalletCell.swift */,
 			);
 			name = Wallet;
 			sourceTree = "<group>";
@@ -206,6 +239,11 @@
 			children = (
 				0A384E8D1EDCC319006CEAA9 /* AddTransaction ViewController.swift */,
 				0A384E8F1EDCC648006CEAA9 /* SearchTransactionViewController.swift */,
+				0A39DC561EE06C3E00EE8917 /* AddAmountCell.swift */,
+				0A39DC581EE0701200EE8917 /* SelectCategoryCell.swift */,
+				0A39DC5A1EE0705400EE8917 /* AddNodeCell.swift */,
+				0A39DC5C1EE070AB00EE8917 /* ChangeTimeCell.swift */,
+				0A39DC5E1EE070BC00EE8917 /* SelectWalletCell.swift */,
 			);
 			name = Transaction;
 			sourceTree = "<group>";
@@ -284,26 +322,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A39DC5D1EE070AB00EE8917 /* ChangeTimeCell.swift in Sources */,
 				0A799C3E1EDF9F8C00A22A0C /* MoreViewController.swift in Sources */,
 				0A384E7C1EDC7D51006CEAA9 /* NotificationExtension.swift in Sources */,
+				0A39DC641EE09D0700EE8917 /* CategoryCell.swift in Sources */,
 				0A384E801EDC7D51006CEAA9 /* SQLite.swift in Sources */,
+				0A39DC5B1EE0705400EE8917 /* AddNodeCell.swift in Sources */,
+				0A39DC661EE0A78C00EE8917 /* Global variable.swift in Sources */,
 				0A799C311EDF3FD000A22A0C /* Category.swift in Sources */,
+				0A39DC681EE0BFCE00EE8917 /* AllWalletCell.swift in Sources */,
 				0A384E7B1EDC7D51006CEAA9 /* FileManagerExtension.swift in Sources */,
+				0A39DC571EE06C3E00EE8917 /* AddAmountCell.swift in Sources */,
 				0A384E941EDCDF57006CEAA9 /* SelectWallet_ViewController.swift in Sources */,
 				0A384E7E1EDC7D51006CEAA9 /* UIExtension.swift in Sources */,
 				0A799C371EDF402400A22A0C /* Currency.swift in Sources */,
 				0A4D56A71EDDCA260009779A /* BookTransactionCell.swift in Sources */,
 				0A799C2D1EDF3F8200A22A0C /* Transaction.swift in Sources */,
 				0A4D56A51EDDC9E80009779A /* BookHeaderCell.swift in Sources */,
+				0A39DC5F1EE070BC00EE8917 /* SelectWalletCell.swift in Sources */,
 				0A384E8A1EDCC275006CEAA9 /* StatisticsViewController.swift in Sources */,
+				0A39DC611EE08B5000EE8917 /* CategoryViewController.swift in Sources */,
 				0A384E5C1EDC7CFF006CEAA9 /* AppDelegate.swift in Sources */,
 				0A384E861EDCC239006CEAA9 /* BookViewController.swift in Sources */,
 				0A384E7D1EDC7D51006CEAA9 /* SimpleTypeExtension.swift in Sources */,
 				0A384E881EDCC24E006CEAA9 /* WalletViewController.swift in Sources */,
 				0A799C351EDF3FFF00A22A0C /* Wallet.swift in Sources */,
+				0A39DC591EE0701200EE8917 /* SelectCategoryCell.swift in Sources */,
 				0A384E921EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift in Sources */,
 				0A799C2F1EDF3FA300A22A0C /* Budget.swift in Sources */,
 				0A384E8E1EDCC319006CEAA9 /* AddTransaction ViewController.swift in Sources */,
+				0A39DC6A1EE0BFED00EE8917 /* WalletCell.swift in Sources */,
 				0A384E901EDCC648006CEAA9 /* SearchTransactionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
