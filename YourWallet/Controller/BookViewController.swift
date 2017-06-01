@@ -22,38 +22,37 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         getWalletCurrent()
         
-        
         dateFormattor.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormattor.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
         
-//        
-//        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-//        
-//        //       let querysql = "INSERT INTO GiaoDich VALUES(null, 'Phồng tôm', 5000, datetime('now', 'localtime'), 0, 1)"
-//        //        if Query(Sql: querysql,database: database){
-//        //            print(querysql)
-//        //        }
-//        //        let querysql = "INSERT INTO NganSach VALUES(null, 1500000, '2017-06-01 00:00:00', '2017-06-30  00:00:00', 0, 1)"
-//        //        if Query(Sql: querysql,database: database){
-//        //            print(querysql)
-//        //        }
-//        
-//        let Transactions = GetTransactionsFromSQLite(query: "SELECT * FROM GiaoDich",database: database)
-//        print(Transactions[0])
-//        
-//        let Budgets = GetBudgetsFromSQLite(query: "SELECT * FROM NganSach", database: database)
-//        print(Budgets[0])
-//        
-//        let Categories = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom", database: database)
-//        print(Categories[0])
-//        
-//        let Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: database)
-//        print(Wallets[0])
-//        
-//        let Currencies = GetCurrenciesFromSQLite(query: "SELECT * FROM TienTe", database: database)
-//        print(Currencies[1])
-//        
-//        sqlite3_close(database)
+        
+        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+        
+        let querysql = "INSERT INTO GiaoDich VALUES(null, 'Phồng tôm', 5000, datetime('now', 'localtime'), 0, 1)"
+        if Query(Sql: querysql,database: database){
+            print(querysql)
+        }
+        let querysql2 = "INSERT INTO NganSach VALUES(null, 1500000, '2017-06-01 00:00:00', '2017-06-30  00:00:00', 0, 1)"
+        if Query(Sql: querysql2,database: database){
+            print(querysql2)
+        }
+        
+        let Transactions = GetTransactionsFromSQLite(query: "SELECT * FROM GiaoDich",database: database)
+        print(Transactions[0])
+        
+        let Budgets = GetBudgetsFromSQLite(query: "SELECT * FROM NganSach", database: database)
+        print(Budgets[0])
+        
+        let Categories = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom", database: database)
+        print(Categories[0])
+        
+        let Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: database)
+        print(Wallets[0])
+        
+        let Currencies = GetCurrenciesFromSQLite(query: "SELECT * FROM TienTe", database: database)
+        print(Currencies[1])
+        
+        sqlite3_close(database)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {

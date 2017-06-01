@@ -1248,7 +1248,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Nhóm" id="5Hb-2D-Hfe"/>
+                    <navigationItem key="navigationItem" title="Nhóm" id="5Hb-2D-Hfe">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="eBw-cz-aVl"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ilh-tl-OnV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

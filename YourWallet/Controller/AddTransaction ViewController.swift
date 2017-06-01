@@ -27,12 +27,6 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
     }
     @IBAction func Cancel_ButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-//        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddArea") as? Area_Add_Edit_ViewController {
-//            //viewController.newsObj = newsObj
-//            if let navigator = navigationController {
-//                navigator.pushViewController(viewController, animated: true)
-//            }
-//        }
     }
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -75,6 +69,12 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
         default:
             let cell4 = tableView.dequeueReusableCell(withIdentifier: Cells[indexPath.row], for: indexPath) as! SelectWalletCell
             return cell4
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1{
+            isSelectCategory = true
+            //pushToVC(withStoryboardID: "CategoryVC", animated: true) //Đã làm trên giao diện kéo thả
         }
     }
     /*

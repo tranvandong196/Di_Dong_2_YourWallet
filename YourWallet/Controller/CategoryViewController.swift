@@ -50,7 +50,16 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         return cell!
     }
 
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isSelectCategory{
+            if indexPath.section == 0{
+                //Lưu nhóm đã chọn vào biến category_GV
+            }else{
+                //Lưu nhóm đã chọn vào biến category_GV
+            }
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
     /*
     // MARK: - Navigation
 
