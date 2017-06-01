@@ -9,13 +9,45 @@
 import UIKit
 
 class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+    var database:OpaquePointer? = nil
+    let dateFormattor = DateFormatter()
+    
     @IBOutlet weak var previousDay_Button: UIButton!
     @IBOutlet weak var currentDay_Button: UIButton!
     @IBOutlet weak var nextDay_Button: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        dateFormattor.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormattor.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
+        Copy_DB_To_DocURL(dbName: DBName, type: DBType)
+        
+        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+        
+        //       let querysql = "INSERT INTO GiaoDich VALUES(null, 'Phồng tôm', 5000, datetime('now', 'localtime'), 0, 1)"
+        //        if Query(Sql: querysql,database: database){
+        //            print(querysql)
+        //        }
+        //        let querysql = "INSERT INTO NganSach VALUES(null, 1500000, '2017-06-01 00:00:00', '2017-06-30  00:00:00', 0, 1)"
+        //        if Query(Sql: querysql,database: database){
+        //            print(querysql)
+        //        }
+        
+        let Transactions = GetTransactionsFromSQLite(query: "SELECT * FROM GiaoDich",database: database)
+        print(Transactions[0])
+        
+        let Budgets = GetBudgetsFromSQLite(query: "SELECT * FROM NganSach", database: database)
+        print(Budgets[0])
+        
+        let Categories = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom", database: database)
+        print(Categories[0])
+        
+        let Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: database)
+        print(Wallets[0])
+        
+        let Currencies = GetCurrenciesFromSQLite(query: "SELECT * FROM TienTe", database: database)
+        print(Currencies[1])
+        
+        sqlite3_close(database)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +78,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
   
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -60,7 +92,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return 60
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

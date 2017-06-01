@@ -15,19 +15,24 @@
 		0A384E7C1EDC7D51006CEAA9 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E731EDC7D51006CEAA9 /* NotificationExtension.swift */; };
 		0A384E7D1EDC7D51006CEAA9 /* SimpleTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E741EDC7D51006CEAA9 /* SimpleTypeExtension.swift */; };
 		0A384E7E1EDC7D51006CEAA9 /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E751EDC7D51006CEAA9 /* UIExtension.swift */; };
-		0A384E7F1EDC7D51006CEAA9 /* QuanLyNhaHang.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0A384E771EDC7D51006CEAA9 /* QuanLyNhaHang.sqlite */; };
 		0A384E801EDC7D51006CEAA9 /* SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E781EDC7D51006CEAA9 /* SQLite.swift */; };
 		0A384E831EDC7E42006CEAA9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A384E821EDC7E42006CEAA9 /* libsqlite3.tbd */; };
 		0A384E861EDCC239006CEAA9 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E851EDCC239006CEAA9 /* BookViewController.swift */; };
 		0A384E881EDCC24E006CEAA9 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E871EDCC24E006CEAA9 /* WalletViewController.swift */; };
 		0A384E8A1EDCC275006CEAA9 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E891EDCC275006CEAA9 /* StatisticsViewController.swift */; };
-		0A384E8C1EDCC29A006CEAA9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E8B1EDCC29A006CEAA9 /* SettingViewController.swift */; };
 		0A384E8E1EDCC319006CEAA9 /* AddTransaction ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E8D1EDCC319006CEAA9 /* AddTransaction ViewController.swift */; };
 		0A384E901EDCC648006CEAA9 /* SearchTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E8F1EDCC648006CEAA9 /* SearchTransactionViewController.swift */; };
 		0A384E921EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E911EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift */; };
 		0A384E941EDCDF57006CEAA9 /* SelectWallet_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */; };
 		0A4D56A51EDDC9E80009779A /* BookHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D56A41EDDC9E80009779A /* BookHeaderCell.swift */; };
 		0A4D56A71EDDCA260009779A /* BookTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D56A61EDDCA260009779A /* BookTransactionCell.swift */; };
+		0A799C2D1EDF3F8200A22A0C /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C2C1EDF3F8200A22A0C /* Transaction.swift */; };
+		0A799C2F1EDF3FA300A22A0C /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C2E1EDF3FA300A22A0C /* Budget.swift */; };
+		0A799C311EDF3FD000A22A0C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C301EDF3FD000A22A0C /* Category.swift */; };
+		0A799C351EDF3FFF00A22A0C /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C341EDF3FFF00A22A0C /* Wallet.swift */; };
+		0A799C371EDF402400A22A0C /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C361EDF402400A22A0C /* Currency.swift */; };
+		0A799C391EDF514A00A22A0C /* YourWallet-DB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0A799C381EDF514A00A22A0C /* YourWallet-DB.sqlite */; };
+		0A799C3E1EDF9F8C00A22A0C /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,20 +46,25 @@
 		0A384E731EDC7D51006CEAA9 /* NotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		0A384E741EDC7D51006CEAA9 /* SimpleTypeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTypeExtension.swift; sourceTree = "<group>"; };
 		0A384E751EDC7D51006CEAA9 /* UIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
-		0A384E771EDC7D51006CEAA9 /* QuanLyNhaHang.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = QuanLyNhaHang.sqlite; sourceTree = "<group>"; };
 		0A384E781EDC7D51006CEAA9 /* SQLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLite.swift; sourceTree = "<group>"; };
 		0A384E821EDC7E42006CEAA9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0A384E841EDC7EAA006CEAA9 /* SQLite_Briding_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQLite_Briding_header.h; sourceTree = "<group>"; };
 		0A384E851EDCC239006CEAA9 /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		0A384E871EDCC24E006CEAA9 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		0A384E891EDCC275006CEAA9 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
-		0A384E8B1EDCC29A006CEAA9 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0A384E8D1EDCC319006CEAA9 /* AddTransaction ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddTransaction ViewController.swift"; sourceTree = "<group>"; };
 		0A384E8F1EDCC648006CEAA9 /* SearchTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTransactionViewController.swift; sourceTree = "<group>"; };
 		0A384E911EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTimeRange_ViewController.swift; sourceTree = "<group>"; };
 		0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWallet_ViewController.swift; sourceTree = "<group>"; };
 		0A4D56A41EDDC9E80009779A /* BookHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookHeaderCell.swift; sourceTree = "<group>"; };
 		0A4D56A61EDDCA260009779A /* BookTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTransactionCell.swift; sourceTree = "<group>"; };
+		0A799C2C1EDF3F8200A22A0C /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		0A799C2E1EDF3FA300A22A0C /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
+		0A799C301EDF3FD000A22A0C /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		0A799C341EDF3FFF00A22A0C /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		0A799C361EDF402400A22A0C /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		0A799C381EDF514A00A22A0C /* YourWallet-DB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YourWallet-DB.sqlite"; sourceTree = "<group>"; };
+		0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +116,11 @@
 		0A384E6F1EDC7D51006CEAA9 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				0A799C2C1EDF3F8200A22A0C /* Transaction.swift */,
+				0A799C2E1EDF3FA300A22A0C /* Budget.swift */,
+				0A799C301EDF3FD000A22A0C /* Category.swift */,
+				0A799C341EDF3FFF00A22A0C /* Wallet.swift */,
+				0A799C361EDF402400A22A0C /* Currency.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -114,13 +129,11 @@
 			isa = PBXGroup;
 			children = (
 				0A4D56A81EDDCA300009779A /* Book */,
-				0A384E871EDCC24E006CEAA9 /* WalletViewController.swift */,
-				0A384E891EDCC275006CEAA9 /* StatisticsViewController.swift */,
-				0A384E8B1EDCC29A006CEAA9 /* SettingViewController.swift */,
-				0A384E8D1EDCC319006CEAA9 /* AddTransaction ViewController.swift */,
-				0A384E8F1EDCC648006CEAA9 /* SearchTransactionViewController.swift */,
+				0A799C3A1EDF872B00A22A0C /* Wallet */,
+				0A799C3C1EDF87BE00A22A0C /* Transaction */,
+				0A799C3B1EDF875000A22A0C /* Statistics */,
 				0A384E911EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift */,
-				0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */,
+				0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -139,7 +152,7 @@
 		0A384E761EDC7D51006CEAA9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0A384E771EDC7D51006CEAA9 /* QuanLyNhaHang.sqlite */,
+				0A799C381EDF514A00A22A0C /* YourWallet-DB.sqlite */,
 				0A384E781EDC7D51006CEAA9 /* SQLite.swift */,
 				0A384E841EDC7EAA006CEAA9 /* SQLite_Briding_header.h */,
 			);
@@ -169,6 +182,32 @@
 				0A4D56A61EDDCA260009779A /* BookTransactionCell.swift */,
 			);
 			name = Book;
+			sourceTree = "<group>";
+		};
+		0A799C3A1EDF872B00A22A0C /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				0A384E871EDCC24E006CEAA9 /* WalletViewController.swift */,
+				0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */,
+			);
+			name = Wallet;
+			sourceTree = "<group>";
+		};
+		0A799C3B1EDF875000A22A0C /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				0A384E891EDCC275006CEAA9 /* StatisticsViewController.swift */,
+			);
+			name = Statistics;
+			sourceTree = "<group>";
+		};
+		0A799C3C1EDF87BE00A22A0C /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				0A384E8D1EDCC319006CEAA9 /* AddTransaction ViewController.swift */,
+				0A384E8F1EDCC648006CEAA9 /* SearchTransactionViewController.swift */,
+			);
+			name = Transaction;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +271,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A384E681EDC7CFF006CEAA9 /* LaunchScreen.storyboard in Resources */,
+				0A799C391EDF514A00A22A0C /* YourWallet-DB.sqlite in Resources */,
 				0A384E651EDC7CFF006CEAA9 /* Assets.xcassets in Resources */,
 				0A384E631EDC7CFF006CEAA9 /* Main.storyboard in Resources */,
-				0A384E7F1EDC7D51006CEAA9 /* QuanLyNhaHang.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,21 +284,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A799C3E1EDF9F8C00A22A0C /* MoreViewController.swift in Sources */,
 				0A384E7C1EDC7D51006CEAA9 /* NotificationExtension.swift in Sources */,
 				0A384E801EDC7D51006CEAA9 /* SQLite.swift in Sources */,
+				0A799C311EDF3FD000A22A0C /* Category.swift in Sources */,
 				0A384E7B1EDC7D51006CEAA9 /* FileManagerExtension.swift in Sources */,
 				0A384E941EDCDF57006CEAA9 /* SelectWallet_ViewController.swift in Sources */,
 				0A384E7E1EDC7D51006CEAA9 /* UIExtension.swift in Sources */,
+				0A799C371EDF402400A22A0C /* Currency.swift in Sources */,
 				0A4D56A71EDDCA260009779A /* BookTransactionCell.swift in Sources */,
+				0A799C2D1EDF3F8200A22A0C /* Transaction.swift in Sources */,
 				0A4D56A51EDDC9E80009779A /* BookHeaderCell.swift in Sources */,
 				0A384E8A1EDCC275006CEAA9 /* StatisticsViewController.swift in Sources */,
 				0A384E5C1EDC7CFF006CEAA9 /* AppDelegate.swift in Sources */,
 				0A384E861EDCC239006CEAA9 /* BookViewController.swift in Sources */,
 				0A384E7D1EDC7D51006CEAA9 /* SimpleTypeExtension.swift in Sources */,
 				0A384E881EDCC24E006CEAA9 /* WalletViewController.swift in Sources */,
+				0A799C351EDF3FFF00A22A0C /* Wallet.swift in Sources */,
 				0A384E921EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift in Sources */,
+				0A799C2F1EDF3FA300A22A0C /* Budget.swift in Sources */,
 				0A384E8E1EDCC319006CEAA9 /* AddTransaction ViewController.swift in Sources */,
-				0A384E8C1EDCC29A006CEAA9 /* SettingViewController.swift in Sources */,
 				0A384E901EDCC648006CEAA9 /* SearchTransactionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
