@@ -972,6 +972,9 @@
                                                 <constraint firstItem="xz3-28-hLA" firstAttribute="centerY" secondItem="D3j-7S-0Yh" secondAttribute="centerY" id="hlN-2v-EpY"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="Time_Label" destination="l3c-vX-MeR" id="EQz-Wm-6Oy"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Select-Wallet-Cell" rowHeight="48" id="bMF-hU-oih" customClass="SelectWalletCell" customModule="YourWallet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="311" width="375" height="48"/>
@@ -1026,7 +1029,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Thêm giao dịch" id="kWe-Cf-nY4">
-                        <barButtonItem key="leftBarButtonItem" title="Huỷ" style="plain" id="rE7-Ul-OCq"/>
+                        <barButtonItem key="leftBarButtonItem" title="Huỷ" style="plain" id="rE7-Ul-OCq">
+                            <connections>
+                                <action selector="Cancel_ButtonTapped:" destination="giG-gt-n1I" id="9Ap-ey-5P6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Lưu" style="plain" id="cRF-bI-1NR">
                             <connections>
                                 <action selector="Save_ButtonTapped:" destination="giG-gt-n1I" id="mon-SK-hGf"/>

@@ -10,6 +10,7 @@ import UIKit
 
 class ChangeTimeCell: UITableViewCell {
 
+    @IBOutlet weak var Time_Label: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

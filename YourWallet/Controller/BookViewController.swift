@@ -71,6 +71,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewWillAppear(_ animated: Bool) {
         isSelectWallet = false
         transaction_GV = nil
+        isAddTransaction = false
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         

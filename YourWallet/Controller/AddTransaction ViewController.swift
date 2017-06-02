@@ -24,19 +24,24 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
     }
     override func viewWillAppear(_ animated: Bool) {
         isSelectCategory = false
+        isSelectWallet = false
+        isAddTransaction = true
         NewTransaction_TableView.reloadData()
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
             //self.navigationController?.navigationBar.barTintColor = UIColor.green
     }
     @IBAction func Cancel_ButtonTapped(_ sender: Any) {
         category_GV = nil
+        isAddTransaction = false
+        self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func Save_ButtonTapped(_ sender: Any) {
         category_GV = nil
-        
+        isAddTransaction = false
         // Thao tác lưu vài CSDL ở đây
         
+        self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.popViewController(animated: true)
     }
     // MARK: ** TableView
@@ -84,6 +89,16 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
             return cell3
         default:
             let cell4 = tableView.dequeueReusableCell(withIdentifier: Cells[indexPath.row], for: indexPath) as! SelectWalletCell
+            if wallet_GV != nil{
+                cell4.WalletIcon_ImageView.image = UIImage(named: (wallet_GV?.Icon)!)
+                cell4.WalletName_Label.text = wallet_GV?.Name
+                
+            }else{
+                cell4.WalletIcon_ImageView.image = #imageLiteral(resourceName: "SelectCategory-Circle-icon")
+                cell4.WalletName_Label.textColor = UIColor.lightGray
+                cell4.WalletName_Label.text =  "Chọn ví"
+            }
+            
             return cell4
         }
     }
@@ -92,6 +107,11 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
             isSelectCategory = true
             self.tabBarController?.tabBar.isHidden = true
             pushToVC(withStoryboardID: "CategoryVC", animated: true)
+        }
+        if indexPath.row == 4{
+            isSelectWallet = true
+            self.tabBarController?.tabBar.isHidden = true
+            pushToVC(withStoryboardID: "WalletVC", animated: true)
         }
     }
     /*

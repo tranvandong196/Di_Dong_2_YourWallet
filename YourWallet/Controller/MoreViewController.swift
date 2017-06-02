@@ -17,6 +17,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        isAddTransaction = false
         More_TableView.reloadData()
     }
     override func didReceiveMemoryWarning() {

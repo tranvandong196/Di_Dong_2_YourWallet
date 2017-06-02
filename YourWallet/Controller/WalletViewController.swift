@@ -48,7 +48,8 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         return "Tính vào tổng"
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1:Wallets.count
+        let num = !isAddTransaction ? 1:0
+        return section == 0 ? num:Wallets.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? 80:70
@@ -74,22 +75,22 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if indexPath.section == 0{
-            wallet_GV = nil
-            UserDefaults.standard.setValue(Int(-1), forKey: "Wallet")
-            print("Chọn tất cả ví")
-        }else{
-            wallet_GV = Wallets[indexPath.row]
-            UserDefaults.standard.setValue(Wallets[indexPath.row].ID, forKey: "Wallet")
-            print("Đã chọn ví: \(Wallets[indexPath.row].Name!)")
-        }
-       
         if isSelectWallet{
+            if indexPath.section == 0{
+                wallet_GV = nil
+                UserDefaults.standard.setValue(Int(-1), forKey: "Wallet")
+                print("Chọn tất cả ví")
+            }else{
+                wallet_GV = Wallets[indexPath.row]
+                UserDefaults.standard.setValue(Wallets[indexPath.row].ID, forKey: "Wallet")
+                print("Đã chọn ví: \(Wallets[indexPath.row].Name!)")
+            }
             self.navigationController?.popViewController(animated: true)
         }else{
+            wallet_detail = Wallets[indexPath.row]
             //pushToVC(withStoryboardID: "ID Màn hình xem chi tiết ví", animated: true)
         }
+        
     }
     /*
     // MARK: - Navigation
