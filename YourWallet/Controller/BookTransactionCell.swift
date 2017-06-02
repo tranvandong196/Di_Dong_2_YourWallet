@@ -10,6 +10,10 @@ import UIKit
 
 class BookTransactionCell: UITableViewCell {
 
+    @IBOutlet weak var Day_Label: UILabel!
+    @IBOutlet weak var MonthYear_Label: UILabel!
+    @IBOutlet weak var TransactionName_Label: UILabel!
+    @IBOutlet weak var Amount_Label: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

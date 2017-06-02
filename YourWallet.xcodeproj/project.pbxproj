@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0E1D841EE1895D0050B282 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0E1D831EE1895D0050B282 /* AddCategoryViewController.swift */; };
+		0A0E1D861EE18DAA0050B282 /* AddWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0E1D851EE18DAA0050B282 /* AddWalletViewController.swift */; };
 		0A384E5C1EDC7CFF006CEAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E5B1EDC7CFF006CEAA9 /* AppDelegate.swift */; };
 		0A384E631EDC7CFF006CEAA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A384E611EDC7CFF006CEAA9 /* Main.storyboard */; };
 		0A384E651EDC7CFF006CEAA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A384E641EDC7CFF006CEAA9 /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0E1D831EE1895D0050B282 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
+		0A0E1D851EE18DAA0050B282 /* AddWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWalletViewController.swift; sourceTree = "<group>"; };
 		0A384E581EDC7CFF006CEAA9 /* YourWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A384E5B1EDC7CFF006CEAA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A384E621EDC7CFF006CEAA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 			children = (
 				0A39DC601EE08B5000EE8917 /* CategoryViewController.swift */,
 				0A39DC631EE09D0700EE8917 /* CategoryCell.swift */,
+				0A0E1D831EE1895D0050B282 /* AddCategoryViewController.swift */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */,
 				0A39DC671EE0BFCE00EE8917 /* AllWalletCell.swift */,
 				0A39DC691EE0BFED00EE8917 /* WalletCell.swift */,
+				0A0E1D851EE18DAA0050B282 /* AddWalletViewController.swift */,
 			);
 			name = Wallet;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A0E1D841EE1895D0050B282 /* AddCategoryViewController.swift in Sources */,
 				0A39DC5D1EE070AB00EE8917 /* ChangeTimeCell.swift in Sources */,
 				0A799C3E1EDF9F8C00A22A0C /* MoreViewController.swift in Sources */,
 				0A384E7C1EDC7D51006CEAA9 /* NotificationExtension.swift in Sources */,
@@ -346,6 +353,7 @@
 				0A384E861EDCC239006CEAA9 /* BookViewController.swift in Sources */,
 				0A384E7D1EDC7D51006CEAA9 /* SimpleTypeExtension.swift in Sources */,
 				0A384E881EDCC24E006CEAA9 /* WalletViewController.swift in Sources */,
+				0A0E1D861EE18DAA0050B282 /* AddWalletViewController.swift in Sources */,
 				0A799C351EDF3FFF00A22A0C /* Wallet.swift in Sources */,
 				0A39DC591EE0701200EE8917 /* SelectCategoryCell.swift in Sources */,
 				0A384E921EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift in Sources */,

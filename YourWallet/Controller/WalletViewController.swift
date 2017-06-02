@@ -10,6 +10,7 @@ import UIKit
 
 class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var Wallets = [Wallet]()
+    @IBOutlet weak var Wallets_TableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,12 +22,16 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         let db = Connect_DB_SQLite(dbName: DBName, type: DBType)
         Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: db)
         sqlite3_close(db)
+        Wallets_TableView.reloadData()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func AddWallet_ButtonTapped(_ sender: Any) {
+        pushToVC(withStoryboardID: "AddWalletVC", animated: true)
+    }
     
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -69,20 +74,21 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section == 0{
+            wallet_GV = nil
+            UserDefaults.standard.setValue(Int(-1), forKey: "Wallet")
+            print("Chọn tất cả ví")
+        }else{
+            wallet_GV = Wallets[indexPath.row]
+            UserDefaults.standard.setValue(Wallets[indexPath.row].ID, forKey: "Wallet")
+            print("Đã chọn ví: \(Wallets[indexPath.row].Name!)")
+        }
+       
         if isSelectWallet{
-            if indexPath.section == 0{
-                wallet_GV = nil
-                UserDefaults.standard.setValue(Int(-1), forKey: "Wallet")
-                print("Chọn tất cả ví")
-            }else{
-                wallet_GV = Wallets[indexPath.row]
-                UserDefaults.standard.setValue(Wallets[indexPath.row].ID, forKey: "Wallet")
-                print("Đã chọn \(Wallets[indexPath.row].Name!)")
-            }
-            if let cell = tableView.cellForRow(at: indexPath) {
-                cell.accessoryType = .checkmark
-            }
             self.navigationController?.popViewController(animated: true)
+        }else{
+            //pushToVC(withStoryboardID: "ID Màn hình xem chi tiết ví", animated: true)
         }
     }
     /*

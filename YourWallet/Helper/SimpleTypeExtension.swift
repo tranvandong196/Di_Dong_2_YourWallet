@@ -48,7 +48,7 @@ extension Double{
         }
     }
     func toCurrencyString(Currency: String)->String{
-        if Currency == "VNĐ"{
+        if Currency == "VND"{
             return Int(self).stringFormattedWithSeparator
         }
         return String(self)

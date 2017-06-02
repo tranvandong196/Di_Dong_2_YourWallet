@@ -15,13 +15,14 @@ import Foundation
 var isSelectWallet:Bool = false
 var isSelectCategory:Bool = false
 
+var transaction_GV: Transaction? = nil
 var currency_GV: Currency? = nil
 var category_GV: Category? = nil
 var wallet_GV: Wallet? = nil
 
 
 /*
-    Đặt giá trị biến = nil khi bắt đầu load màn hình CHỌN (Tiền tệ, Nhóm) - Màn hình Ví ko cần
+    Đặt giá trị biến phù hợp = nil khi bắt đầu load màn hình CHỌN (Tiền tệ) - Màn hình Ví ko cần
     -> Nếu có chọn thì lưu lại vào biến trước khi Pop ViewController
     -> Nếu wallet_GV = nil: Thống kê và xem theo tất cả các ví
     -> Nếu sau khi qua màn hình chọn ví mà loại ví ko thay đổi: Giữ nguyên nội dung trên màn hình (Ko nên load lại)
@@ -32,7 +33,7 @@ var wallet_GV: Wallet? = nil
 
 /*
     Lưu dữ liệu dưới UserDefault với forKey:
-    - Mã tiền tệ mặc định Int: "Currency"
+    - Mã tiền tệ mặc định String: "Currency"
     - Mã ví đã chọn Int: "Wallet"
 */
 

@@ -32,10 +32,11 @@ func Connect_DB_SQLite( dbName:String, type:String)->OpaquePointer{
     let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     let storePath : String = documentURL.appendingPathComponent("\(dbName).\(type)").path
     if sqlite3_open(storePath, &database) == SQLITE_OK{
-        print("Opened < \(dbName).\(type) > from storePath")
+        //print("Opened < \(dbName).\(type) > from storePath")
+        print("🔓 Connected database.")
     }else{
         sqlite3_close(database)
-        print("Failed to open database -> Created \(dbName).\(type) but it wasn't set a valid structure/table!")
+        print("❌ Failed to open database -> Created \(dbName).\(type) but it wasn't set a valid structure/table!")
         //createdTable(database: database, query: String) to create any table
     }
     
@@ -51,7 +52,7 @@ func Query(Sql: String, database:OpaquePointer?)-> Bool{
             result = false
         }
     }else{
-        print("Edit statement could not be prepared.")
+        print("❌ Edit statement could not be prepared.")
         result = false
     }
     sqlite3_finalize(Statement)

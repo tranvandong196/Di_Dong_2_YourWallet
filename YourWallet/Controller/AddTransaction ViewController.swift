@@ -10,6 +10,9 @@ import UIKit
 
 class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var NewTransaction_TableView: UITableView!
+    
+    @IBOutlet weak var Save_Button: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -22,10 +25,18 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
     override func viewWillAppear(_ animated: Bool) {
         isSelectCategory = false
         NewTransaction_TableView.reloadData()
-        //self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
             //self.navigationController?.navigationBar.barTintColor = UIColor.green
     }
     @IBAction func Cancel_ButtonTapped(_ sender: Any) {
+        category_GV = nil
+        self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func Save_ButtonTapped(_ sender: Any) {
+        category_GV = nil
+        
+        // Thao tác lưu vài CSDL ở đây
+        
         self.navigationController?.popViewController(animated: true)
     }
     // MARK: ** TableView
@@ -59,6 +70,11 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
             return cell0
         case 1:
             let cell1 = tableView.dequeueReusableCell(withIdentifier: Cells[indexPath.row], for: indexPath) as! SelectCategoryCell
+            if category_GV != nil{
+                cell1.categoryIcon_ImageView.image = UIImage(named: (category_GV?.Icon)!)
+                cell1.categoryName_Label.textColor = UIColor.black
+                cell1.categoryName_Label.text = category_GV?.Name
+            }
             return cell1
         case 2:
             let cell2 = tableView.dequeueReusableCell(withIdentifier: Cells[indexPath.row], for: indexPath) as! AddNodeCell
@@ -74,7 +90,8 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1{
             isSelectCategory = true
-            //pushToVC(withStoryboardID: "CategoryVC", animated: true) //Đã làm trên giao diện kéo thả
+            self.tabBarController?.tabBar.isHidden = true
+            pushToVC(withStoryboardID: "CategoryVC", animated: true)
         }
     }
     /*

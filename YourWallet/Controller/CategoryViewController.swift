@@ -9,8 +9,10 @@
 import UIKit
 
 class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
-    @IBOutlet weak var KindOfCategoryTitle_Label: UILabel!
+    var CategoriesIn = [Category]()
+    var CategoriesOut = [Category]()
+    
+    @IBOutlet weak var Categories_TableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +24,17 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     override func viewWillAppear(_ animated: Bool) {
-        category_GV = nil
+        //category_GV = nil
+        
+        let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+        CategoriesOut = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Loai = 0", database: database)
+        CategoriesIn = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Loai = 1", database: database)
+        sqlite3_close(database)
+        
+        Categories_TableView.reloadData()
+    }
+    @IBAction func addCategory_ButtonTapped(_ sender: Any) {
+        pushToVC(withStoryboardID: "AddCategoryVC", animated: true)
     }
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,24 +52,33 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 4:2
+        return section == 0 ? CategoriesOut.count:CategoriesIn.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 56
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Category-Cell")
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Category-Cell", for: indexPath) as! CategoryCell
+        
+        let nameIcon = indexPath.section == 0 ? CategoriesOut[indexPath.row].Icon:CategoriesIn[indexPath.row].Icon
+        cell.CategoryIcon_ImageView.image = UIImage(named: nameIcon!)
+        cell.CategoryName_Label.text = indexPath.section == 0 ? CategoriesOut[indexPath.row].Name:CategoriesIn[indexPath.row].Name
+        
+        if isSelectCategory && category_GV?.ID != nil {
+            let ID = indexPath.section == 0 ? CategoriesOut[indexPath.row].ID:CategoriesIn[indexPath.row].ID
+            cell.accessoryType = category_GV?.ID == ID ? .checkmark:.none
+        }
+        
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        category_GV = indexPath.section == 0 ? CategoriesOut[indexPath.row]:CategoriesIn[indexPath.row]
+        
         if isSelectCategory{
-            if indexPath.section == 0{
-                //Lưu nhóm đã chọn vào biến category_GV
-            }else{
-                //Lưu nhóm đã chọn vào biến category_GV
-            }
             self.navigationController?.popViewController(animated: true)
+        }else{
+            //pushToVC(withStoryboardID: "ID của màn hình xem chi tiết nhóm", animated: true)
         }
     }
     /*

@@ -16,7 +16,7 @@ class AddAmountCell: UITableViewCell,UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addAmount_TextField.delegate = self
-        //selectCurrency_Button.setTitle("USD", for: .normal)
+        selectCurrency_Button.setTitle(currency_GV?.ID, for: .normal)
         // Initialization code
     }
 
