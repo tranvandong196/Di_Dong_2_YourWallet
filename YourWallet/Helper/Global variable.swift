@@ -13,6 +13,7 @@ import Foundation
     -> Đặt biến isSelectCategory = false ở viewWillAppear ở màn hình Thêm giao dịch, ví
 */
 var isAddTransaction:Bool = false
+var isAddWallet:Bool = false
 var isSelectWallet:Bool = false
 var isSelectCategory:Bool = false
 
@@ -22,6 +23,9 @@ var category_GV: Category? = nil
 var wallet_GV: Wallet? = nil
 
 var wallet_detail: Wallet? = nil
+
+// Sau khi (Huỷ/Lưu) ở màn hình thêm giao dịch, sẽ trở về màn hình TabBar hiện tại
+var currentTabBarItem:Int = 0
 /*
     Đặt giá trị biến phù hợp = nil khi bắt đầu load màn hình CHỌN (Tiền tệ) - Màn hình Ví ko cần
     -> Nếu có chọn thì lưu lại vào biến trước khi Pop ViewController

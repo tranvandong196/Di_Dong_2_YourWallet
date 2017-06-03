@@ -19,9 +19,10 @@ class StatisticsViewController: UIViewController {
         print("🖥 Thống kê --------------------------------")
         isSelectWallet = false
         isAddTransaction = false
+        currentTabBarItem = 3
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
+       
         SelectWallet_Button.imageView?.image = wallet_GV != nil ? UIImage(named: (wallet_GV?.Icon)!):#imageLiteral(resourceName: "All-Wallet-icon")
         
     }

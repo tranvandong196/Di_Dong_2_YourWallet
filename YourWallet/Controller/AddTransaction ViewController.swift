@@ -33,7 +33,7 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
             addTime = (transaction_GV?.Time)!
             sqlite3_close(database)
         }
-        // Do any additional setup after loading the view.
+        print("View did load")
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +41,7 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
         // Dispose of any resources that can be recreated.
     }
     override func viewWillAppear(_ animated: Bool) {
+        
         print("🖥 Thêm giao dịch --------------------------------")
         isSelectCategory = false
         isSelectWallet = false
@@ -51,8 +52,16 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
     @IBAction func Cancel_ButtonTapped(_ sender: Any) {
         category_GV = nil
         isAddTransaction = false
+        amount = ""
+        name = ""
+        
+        NewTransaction_TableView.reloadData()
+        let a = NewTransaction_TableView.dequeueReusableCell(withIdentifier: "Add-Amount-Cell") as! AddAmountCell
+        let n = NewTransaction_TableView.dequeueReusableCell(withIdentifier: "Add-Note-Cell") as! AddNodeCell
+        a.reloadInputViews()
+        n.reloadInputViews()
+        self.tabBarController?.selectedIndex = currentTabBarItem
         self.tabBarController?.tabBar.isHidden = false
-        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func Save_ButtonTapped(_ sender: Any) {
         NewTransaction_TableView.reloadData()
@@ -74,10 +83,11 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
             name = ""
             category_GV = nil
             isAddTransaction = false
+            self.tabBarController?.selectedIndex = currentTabBarItem
+            self.tabBarController?.tabBar.isHidden = false
         }
         
-        self.tabBarController?.tabBar.isHidden = false
-        self.navigationController?.popViewController(animated: true)
+        
     }
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -118,6 +128,10 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
                 cell1.categoryIcon_ImageView.image = UIImage(named: (category_GV?.Icon)!)
                 cell1.categoryName_Label.textColor = colorLabel
                 cell1.categoryName_Label.text = category_GV?.Name
+            }else{
+                cell1.categoryIcon_ImageView.image = #imageLiteral(resourceName: "SelectCategory-Circle-icon")
+                cell1.categoryName_Label.textColor = UIColor.lightGray
+                cell1.categoryName_Label.text = "Chọn nhóm"
             }
             return cell1
         case 2:

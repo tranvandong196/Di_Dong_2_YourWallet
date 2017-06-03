@@ -19,7 +19,7 @@ class AddNodeCell: UITableViewCell,UITextFieldDelegate {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        //addNote_TextField
         // Configure the view for the selected state
     }
     //Hide or switch next keyboard when user Presses "return" key (for textField)

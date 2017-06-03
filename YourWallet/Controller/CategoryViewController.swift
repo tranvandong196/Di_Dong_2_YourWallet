@@ -24,8 +24,7 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     override func viewWillAppear(_ animated: Bool) {
         print("🖥 Nhóm --------------------------------")
-        //category_GV = nil
-        
+        self.tabBarController?.tabBar.isHidden = (isAddTransaction || isAddWallet) ? true:false
         let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
 
         CategoriesOut = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Loai = 0", database: database)

@@ -19,6 +19,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         print("🖥 Mở rộng --------------------------------")
         isAddTransaction = false
+        currentTabBarItem = 4
         More_TableView.reloadData()
  
     }

@@ -23,10 +23,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnv-BS-0eD" userLabel="StatusBackground">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                <color key="backgroundColor" red="0.0" green="0.68551409244537354" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="Hjz-cE-smy"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rgh-Xz-vj6" userLabel="Wallet">
                                 <rect key="frame" x="0.0" y="64" width="375" height="45"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6y-mG-5z6">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6y-mG-5z6">
                                         <rect key="frame" x="13" y="7.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="2Kx-Mo-9a0"/>
@@ -82,10 +89,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9E-uu-qCI" userLabel="Content">
-                                <rect key="frame" x="0.0" y="109" width="375" height="509"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="pPY-3S-Okc">
-                                        <rect key="frame" x="0.0" y="15" width="375" height="494"/>
+                                        <rect key="frame" x="0.0" y="15" width="375" height="543"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <view key="tableHeaderView" contentMode="scaleToFill" id="Cs3-ac-vMC" userLabel="Overview">
@@ -424,9 +431,9 @@
                                 </subviews>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pPY-3S-Okc" secondAttribute="bottom" id="CTG-5w-Vbq"/>
                                     <constraint firstAttribute="trailing" secondItem="Xko-wQ-JFo" secondAttribute="trailing" id="Gem-xH-XXZ"/>
                                     <constraint firstItem="Xko-wQ-JFo" firstAttribute="top" secondItem="b9E-uu-qCI" secondAttribute="top" id="MoK-DL-1AS"/>
-                                    <constraint firstAttribute="bottom" secondItem="pPY-3S-Okc" secondAttribute="bottom" id="S7n-Xb-VGq"/>
                                     <constraint firstItem="pPY-3S-Okc" firstAttribute="leading" secondItem="b9E-uu-qCI" secondAttribute="leading" id="YcI-bJ-kQg"/>
                                     <constraint firstItem="Xko-wQ-JFo" firstAttribute="leading" secondItem="b9E-uu-qCI" secondAttribute="leading" id="bTQ-KE-YIF"/>
                                     <constraint firstAttribute="trailing" secondItem="pPY-3S-Okc" secondAttribute="trailing" id="fd2-FZ-lOl"/>
@@ -438,15 +445,18 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.64313725490196072" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="b9E-uu-qCI" secondAttribute="trailing" id="3vw-98-zjo"/>
                             <constraint firstAttribute="trailing" secondItem="rgh-Xz-vj6" secondAttribute="trailing" id="8qN-da-QIZ"/>
                             <constraint firstItem="rgh-Xz-vj6" firstAttribute="top" secondItem="WK1-ut-iAA" secondAttribute="bottom" id="GNC-ww-vm3"/>
                             <constraint firstItem="b9E-uu-qCI" firstAttribute="top" secondItem="rgh-Xz-vj6" secondAttribute="bottom" id="Jmx-50-5eD"/>
+                            <constraint firstAttribute="trailing" secondItem="mnv-BS-0eD" secondAttribute="trailing" id="OYM-gd-OeU"/>
+                            <constraint firstItem="mnv-BS-0eD" firstAttribute="top" secondItem="St9-0n-sZE" secondAttribute="top" id="PAX-Az-6Xs"/>
                             <constraint firstItem="rgh-Xz-vj6" firstAttribute="leading" secondItem="St9-0n-sZE" secondAttribute="leading" id="Yop-B3-s37"/>
                             <constraint firstItem="b9E-uu-qCI" firstAttribute="leading" secondItem="St9-0n-sZE" secondAttribute="leading" id="ghQ-cF-F4N"/>
-                            <constraint firstItem="Y00-Yx-opS" firstAttribute="top" secondItem="b9E-uu-qCI" secondAttribute="bottom" id="w64-SA-o8b"/>
+                            <constraint firstAttribute="bottom" secondItem="b9E-uu-qCI" secondAttribute="bottom" id="ghh-IM-R7J"/>
+                            <constraint firstItem="mnv-BS-0eD" firstAttribute="leading" secondItem="St9-0n-sZE" secondAttribute="leading" id="wKE-Jx-CpV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7VZ-k6-MSg"/>
@@ -475,7 +485,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="857" y="-1042"/>
+            <point key="canvasLocation" x="856.79999999999995" y="-1042.128935532234"/>
         </scene>
         <!--Search Transaction View Controller-->
         <scene sceneID="128-4P-E7X">
@@ -521,7 +531,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ITL-Ay-Pzs">
-                                <rect key="frame" x="0.0" y="49" width="375" height="569"/>
+                                <rect key="frame" x="0.0" y="49" width="375" height="618"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -529,7 +539,7 @@
                                         <rect key="frame" x="0.0" y="56" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kTJ-bz-Qfn" id="8bF-j7-YZR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="All-Wallet-icon" translatesAutoresizingMaskIntoConstraints="NO" id="a1q-jm-n73">
@@ -584,7 +594,7 @@
                                         <rect key="frame" x="0.0" y="136" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7fG-4U-0LL" id="LHV-Xp-vBC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TÍNH VÀO TỔNG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQt-pB-zl1">
@@ -608,7 +618,7 @@
                                         <rect key="frame" x="0.0" y="186" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IjN-Sa-zog" id="1QG-JM-kzq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wallet-2-icon" translatesAutoresizingMaskIntoConstraints="NO" id="I98-ii-LlG">
@@ -668,10 +678,9 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ITL-Ay-Pzs" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="-15" id="AbD-o8-yiH"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="ITL-Ay-Pzs" secondAttribute="bottom" id="sKU-4e-IIX"/>
+                            <constraint firstAttribute="bottom" secondItem="ITL-Ay-Pzs" secondAttribute="bottom" id="pPr-eL-JXs"/>
                             <constraint firstItem="ITL-Ay-Pzs" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="tM0-q2-dt6"/>
                             <constraint firstAttribute="trailing" secondItem="ITL-Ay-Pzs" secondAttribute="trailing" id="w3C-1K-Sr8"/>
                         </constraints>
@@ -1048,7 +1057,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFG-gm-bUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5302" y="0.0"/>
+            <point key="canvasLocation" x="5260" y="0.0"/>
         </scene>
         <!--Chọn ngày-->
         <scene sceneID="1La-4V-fVa">
@@ -1085,7 +1094,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRw-a6-1YP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6136.8000000000002" y="-0.44977511244377816"/>
+            <point key="canvasLocation" x="7076" y="-0.44977511244377816"/>
         </scene>
         <!--Mở rộng-->
         <scene sceneID="R1a-SZ-wvO">
@@ -1531,10 +1540,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYH-dj-f4A" userLabel="StatusBackground">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                <color key="backgroundColor" red="0.0" green="0.68627450980392157" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="wch-2R-4Ak"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZO-mI-Cse" userLabel="Wallet">
                                 <rect key="frame" x="0.0" y="64" width="375" height="45"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gt8-15-FUV">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gt8-15-FUV">
                                         <rect key="frame" x="13" y="7.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="G8z-e6-sEY"/>
@@ -1631,12 +1647,15 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.64313725490196072" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="LZO-mI-Cse" secondAttribute="trailing" id="7g2-Lr-4Y2"/>
                             <constraint firstItem="LZO-mI-Cse" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="LsI-u6-doa"/>
+                            <constraint firstItem="aYH-dj-f4A" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="RSb-lu-YhZ"/>
+                            <constraint firstAttribute="trailing" secondItem="aYH-dj-f4A" secondAttribute="trailing" id="UhU-ID-xQP"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="veS-Ji-7Qj" secondAttribute="bottom" id="WQF-s8-6V6"/>
                             <constraint firstItem="veS-Ji-7Qj" firstAttribute="top" secondItem="LZO-mI-Cse" secondAttribute="bottom" id="Wmx-Y0-JFA"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="veS-Ji-7Qj" secondAttribute="bottom" id="Xi8-2s-Cl5"/>
+                            <constraint firstItem="aYH-dj-f4A" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="bOg-eP-ZHd"/>
                             <constraint firstItem="LZO-mI-Cse" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="cHU-1U-DW3"/>
                             <constraint firstAttribute="trailing" secondItem="veS-Ji-7Qj" secondAttribute="trailing" id="kkl-bv-2Ux"/>
                             <constraint firstItem="veS-Ji-7Qj" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="pPq-OD-UBN"/>
@@ -1649,7 +1668,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2302" y="382"/>
+            <point key="canvasLocation" x="2301.5999999999999" y="381.85907046476763"/>
         </scene>
         <!--Chọn khoảng thời gian-->
         <scene sceneID="Wev-ir-etl">
@@ -1682,10 +1701,10 @@
             </objects>
             <point key="canvasLocation" x="3114" y="382"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="TabBarViewController" customModule="YourWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -1696,7 +1715,7 @@
                     <connections>
                         <segue destination="g39-EK-J8B" kind="relationship" relationship="viewControllers" id="Hih-GM-SwD"/>
                         <segue destination="twT-iu-Fv8" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="cr5-jj-DaS" kind="relationship" relationship="viewControllers" id="3P9-5P-SkZ"/>
+                        <segue destination="cr5-jj-DaS" kind="relationship" relationship="viewControllers" id="a8E-AZ-lmI"/>
                         <segue destination="1nh-Hh-O00" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="HVU-wa-ivO" kind="relationship" relationship="viewControllers" id="Guh-TX-7at"/>
                     </connections>
@@ -1709,7 +1728,7 @@
         <scene sceneID="2X2-vR-4EI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="twT-iu-Fv8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ví" image="Wallet-icon" selectedImage="Wallet-icon" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Ví" image="Wallet-icon" selectedImage="Wallet-icon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kzd-4V-dhy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1784,9 +1803,10 @@
         <!--Thêm giao dịch-->
         <scene sceneID="EH4-rv-9Kn">
             <objects>
-                <navigationController wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="cr5-jj-DaS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Thêm giao dịch" image="Add-circle-icon" selectedImage="Add-circle-icon" id="ysv-Mu-MuE"/>
+                <navigationController storyboardIdentifier="AddTransactionVC_NAVI" wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cr5-jj-DaS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Thêm giao dịch" id="ysv-Mu-MuE"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="rKs-6j-Rgf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tsb-qG-hQ8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1794,7 +1814,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="giG-gt-n1I" kind="relationship" relationship="rootViewController" id="MNs-6p-gQB"/>
+                        <segue destination="giG-gt-n1I" kind="relationship" relationship="rootViewController" id="QTj-Rz-JfV"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUI-K6-V5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1830,7 +1850,6 @@
     <resources>
         <image name="Add-Calendar-icon" width="100" height="100"/>
         <image name="Add-Node-icon" width="400" height="400"/>
-        <image name="Add-circle-icon" width="24" height="24"/>
         <image name="All-Wallet-icon" width="256" height="256"/>
         <image name="An-uong-icon" width="256" height="256"/>
         <image name="Book-icon" width="24" height="24"/>

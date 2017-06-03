@@ -18,13 +18,16 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     }
     override func viewWillAppear(_ animated: Bool) {
         print("🖥 Ví --------------------------------")
+        currentTabBarItem = 1
+        isAddWallet = false
         self.tabBarController?.tabBar.isHidden = isSelectWallet ? true:false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
         let db = Connect_DB_SQLite(dbName: DBName, type: DBType)
         Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: db)
         sqlite3_close(db)
         Wallets_TableView.reloadData()
-
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,6 +35,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func AddWallet_ButtonTapped(_ sender: Any) {
+        isAddWallet = true
         pushToVC(withStoryboardID: "AddWalletVC", animated: true)
     }
     

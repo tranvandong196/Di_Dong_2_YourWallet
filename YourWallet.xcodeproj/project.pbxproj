@@ -45,6 +45,7 @@
 		0A799C371EDF402400A22A0C /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C361EDF402400A22A0C /* Currency.swift */; };
 		0A799C391EDF514A00A22A0C /* YourWallet-DB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0A799C381EDF514A00A22A0C /* YourWallet-DB.sqlite */; };
 		0A799C3E1EDF9F8C00A22A0C /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */; };
+		0A9746D11EE2D39700B25346 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9746D01EE2D39700B25346 /* TabBarViewController.swift */; };
 		0AEB3E7A1EE2657300359619 /* SelectTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		0A799C361EDF402400A22A0C /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		0A799C381EDF514A00A22A0C /* YourWallet-DB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YourWallet-DB.sqlite"; sourceTree = "<group>"; };
 		0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		0A9746D01EE2D39700B25346 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTimeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,7 @@
 		0A384E7A1EDC7D51006CEAA9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0A9746D01EE2D39700B25346 /* TabBarViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				0A4D56A71EDDCA260009779A /* BookTransactionCell.swift in Sources */,
 				0A799C2D1EDF3F8200A22A0C /* Transaction.swift in Sources */,
 				0A4D56A51EDDC9E80009779A /* BookHeaderCell.swift in Sources */,
+				0A9746D11EE2D39700B25346 /* TabBarViewController.swift in Sources */,
 				0A39DC5F1EE070BC00EE8917 /* SelectWalletCell.swift in Sources */,
 				0A384E8A1EDCC275006CEAA9 /* StatisticsViewController.swift in Sources */,
 				0A39DC611EE08B5000EE8917 /* CategoryViewController.swift in Sources */,

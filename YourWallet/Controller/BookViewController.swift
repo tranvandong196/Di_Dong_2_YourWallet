@@ -8,11 +8,10 @@
 
 import UIKit
 
-class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITabBarDelegate {
     let dateFormattor = DateFormatter()
     var Transactions = [Transaction]()
     var Categories = [Category]()
-    var wallet_GV_Backup:Wallet!
     @IBOutlet weak var Book_TableView: UITableView!
     
     @IBOutlet weak var WalletName_Label: UILabel!
@@ -31,7 +30,6 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         Copy_DB_To_DocURL(dbName: DBName, type: DBType)
-        wallet_GV_Backup = wallet_GV
         getWalletCurrent()
         getCurrencyDefault()
         
@@ -44,48 +42,20 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             VNDCurrency = C[0]
             sqlite3_close(database)
         }
-//        let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-//        
-//        let querysql = "INSERT INTO GiaoDich VALUES(null, 'Phồng tôm', 5000, datetime('now', 'localtime'), 0, 1)"
-//        if Query(Sql: querysql,database: database){
-//            print(querysql)
-//        }
-//        let querysql2 = "INSERT INTO NganSach VALUES(null, 1500000, '2017-06-01 00:00:00', '2017-06-30  00:00:00', 0, 1)"
-//        if Query(Sql: querysql2,database: database){
-//            print(querysql2)
-//        }
-//        
-//        let Transactions = GetTransactionsFromSQLite(query: "SELECT * FROM GiaoDich",database: database)
-//        print(Transactions[0])
-//        
-//        let Budgets = GetBudgetsFromSQLite(query: "SELECT * FROM NganSach", database: database)
-//        print(Budgets[0])
-//        
-//        let Categories = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom", database: database)
-//        print(Categories[0])
-//        
-//        let Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: database)
-//        print(Wallets[0])
-//        
-//        let Currencies = GetCurrenciesFromSQLite(query: "SELECT * FROM TienTe", database: database)
-//        print(Currencies[1])
-//        
-//        sqlite3_close(database)
-        // Do any additional setup after loading the view.
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         print("🖥 Sổ giao dịch --------------------------------")
         isSelectWallet = false
         transaction_GV = nil
         isAddTransaction = false
-        wallet_GV = wallet_GV_Backup
- 
-        
+        currentTabBarItem = 0
+        category_GV = nil
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         SelectWallet_Button.imageView?.image = wallet_GV != nil ? UIImage(named: (wallet_GV?.Icon)!):#imageLiteral(resourceName: "All-Wallet-icon")
-        WalletName_Label.text = wallet_GV?.Name
+        WalletName_Label.text = wallet_GV?.Name ?? "Tất cả các ví"
         WalletEndingBalance_Label.text = "Chưa tính"
         OpeningBalance_Label.text = "Chưa tính"
         EndingBalance_Label.text = "Chưa tính"
@@ -108,8 +78,9 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     @IBAction func ViewStatistic_ButtonTapped(_ sender: Any) {
+        
+        pushToVC(withStoryboardID: "StatisticsVC", animated: true)
         self.tabBarController?.selectedIndex = 3
-        //pushToVC(withStoryboardID: "StatisticsVC", animated: true)
     }
     
     @IBAction func SwipeRight_Gesture(_ sender: Any) {
@@ -194,6 +165,44 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         sqlite3_close(db)
         print("Tiền tệ mặc định: \(c[0].ID!)")
     }
+
+//    func handleTouchTabbarCenter(sender : UIButton)
+//    {
+//        if let count = self.tabBarController?.tabBar.items?.count
+//        {
+//            let i = floor(Double(count / 2))
+//            self.ta = self.viewControllers?[Int(i)]
+//        }
+//    }
+//    
+//    func addCenterButton(withImage buttonImage : UIImage, highlightImage: UIImage) {
+//        
+//        let paddingBottom : CGFloat = 10.0
+//        
+//        let button = UIButton(type: .custom)
+//        button.autoresizingMask = [.flexibleRightMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin]
+//        button.frame = CGRect(x: 0.0, y: 0.0, width: buttonImage.size.width / 2.0, height: buttonImage.size.height / 2.0)
+//        button.setBackgroundImage(buttonImage, for: .normal)
+//        button.setBackgroundImage(highlightImage, for: .highlighted)
+//        
+//        let rectBoundTabbar = self.tabBar.bounds
+//        let xx = rectBoundTabbar.midX
+//        let yy = rectBoundTabbar.midY - paddingBottom
+//        button.center = CGPoint(x: xx, y: yy)
+//        
+//        self.tabBar.addSubview(button)
+//        self.tabBar.bringSubview(toFront: button)
+//        
+//        button.addTarget(self, action: #selector(handleTouchTabbarCenter), for: .touchUpInside)
+//        
+//        if let count = self.tabBar.items?.count
+//        {
+//            let i = floor(Double(count / 2))
+//            let item = self.tabBar.items![Int(i)]
+//            item.title = ""
+//        }
+//    }
+    
     /*
     // MARK: - Navigation
 

@@ -78,8 +78,7 @@ extension UIViewController {
     func pushToVC(withStoryboardID: String, animated: Bool){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let objSomeViewController = storyBoard.instantiateViewController(withIdentifier: withStoryboardID)
-        //let newViewController = NewViewController()
-        // If you want to present the new ViewController then use this - animated: Hiệu ứng chuyển cảnh
+
         self.navigationController?.pushViewController(objSomeViewController, animated: animated)
     }
 }
