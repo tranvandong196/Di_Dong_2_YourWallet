@@ -14,7 +14,7 @@
         <!--Book View Controller-->
         <scene sceneID="QN9-hQ-FIs">
             <objects>
-                <viewController storyboardIdentifier="BookVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Tu-5B-dAf" customClass="BookViewController" customModule="YourWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Tu-5B-dAf" customClass="BookViewController" customModule="YourWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WK1-ut-iAA"/>
                         <viewControllerLayoutGuide type="bottom" id="Y00-Yx-opS"/>
@@ -84,9 +84,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9E-uu-qCI" userLabel="Content">
                                 <rect key="frame" x="0.0" y="109" width="375" height="509"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pPY-3S-Okc">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="pPY-3S-Okc">
                                         <rect key="frame" x="0.0" y="15" width="375" height="494"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <view key="tableHeaderView" contentMode="scaleToFill" id="Cs3-ac-vMC" userLabel="Overview">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="205"/>
@@ -204,7 +204,7 @@
                                         </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BookHeaderCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="95" id="fel-M4-z0i" customClass="BookHeaderCell" customModule="YourWallet" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="233" width="375" height="95"/>
+                                                <rect key="frame" x="0.0" y="261" width="375" height="95"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fel-M4-z0i" id="jI5-mf-LZZ">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
@@ -296,7 +296,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TransactionCell" rowHeight="60" id="wfU-fK-dol" customClass="BookTransactionCell" customModule="YourWallet" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="328" width="375" height="60"/>
+                                                <rect key="frame" x="0.0" y="356" width="375" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wfU-fK-dol" id="imW-5c-tWv">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -520,7 +520,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ITL-Ay-Pzs">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ITL-Ay-Pzs">
                                 <rect key="frame" x="0.0" y="49" width="375" height="569"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -824,7 +824,7 @@
                                                     <color key="textColor" red="0.54897582530975342" green="0.54904425144195557" blue="0.54895257949829102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ipV-IT-JVG">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="00.0" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ipV-IT-JVG">
                                                     <rect key="frame" x="74" y="30" width="286" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="K0Z-Jc-MxG"/>
@@ -901,10 +901,10 @@
                                                         <constraint firstAttribute="width" constant="50" id="nD0-tj-nQT"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ghi chú" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dWD-jS-aPq">
-                                                    <rect key="frame" x="74" y="9" width="286" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ghi chú" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dWD-jS-aPq">
+                                                    <rect key="frame" x="74" y="6.5" width="286" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="085-Sa-XfE"/>
+                                                        <constraint firstAttribute="height" constant="35" id="085-Sa-XfE"/>
                                                     </constraints>
                                                     <color key="textColor" red="0.15292608737945557" green="0.15294963121414185" blue="0.15291810035705566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -940,11 +940,11 @@
                                             <outlet property="addNote_TextField" destination="dWD-jS-aPq" id="1ig-y6-z9A"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Change-Time-Cell" rowHeight="48" id="qZh-hb-4X4" customClass="ChangeTimeCell" customModule="YourWallet" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Change-Time-Cell" rowHeight="48" id="qZh-hb-4X4" customClass="ChangeTimeCell" customModule="YourWallet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="263" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qZh-hb-4X4" id="D3j-7S-0Yh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="47"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="47"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add-Calendar-icon" translatesAutoresizingMaskIntoConstraints="NO" id="xz3-28-hLA">
@@ -955,7 +955,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thư Tư, 31 tháng 5 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3c-vX-MeR">
-                                                    <rect key="frame" x="74" y="13.5" width="286" height="21"/>
+                                                    <rect key="frame" x="74" y="13.5" width="253" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="bua-Xd-5Mh"/>
                                                     </constraints>
@@ -1043,11 +1043,49 @@
                     <connections>
                         <outlet property="NewTransaction_TableView" destination="513-ES-fe3" id="Hek-XR-wAP"/>
                         <outlet property="Save_Button" destination="cRF-bI-1NR" id="jYd-RY-KfH"/>
+                        <segue destination="lEL-X1-WkC" kind="push" id="kGm-Ev-yRg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFG-gm-bUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5302" y="0.0"/>
+        </scene>
+        <!--Chọn ngày-->
+        <scene sceneID="1La-4V-fVa">
+            <objects>
+                <viewController storyboardIdentifier="SelectTimeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lEL-X1-WkC" customClass="SelectTimeViewController" customModule="YourWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mn8-i2-qK9"/>
+                        <viewControllerLayoutGuide type="bottom" id="T8m-SJ-sic"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ubd-Of-1iD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vũ - lưu vào addTime" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cl9-rW-EOB">
+                                <rect key="frame" x="11.5" y="312.5" width="352" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cl9-rW-EOB" firstAttribute="centerY" secondItem="ubd-Of-1iD" secondAttribute="centerY" id="E2s-oL-VhW"/>
+                            <constraint firstItem="cl9-rW-EOB" firstAttribute="centerX" secondItem="ubd-Of-1iD" secondAttribute="centerX" id="M0M-Za-CPI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Chọn ngày" id="z69-Ex-Q4d">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="lic-X3-kzz">
+                            <connections>
+                                <action selector="Done_ButtonTapped:" destination="lEL-X1-WkC" id="4s7-bk-mB2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PRw-a6-1YP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6136.8000000000002" y="-0.44977511244377816"/>
         </scene>
         <!--Mở rộng-->
         <scene sceneID="R1a-SZ-wvO">
@@ -1294,7 +1332,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="56" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="P3M-AF-u2B">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="56" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="P3M-AF-u2B">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1497,7 +1535,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gt8-15-FUV">
-                                        <rect key="frame" x="5" y="7.5" width="30" height="30"/>
+                                        <rect key="frame" x="13" y="7.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="G8z-e6-sEY"/>
                                             <constraint firstAttribute="width" constant="30" id="hhE-ST-VZa"/>
@@ -1542,7 +1580,7 @@
                                     <constraint firstItem="2kn-44-0Mg" firstAttribute="top" secondItem="LZO-mI-Cse" secondAttribute="top" id="apg-YF-ECF"/>
                                     <constraint firstItem="Y2Q-hp-aIq" firstAttribute="centerX" secondItem="LZO-mI-Cse" secondAttribute="centerX" id="dP2-wU-c69"/>
                                     <constraint firstItem="1ve-xF-6VA" firstAttribute="centerX" secondItem="Y2Q-hp-aIq" secondAttribute="centerX" id="lod-2q-Sly"/>
-                                    <constraint firstItem="gt8-15-FUV" firstAttribute="leading" secondItem="LZO-mI-Cse" secondAttribute="leading" constant="5" id="m4a-Zc-GV5"/>
+                                    <constraint firstItem="gt8-15-FUV" firstAttribute="leading" secondItem="LZO-mI-Cse" secondAttribute="leading" constant="13" id="m4a-Zc-GV5"/>
                                     <constraint firstItem="1ve-xF-6VA" firstAttribute="leading" secondItem="LZO-mI-Cse" secondAttribute="leading" constant="50" id="miy-bO-89t"/>
                                     <constraint firstItem="2kn-44-0Mg" firstAttribute="width" secondItem="Y2Q-hp-aIq" secondAttribute="width" id="oOb-sU-kAQ"/>
                                 </constraints>
@@ -1653,8 +1691,7 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="0.21481782197952271" green="0.71370059251785278" blue="0.21362891793251038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.21481782197952271" green="0.70588235294117641" blue="0.21362891793251038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="g39-EK-J8B" kind="relationship" relationship="viewControllers" id="Hih-GM-SwD"/>

@@ -45,6 +45,7 @@
 		0A799C371EDF402400A22A0C /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C361EDF402400A22A0C /* Currency.swift */; };
 		0A799C391EDF514A00A22A0C /* YourWallet-DB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0A799C381EDF514A00A22A0C /* YourWallet-DB.sqlite */; };
 		0A799C3E1EDF9F8C00A22A0C /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */; };
+		0AEB3E7A1EE2657300359619 /* SelectTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		0A799C361EDF402400A22A0C /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		0A799C381EDF514A00A22A0C /* YourWallet-DB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YourWallet-DB.sqlite"; sourceTree = "<group>"; };
 		0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTimeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,11 +156,10 @@
 			children = (
 				0A4D56A81EDDCA300009779A /* Book */,
 				0A39DC621EE08B5900EE8917 /* Category */,
+				0AEB3E781EE2570E00359619 /* More */,
 				0A799C3A1EDF872B00A22A0C /* Wallet */,
 				0A799C3B1EDF875000A22A0C /* Statistics */,
 				0A799C3C1EDF87BE00A22A0C /* Transaction */,
-				0A384E911EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift */,
-				0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -236,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				0A384E891EDCC275006CEAA9 /* StatisticsViewController.swift */,
+				0A384E911EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift */,
 			);
 			name = Statistics;
 			sourceTree = "<group>";
@@ -250,8 +252,17 @@
 				0A39DC5A1EE0705400EE8917 /* AddNodeCell.swift */,
 				0A39DC5C1EE070AB00EE8917 /* ChangeTimeCell.swift */,
 				0A39DC5E1EE070BC00EE8917 /* SelectWalletCell.swift */,
+				0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */,
 			);
 			name = Transaction;
+			sourceTree = "<group>";
+		};
+		0AEB3E781EE2570E00359619 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */,
+			);
+			name = More;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +364,7 @@
 				0A384E861EDCC239006CEAA9 /* BookViewController.swift in Sources */,
 				0A384E7D1EDC7D51006CEAA9 /* SimpleTypeExtension.swift in Sources */,
 				0A384E881EDCC24E006CEAA9 /* WalletViewController.swift in Sources */,
+				0AEB3E7A1EE2657300359619 /* SelectTimeViewController.swift in Sources */,
 				0A0E1D861EE18DAA0050B282 /* AddWalletViewController.swift in Sources */,
 				0A799C351EDF3FFF00A22A0C /* Wallet.swift in Sources */,
 				0A39DC591EE0701200EE8917 /* SelectCategoryCell.swift in Sources */,

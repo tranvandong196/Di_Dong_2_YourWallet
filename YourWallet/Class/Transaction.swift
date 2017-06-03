@@ -49,3 +49,15 @@ func GetTransactionsFromSQLite(query: String, database: OpaquePointer?) -> [Tran
     }
     return Transactions
 }
+func insertTransaction(name: String, amount: Double, time: Date, ID_Category: Int,ID_Wallet: Int){
+    let dateFormattor = DateFormatter()
+    dateFormattor.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+    var sql = "INSERT INTO GiaoDich VALUES(null, '\(name)', \(amount), '\(dateFormattor.string(from: time))', \(ID_Category), \(ID_Wallet))"
+    if Query(Sql: sql, database: database){
+        sql += "✅ Thêm thành công: "
+    }
+    print(sql)
+    sqlite3_close(database)
+    
+}

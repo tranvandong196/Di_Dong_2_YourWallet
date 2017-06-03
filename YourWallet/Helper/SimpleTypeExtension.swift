@@ -23,34 +23,24 @@ extension Integer {
         return Number.formatterWithSeparator.string(for: self) ?? ""
     }
 }
-var oldExRate:Double = 22667.99
-var ExRate:Double = 22667.99
+var VNDCurrency:Currency? = nil
 extension Double{
-    var VNDToUSD:Double{
-        return (self/ExRate).roundTo(places: 1)
+    func toVND(ExchangeRate: Double) -> Double{
+        return (self*VNDCurrency!.ExchangeRate/(ExchangeRate)).roundTo(places: 0)
     }
-    var USDToVND:Double{
-        return (self*ExRate/1000).roundTo(places: 0)*1000
+    func VNDtoCurrency(ExchangeRate: Double) -> Double{
+        return (self*ExchangeRate/VNDCurrency!.ExchangeRate).roundTo(places: 2)
     }
     /// Rounds the double to decimal places value
     func roundTo(places:Int) -> Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
     }
-    func getCurrencyValue(Currency: String)->(Double,String){
-        switch Currency {
-        case "USD":
-            return (self.VNDToUSD,"$")
-        case "USDVND":
-            return (self.USDToVND,"đ")
-        default:
-            return (self,"đ")
-        }
-    }
-    func toCurrencyString(Currency: String)->String{
-        if Currency == "VND"{
+    func toCurrencyFormatter(CurrencyID: String)->String{
+        if CurrencyID == "VND"{
             return Int(self).stringFormattedWithSeparator
         }
+        
         return String(self)
     }
 }

@@ -43,4 +43,15 @@ var wallet_detail: Wallet? = nil
     - Push tới màn hình bất kỳ: func pushToVC(withStoryboardID: String, animated: Bool)
     - Di chuyển tới màn hình bất kỳ (Mất navigation): func moveToVC(withStoryboardID: String,animated: Bool)
     - Pop màn hình hiện tại (Sau khi chọn xong nhóm, ví, tiền tệ): self.navigationController?.popViewController(animated: true)
+ extension Double{
+    - Đổi tiền hiện tại sang VND (Khi user nhập tiền thì chuyển sang VND để lưu vào CSDL):
+        func toVND(ExchangeRate: Double) -> Double
+    - Đổi tiền VND sang tiền hiện tại (Để hiển thị tiền hiện tại - nên dùng cho TextField):
+        func VNDtoCurrency(ExchangeRate: Double) -> Double
+    - Định dạng lại kiểu hiển thị số tiền (Dùng để hiển thị ra màn hình):
+        func toCurrencyFormatter(CurrencyID: String)->String
+    Với ExchangeRate là tỷ giá của loại tiền tệ đang dùng trong hệ thống
+    Ví dụ: let money = TransactionsA.Amount!.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
+ }
+        
 */

@@ -12,6 +12,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     let dateFormattor = DateFormatter()
     var Transactions = [Transaction]()
     var Categories = [Category]()
+    var wallet_GV_Backup:Wallet!
     @IBOutlet weak var Book_TableView: UITableView!
     
     @IBOutlet weak var WalletName_Label: UILabel!
@@ -30,15 +31,19 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         Copy_DB_To_DocURL(dbName: DBName, type: DBType)
-        
+        wallet_GV_Backup = wallet_GV
         getWalletCurrent()
         getCurrencyDefault()
-        
         
         dateFormattor.dateFormat = "M yyyy, EEEE"
         dateFormattor.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
         
-        
+        if VNDCurrency == nil{
+            let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+            let C = GetCurrenciesFromSQLite(query: "SELECT * FROM TienTe WHERE Ma = 'VND'", database: database)
+            VNDCurrency = C[0]
+            sqlite3_close(database)
+        }
 //        let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
 //        
 //        let querysql = "INSERT INTO GiaoDich VALUES(null, 'Phồng tôm', 5000, datetime('now', 'localtime'), 0, 1)"
@@ -69,9 +74,13 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        print("🖥 Sổ giao dịch --------------------------------")
         isSelectWallet = false
         transaction_GV = nil
         isAddTransaction = false
+        wallet_GV = wallet_GV_Backup
+ 
+        
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
@@ -86,7 +95,6 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         Transactions = GetTransactionsFromSQLite(query: "SELECT * FROM GiaoDich", database: database)
         Categories = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Ma = 0", database: database)
         sqlite3_close(database)
-        
         Book_TableView.reloadData()
     }
     override func didReceiveMemoryWarning() {
@@ -100,7 +108,8 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     @IBAction func ViewStatistic_ButtonTapped(_ sender: Any) {
-        pushToVC(withStoryboardID: "StatisticVC", animated: true)
+        self.tabBarController?.selectedIndex = 3
+        //pushToVC(withStoryboardID: "StatisticsVC", animated: true)
     }
     
     @IBAction func SwipeRight_Gesture(_ sender: Any) {
@@ -148,7 +157,8 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cell.Day_Label.text = day < 10 ? "0\(day)":"\(day)"
         cell.MonthYear_Label.text = "thg " + dateFormattor.string(from: Transactions[indexPath.row].Time) //"thg 6 2017, Thứ Sáu"
         cell.TransactionName_Label.text = Transactions[indexPath.row].Name
-        cell.Amount_Label.text = "-\(Transactions[indexPath.row].Amount!.toCurrencyString(Currency: (currency_GV?.ID)!))" + (currency_GV?.Symbol)!
+        let money = Transactions[indexPath.row].Amount!.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
+        cell.Amount_Label.text = "-\(money)" + (currency_GV?.Symbol)!
         return cell
         
     }
@@ -182,7 +192,6 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let c = GetCurrenciesFromSQLite(query: "SELECT * FROM TienTe WHERE Ma = '\(ID)'", database: db)
         currency_GV = c[0]
         sqlite3_close(db)
-        
         print("Tiền tệ mặc định: \(c[0].ID!)")
     }
     /*

@@ -11,7 +11,6 @@ import UIKit
 class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var CategoriesIn = [Category]()
     var CategoriesOut = [Category]()
-    
     @IBOutlet weak var Categories_TableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +23,17 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     override func viewWillAppear(_ animated: Bool) {
+        print("🖥 Nhóm --------------------------------")
         //category_GV = nil
         
         let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+
         CategoriesOut = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Loai = 0", database: database)
         CategoriesIn = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Loai = 1", database: database)
         sqlite3_close(database)
         
         Categories_TableView.reloadData()
+
     }
     @IBAction func addCategory_ButtonTapped(_ sender: Any) {
         pushToVC(withStoryboardID: "AddCategoryVC", animated: true)

@@ -17,12 +17,14 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        print("🖥 Ví --------------------------------")
         self.tabBarController?.tabBar.isHidden = isSelectWallet ? true:false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         let db = Connect_DB_SQLite(dbName: DBName, type: DBType)
         Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: db)
         sqlite3_close(db)
         Wallets_TableView.reloadData()
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
