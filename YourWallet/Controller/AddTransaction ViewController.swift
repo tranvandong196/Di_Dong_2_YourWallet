@@ -77,7 +77,8 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
             alert(title: "⚠️", message: "Bạn chưa nhập đầy đủ thông tin")
         }else{
             if transaction_GV == nil{
-                insertTransaction(name: name, amount: Double(amount)!, time: addTime, ID_Category: (category_GV?.ID)!, ID_Wallet: (wallet_GV?.ID)!)
+                let tmp:Double = category_GV?.Kind == 0 ? -Double(amount)!:Double(amount)!
+                insertTransaction(name: name, amount: tmp, time: addTime, ID_Category: (category_GV?.ID)!, ID_Wallet: (wallet_GV?.ID)!)
             }
             amount = ""
             name = ""

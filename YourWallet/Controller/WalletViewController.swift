@@ -18,7 +18,9 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     }
     override func viewWillAppear(_ animated: Bool) {
         print("🖥 Ví --------------------------------")
-        currentTabBarItem = 1
+        if !isAddTransaction{
+            currentTabBarItem = 1
+        }
         isAddWallet = false
         self.tabBarController?.tabBar.isHidden = isSelectWallet ? true:false
         self.navigationController?.setNavigationBarHidden(false, animated: true)

@@ -8,6 +8,18 @@
 
 import Foundation
 
+// Xử lý với kiểu date. Đã thêm vào file SimpleExtension
+// Xem tại: http://www.globalnerdy.com/2016/08/30/how-to-work-with-dates-and-times-in-swift-3-part-4-adding-swift-syntactic-magic/
+struct TIMERANGE{
+    var start:Date
+    var end:Date
+    
+    mutating func update(start: Date, end: Date){
+        self.start = start
+        self.end = end
+    }
+}
+var TimeRange = TIMERANGE(start: Date().current,end: Date().current)    //Chỉ màn hình sổ giao dịch mới được thay đổi giá trị, màn hình thống kê mặc định sẽ sử dụng
 /* Màn hình danh sách ví và nhóm sẽ có chức năng khác nhau: giữa CHỌN và XEM
     -> Đặt biến isSelectWallet = false ở viewWillAppear ở màn hình Sổ giao dịch, thống kê
     -> Đặt biến isSelectCategory = false ở viewWillAppear ở màn hình Thêm giao dịch, ví
