@@ -7,13 +7,16 @@
 //
 
 import UIKit
-var addTime = Date()
 class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var NewTransaction_TableView: UITableView!
     
+    
     @IBOutlet weak var Save_Button: UIBarButtonItem!
     let dateFormattor = DateFormatter()
-
+    var datePicker : UIDatePicker!
+    var doneButton:UIButton!
+    var datePickerContainer: UIView!
+    var addTime = Date().current
     var amount:String = ""
     var name:String = ""
     var colorLabel:UIColor = UIColor.init(red: 43.0/255.0, green: 43.0/255.0, blue: 43.0/255.0, alpha: 1.0)
@@ -180,28 +183,74 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
             pushToVC(withStoryboardID: "WalletVC", animated: true)
         }
     }
+    
+    // MARK: *** DatePickerView
+    func createDatePicker()
+    {
+        
+        datePicker = UIDatePicker()
+        datePicker.frame = CGRect(x: 0.0, y: (UIScreen.main.bounds).height - 200, width: (UIScreen.main.bounds).width, height: 200)
+        
+        // format for picker
+        datePicker.datePickerMode = .date
+        datePicker.backgroundColor = UIColor.init(red: 239.0/255.0, green: 239.0/255.0, blue: 244.0/255.0, alpha: 1.0)
+        
+        doneButton = UIButton()
+        doneButton.setTitle("Xong", for: UIControlState.normal)
+        doneButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        doneButton.addTarget(self, action: #selector(donePressed), for: UIControlEvents.touchUpInside)
+        doneButton.backgroundColor = UIColor.init(red: 28.0/255.0, green: 179.0/255.0, blue: 29.0/255.0, alpha: 1.0)
+        doneButton.contentHorizontalAlignment = .center
+        doneButton.frame    = CGRect(x: 0, y: (UIScreen.main.bounds).height - 237,width: (UIScreen.main.bounds).width,height: 37.0)
+        
+        // Animation
+        doneButton.alpha = 0
+        view.addSubview(doneButton)
+        doneButton.fadeIn(withDuration: 0.2)
+        datePicker.alpha = 0
+        view.addSubview(datePicker)
+        datePicker.fadeIn(withDuration: 0.3)
+    }
+    
+    
+    // nút done
+    func donePressed(){
+        addTime = datePicker.date
+        doneButton.fadeOut(withDuration: 0.2)
+        datePicker.fadeOut(withDuration: 0.1)
+        
+        doneButton.removeFromSuperview()
+        datePicker.removeFromSuperview()
+        self.NewTransaction_TableView.reloadData()
+    }
+    
+    
+    
     func selectTime(){
         let dateFormattor2 = DateFormatter()
         dateFormattor2.dateFormat = "dd-MM-yyyy"
         let today = UIAlertAction(title: "Hôm nay", style: .default){_ in
-            addTime = Date()
+            self.addTime = Date().current
             self.NewTransaction_TableView.reloadData()
         }
-//        let today = UIAlertAction(title: "Hôm qua", style: .default){_ in
-//            addTime =
-//        }
+        let yesterday = UIAlertAction(title: "Hôm qua", style: .default){_ in
+            self.addTime = Date().current - 1.day
+            self.NewTransaction_TableView.reloadData()
+        }
         let Custom = UIAlertAction(title: "Tuỳ chỉnh", style: .default){_ in
-            _ = self.pushToVC(withStoryboardID: "SelectTimeVC", animated: true)
+            _ = self.createDatePicker()
         }
-        let cancelAction = UIAlertAction(title: "Huỷ", style: .destructive){_ in
-            
-        }
+        let cancelAction = UIAlertAction(title: "Huỷ", style: .cancel, handler: nil)
         
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(today)
-        alert.addAction(Custom)
-        alert.addAction(cancelAction)
-        present(alert, animated: true, completion: nil)
+        let sheetCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        sheetCtrl.addAction(today)
+        sheetCtrl.addAction(yesterday)
+        sheetCtrl.addAction(Custom)
+        sheetCtrl.addAction(cancelAction)
+        
+        sheetCtrl.popoverPresentationController?.sourceView = self.view
+        //sheetCtrl.popoverPresentationController?.sourceRect = self.changeLanguageButton.frame
+        present(sheetCtrl, animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation
