@@ -14,7 +14,7 @@ class DetailTransactionViewController: UIViewController,UITableViewDelegate,UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         dateFormattor.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
-        dateFormattor.dateFormat = "M yyyy, EEEE"
+        dateFormattor.dateFormat = "EEEE, dd MMMM yyyy"
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -57,11 +57,19 @@ class DetailTransactionViewController: UIViewController,UITableViewDelegate,UITa
                 let cell0 = tableView.dequeueReusableCell(withIdentifier: Cells[0], for: indexPath) as! OverviewDetailCell
                 cell0.CategoryIcon_ImageView.image = UIImage(named: (category_GV?.Icon)!)
                 cell0.CategoryName_Label.text = category_GV?.Name
+                
+                var money = (transaction_GV?.Amount)!.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
+                if category_GV?.Kind == 1{
+                    money = "+" + money
+                }
+                cell0.Amount_Label.text = "\(money)"
+                cell0.Amount_Label.textColor = category_GV?.Kind == 1 ? UIColor.init(red: 4.0/255.0, green: 155.0/255.0, blue: 229.0/255.0, alpha: 1.0):UIColor.red
+
                 cell0.NoteTransaction_Label.text = transaction_GV?.Name
                 return cell0
             case 1:
                 let cell1 = tableView.dequeueReusableCell(withIdentifier: Cells[1], for: indexPath) as! TimeDetailCell
-                cell1.Time_Label.text = "thg " + dateFormattor.string(from: (transaction_GV?.Time)!)
+                cell1.Time_Label.text = dateFormattor.string(from: (transaction_GV?.Time)!)
                 return cell1
             case 2:
                 let cell2 = tableView.dequeueReusableCell(withIdentifier: Cells[2], for: indexPath) as! WalletDetailCell

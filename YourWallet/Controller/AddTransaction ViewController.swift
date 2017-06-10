@@ -16,7 +16,7 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
     var datePicker : UIDatePicker!
     var doneButton:UIButton!
     var datePickerContainer: UIView!
-    var addTime = Date().current
+    var addTime = Date()
     var amount:String = ""
     var name:String = ""
     var colorLabel:UIColor = UIColor.init(red: 43.0/255.0, green: 43.0/255.0, blue: 43.0/255.0, alpha: 1.0)
@@ -230,17 +230,20 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
         let dateFormattor2 = DateFormatter()
         dateFormattor2.dateFormat = "dd-MM-yyyy"
         let today = UIAlertAction(title: "Hôm nay", style: .default){_ in
-            self.addTime = Date().current
+            self.addTime = Date()
             self.NewTransaction_TableView.reloadData()
         }
         let yesterday = UIAlertAction(title: "Hôm qua", style: .default){_ in
-            self.addTime = Date().current - 1.day
+            self.addTime = Date() - 1.day
             self.NewTransaction_TableView.reloadData()
         }
         let Custom = UIAlertAction(title: "Tuỳ chỉnh", style: .default){_ in
             _ = self.createDatePicker()
         }
-        let cancelAction = UIAlertAction(title: "Huỷ", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Huỷ", style: .cancel){_ in
+            self.NewTransaction_TableView.reloadData()
+        }
+
         
         let sheetCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         sheetCtrl.addAction(today)
