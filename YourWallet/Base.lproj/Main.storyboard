@@ -1838,28 +1838,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veS-Ji-7Qj" userLabel="Content">
                                 <rect key="frame" x="0.0" y="109" width="375" height="509"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Thống kê" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                        <rect key="frame" x="112" y="50" width="151" height="42"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="J3h-9W-PHo"/>
-                                            <constraint firstAttribute="width" constant="150.5" id="pVk-Jh-tfy"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông kê theo nhóm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                        <rect key="frame" x="121" y="121" width="134" height="17"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="134" id="9V5-nw-GYM"/>
-                                            <constraint firstAttribute="height" constant="17" id="UET-s9-n04"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXo-1s-fuz">
-                                        <rect key="frame" x="68" y="177" width="240" height="128"/>
+                                        <rect key="frame" x="75" y="373" width="240" height="128"/>
                                         <color key="backgroundColor" red="0.83991953659999996" green="0.73878096026388895" blue="0.60036112850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="AAQ-KK-LuK"/>
@@ -1869,15 +1849,33 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B4j-Sx-2t9" customClass="PieChartView" customModule="Charts">
+                                        <rect key="frame" x="8" y="8" width="359" height="307"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="B4j-Sx-2t9" secondAttribute="height" multiplier="359:275" constant="-41.774545454545432" id="yBj-jz-hus"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Thống kê" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
+                                        <rect key="frame" x="112" y="323" width="151" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="J3h-9W-PHo"/>
+                                            <constraint firstAttribute="width" constant="150.5" id="pVk-Jh-tfy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="zEq-FU-wV5" firstAttribute="centerX" secondItem="veS-Ji-7Qj" secondAttribute="centerX" id="Avg-z2-CPu"/>
-                                    <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="veS-Ji-7Qj" secondAttribute="centerX" id="h9n-Cv-vpj"/>
-                                    <constraint firstItem="GXo-1s-fuz" firstAttribute="top" secondItem="NDk-cv-Gan" secondAttribute="bottom" constant="39" id="kQW-TG-Oqb"/>
-                                    <constraint firstItem="zEq-FU-wV5" firstAttribute="top" secondItem="veS-Ji-7Qj" secondAttribute="top" constant="50" id="lfH-n8-L1N"/>
-                                    <constraint firstItem="GXo-1s-fuz" firstAttribute="centerX" secondItem="veS-Ji-7Qj" secondAttribute="centerX" id="liv-Gu-llC"/>
-                                    <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="29" id="sJY-rp-fLn"/>
+                                    <constraint firstItem="B4j-Sx-2t9" firstAttribute="top" secondItem="veS-Ji-7Qj" secondAttribute="top" constant="8" id="Tbx-ZU-rch"/>
+                                    <constraint firstAttribute="trailing" secondItem="B4j-Sx-2t9" secondAttribute="trailing" constant="8" id="dOa-Pe-jBe"/>
+                                    <constraint firstItem="B4j-Sx-2t9" firstAttribute="leading" secondItem="veS-Ji-7Qj" secondAttribute="leading" constant="8" id="iQq-a1-UUn"/>
+                                    <constraint firstItem="zEq-FU-wV5" firstAttribute="top" secondItem="veS-Ji-7Qj" secondAttribute="top" constant="323" id="lfH-n8-L1N"/>
+                                    <constraint firstItem="GXo-1s-fuz" firstAttribute="centerX" secondItem="veS-Ji-7Qj" secondAttribute="centerX" constant="7.5" id="liv-Gu-llC"/>
+                                    <constraint firstItem="GXo-1s-fuz" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="uYi-5j-LHw"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1898,6 +1896,7 @@
                     <navigationItem key="navigationItem" id="muT-1g-frb"/>
                     <connections>
                         <outlet property="SelectWallet_Button" destination="gt8-15-FUV" id="HPt-kV-qm3"/>
+                        <outlet property="pieChartView" destination="B4j-Sx-2t9" id="RKI-sX-oxK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -1964,7 +1963,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="twT-iu-Fv8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="Ví" image="Wallet-icon" selectedImage="Wallet-icon" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="kzd-4V-dhy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="kzd-4V-dhy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.68551409244537354" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1989,7 +1988,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g39-EK-J8B" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Sổ giao dịch" image="Book-icon" selectedImage="Book-icon" id="zbD-jM-ebK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Puj-Az-Akn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Puj-Az-Akn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.11888689547777176" green="0.70133465528488159" blue="0.11776981502771378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2014,7 +2013,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1nh-Hh-O00" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Thống kê" image="Statistics-icon" selectedImage="Statistics-icon" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NKv-md-cal">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NKv-md-cal">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.12305691093206406" green="0.70904427766799927" blue="0.12576785683631897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2041,7 +2040,7 @@
                     <tabBarItem key="tabBarItem" title="Thêm giao dịch" id="ysv-Mu-MuE"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="rKs-6j-Rgf"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tsb-qG-hQ8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tsb-qG-hQ8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.11888689547777176" green="0.70133465528488159" blue="0.11776981502771378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2061,7 +2060,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HVU-wa-ivO" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Mở rộng" image="More-icon" selectedImage="More-icon" id="we5-Q8-qkH"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Dau-86-PWQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dau-86-PWQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.64313725490196072" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
