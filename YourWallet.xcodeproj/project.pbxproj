@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0A0E1D841EE1895D0050B282 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0E1D831EE1895D0050B282 /* AddCategoryViewController.swift */; };
 		0A0E1D861EE18DAA0050B282 /* AddWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0E1D851EE18DAA0050B282 /* AddWalletViewController.swift */; };
+		0A3220711EEBC47B00E6CE6C /* DetailTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3220701EEBC47B00E6CE6C /* DetailTransactionViewController.swift */; };
+		0A3220751EEBC4F300E6CE6C /* TimeDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3220741EEBC4F300E6CE6C /* TimeDetailCell.swift */; };
+		0A3220771EEBC50A00E6CE6C /* OverviewDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3220761EEBC50A00E6CE6C /* OverviewDetailCell.swift */; };
+		0A3220791EEBC51D00E6CE6C /* WalletDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3220781EEBC51D00E6CE6C /* WalletDetailCell.swift */; };
 		0A384E5C1EDC7CFF006CEAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E5B1EDC7CFF006CEAA9 /* AppDelegate.swift */; };
 		0A384E631EDC7CFF006CEAA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A384E611EDC7CFF006CEAA9 /* Main.storyboard */; };
 		0A384E651EDC7CFF006CEAA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A384E641EDC7CFF006CEAA9 /* Assets.xcassets */; };
@@ -53,6 +57,10 @@
 /* Begin PBXFileReference section */
 		0A0E1D831EE1895D0050B282 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		0A0E1D851EE18DAA0050B282 /* AddWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWalletViewController.swift; sourceTree = "<group>"; };
+		0A3220701EEBC47B00E6CE6C /* DetailTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTransactionViewController.swift; sourceTree = "<group>"; };
+		0A3220741EEBC4F300E6CE6C /* TimeDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeDetailCell.swift; sourceTree = "<group>"; };
+		0A3220761EEBC50A00E6CE6C /* OverviewDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewDetailCell.swift; sourceTree = "<group>"; };
+		0A3220781EEBC51D00E6CE6C /* WalletDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletDetailCell.swift; sourceTree = "<group>"; };
 		0A384E581EDC7CFF006CEAA9 /* YourWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A384E5B1EDC7CFF006CEAA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A384E621EDC7CFF006CEAA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -148,8 +156,8 @@
 			children = (
 				0A799C2C1EDF3F8200A22A0C /* Transaction.swift */,
 				0A799C2E1EDF3FA300A22A0C /* Budget.swift */,
-				0A799C301EDF3FD000A22A0C /* Category.swift */,
 				0A799C341EDF3FFF00A22A0C /* Wallet.swift */,
+				0A799C301EDF3FD000A22A0C /* Category.swift */,
 				0A799C361EDF402400A22A0C /* Currency.swift */,
 				23734D111EEB36A6007DD4EB /* AddWallet.swift */,
 			);
@@ -259,6 +267,10 @@
 				0A39DC5C1EE070AB00EE8917 /* ChangeTimeCell.swift */,
 				0A39DC5E1EE070BC00EE8917 /* SelectWalletCell.swift */,
 				0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */,
+				0A3220701EEBC47B00E6CE6C /* DetailTransactionViewController.swift */,
+				0A3220741EEBC4F300E6CE6C /* TimeDetailCell.swift */,
+				0A3220761EEBC50A00E6CE6C /* OverviewDetailCell.swift */,
+				0A3220781EEBC51D00E6CE6C /* WalletDetailCell.swift */,
 			);
 			name = Transaction;
 			sourceTree = "<group>";
@@ -354,9 +366,12 @@
 				0A39DC5B1EE0705400EE8917 /* AddNodeCell.swift in Sources */,
 				0A39DC661EE0A78C00EE8917 /* Global variable.swift in Sources */,
 				0A799C311EDF3FD000A22A0C /* Category.swift in Sources */,
+				0A3220771EEBC50A00E6CE6C /* OverviewDetailCell.swift in Sources */,
 				0A39DC681EE0BFCE00EE8917 /* AllWalletCell.swift in Sources */,
+				0A3220791EEBC51D00E6CE6C /* WalletDetailCell.swift in Sources */,
 				0A384E7B1EDC7D51006CEAA9 /* FileManagerExtension.swift in Sources */,
 				0A39DC571EE06C3E00EE8917 /* AddAmountCell.swift in Sources */,
+				0A3220711EEBC47B00E6CE6C /* DetailTransactionViewController.swift in Sources */,
 				0A384E941EDCDF57006CEAA9 /* SelectWallet_ViewController.swift in Sources */,
 				0A384E7E1EDC7D51006CEAA9 /* UIExtension.swift in Sources */,
 				0A799C371EDF402400A22A0C /* Currency.swift in Sources */,
@@ -371,6 +386,7 @@
 				0A384E5C1EDC7CFF006CEAA9 /* AppDelegate.swift in Sources */,
 				0A384E861EDCC239006CEAA9 /* BookViewController.swift in Sources */,
 				0A384E7D1EDC7D51006CEAA9 /* SimpleTypeExtension.swift in Sources */,
+				0A3220751EEBC4F300E6CE6C /* TimeDetailCell.swift in Sources */,
 				0A384E881EDCC24E006CEAA9 /* WalletViewController.swift in Sources */,
 				0AEB3E7A1EE2657300359619 /* SelectTimeViewController.swift in Sources */,
 				0A0E1D861EE18DAA0050B282 /* AddWalletViewController.swift in Sources */,

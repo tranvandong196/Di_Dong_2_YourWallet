@@ -15,8 +15,17 @@ struct TIMERANGE{
     var end:Date
     
     mutating func update(start: Date, end: Date){
-        self.start = start
-        self.end = end
+        let df = DateFormatter()
+        df.timeZone = TimeZone.init(abbreviation: "UTC")
+        
+        df.dateFormat = "yyyy-MM-dd"
+        let date01 = df.string(from: start)
+        let date02 = df.string(from: end)
+        
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        self.start = df.date(from: date01 + " 00:00:00")!
+        self.end = df.date(from: date02 + " 23:59:59")!
+        
     }
 }
 var TimeRange = TIMERANGE(start: Date().current,end: Date().current)    //Chỉ màn hình sổ giao dịch mới được thay đổi giá trị, màn hình thống kê mặc định sẽ sử dụng

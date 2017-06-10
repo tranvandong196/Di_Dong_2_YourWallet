@@ -33,9 +33,10 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         Copy_DB_To_DocURL(dbName: DBName, type: DBType)
         getWalletCurrent()
         getCurrencyDefault()
-        
+        getCurrentTimeRange()
         
         dateFormattor.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
+        dateFormattor.dateFormat = "M yyyy, EEEE"
         
         if VNDCurrency == nil{
             let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
@@ -43,15 +44,9 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             VNDCurrency = C[0]
             sqlite3_close(database)
         }
-        dateFormattor.dateFormat = "yyyy-MM-dd"
-        let date01 = dateFormattor.string(from: TimeRange.start)
-        let date02 = dateFormattor.string(from: TimeRange.end)
         
-        dateFormattor.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        TimeRange.start = dateFormattor.date(from: date01 + " 00:00:00")!
-        TimeRange.end = dateFormattor.date(from: date02 + " 23:59:59")!
         print(TimeRange)
-        dateFormattor.dateFormat = "M yyyy, EEEE"
+       
     }
     override func viewWillAppear(_ animated: Bool) {
         print("🖥 Sổ giao dịch --------------------------------")
@@ -60,7 +55,9 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         isAddTransaction = false
         currentTabBarItem = 0
         category_GV = nil
+        transaction_GV = nil
         self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.tintColor = UIColor.init(red: 28.0/255.0, green: 179.0/255.0, blue: 29.0/255.0, alpha: 1.0)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         SelectWallet_Button.imageView?.image = wallet_GV != nil ? UIImage(named: (wallet_GV?.Icon)!):#imageLiteral(resourceName: "All-Wallet-icon")
@@ -70,12 +67,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         filterTable(WalletID: Wallet_ID, Range: TimeRange)
         Book_TableView.reloadData()
         
-        
-        
-        let Titles = getTitleByTimeRange(Range: TimeRange)
-        previousDay_Button.setTitle(Titles[0], for: .normal)
-        currentDay_Button.setTitle(Titles[1], for: .normal)
-        nextDay_Button.setTitle(Titles[2], for: .normal)
+        setupTitleTimeRange()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -86,6 +78,9 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         isSelectWallet = true
         pushToVC(withStoryboardID: "WalletVC",animated: true)
     }
+    @IBAction func MoreOption_ButtonTapped(_ sender: Any, forEvent event: UIEvent) {
+        moreOption()
+    }
     @IBAction func previousTimeRange(_ sender: Any, forEvent event: UIEvent) {
         changeTimeRange(Operator: "-")
     }
@@ -94,8 +89,9 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         changeTimeRange(Operator: "+")
     }
     @IBAction func ViewStatistic_ButtonTapped(_ sender: Any) {
-        
-        pushToVC(withStoryboardID: "StatisticsVC", animated: true)
+        self.view.removeFromSuperview()
+        //pushToVC(withStoryboardID: "StatisticsVC", animated: true)
+        self.tabBarController?.selectedViewController = self.tabBarController?.viewControllers?[Int(3)]
         self.tabBarController?.selectedIndex = 3
     }
     
@@ -110,13 +106,14 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     // MARK: *** Filter Table
     func filterTable(WalletID: Int, Range: TIMERANGE){
-        
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "yyyy-MM-dd"
+        dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormat.timeZone = TimeZone.init(abbreviation: "UTC")
-        let date1 = dateFormat.string(from: Range.start) + " 00:00:00"
-        let date2 = dateFormat.string(from: Range.end) + " 23:59:59"
-        print("Khoảng thời gian: \(date1) đến \(date2)")
+        
+        let date1 = dateFormat.string(from: Range.start)
+        let date2 = dateFormat.string(from: Range.end)
+        
+        print("Khoảng thời gian: (\(date1), \(date2))")
         var conditionByWallet = ""
         if WalletID != -1{
             conditionByWallet = " AND MaVi = \(WalletID)"
@@ -143,8 +140,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         header.NumberTransacion_Label.text = "\(TransactionByCateID[section].count) giao dịch"
         let tmp = getAmountOfCategory(Secion: section)
         let tmp2 = tmp.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
-        header.Amount_Label.text = "\(tmp2)"
-        header.Amount_Label.textColor = tmp >= 0 ? UIColor.black:UIColor.red
+        header.Amount_Label.text = "\(tmp2)" + (currency_GV?.Symbol)!
         return header
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -164,12 +160,103 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cell.Day_Label.text = day < 10 ? "0\(day)":"\(day)"
         cell.MonthYear_Label.text = "thg " + dateFormattor.string(from: T.Time)
         cell.TransactionName_Label.text = T.Name
-        let money = T.Amount!.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
+        var money = T.Amount!.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
+        if Categories[indexPath.section].Kind == 1{
+            money = "+" + money
+        }
         cell.Amount_Label.text = "\(money)" + (currency_GV?.Symbol)!
-        cell.Amount_Label.textColor = T.Amount >= 0 ? UIColor.black:UIColor.red
+        cell.Amount_Label.textColor = T.Amount >= 0 ? UIColor.init(red: 4.0/255.0, green: 155.0/255.0, blue: 229.0/255.0, alpha: 1.0):UIColor.red
         return cell
         
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        category_GV = Categories[indexPath.section]
+        transaction_GV = Transactions[TransactionByCateID[indexPath.section][indexPath.row]]
+        let IDW:Int = (transaction_GV?.ID_Wallet)!
+        if wallet_GV == nil{
+            let db = Connect_DB_SQLite(dbName: DBName, type: DBType)
+            wallet_detail = GetWalletsFromSQLite(query: "SELECT * FROM ViTien WHERE Ma = \(IDW)", database: db)[0]
+            sqlite3_close(db)
+        }else{
+            wallet_detail = wallet_GV
+        }
+        pushToVC(withStoryboardID: "DetailTransactionVC", animated: true)
+    }
+    func moreOption(){
+        let df = DateFormatter()
+        df.dateFormat = "dd-MM-yyyy"
+        df.timeZone = TimeZone.init(abbreviation: "UTC")
+        
+        let dateCur = Date().current
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month], from: dateCur)
+        
+        
+        let year:Int =  components.year!
+        let month:Int = components.month!
+        //let dateComponents = DateComponents(year: , month: 7)
+        
+        let range = calendar.range(of: .day, in: .month, for: dateCur)!
+        
+        func refreshUserdefault_TBV(){
+            let WalletID:Int = wallet_GV != nil ? (wallet_GV?.ID)!:-1
+            filterTable(WalletID: WalletID, Range: TimeRange)
+            self.Book_TableView.reloadData()
+            
+            UserDefaults.standard.setValue(df.string(from: TimeRange.start), forKey: "TimeRangeStart")
+            UserDefaults.standard.setValue(df.string(from: TimeRange.end), forKey: "TimeRangeEnd")
+        }
+        
+        let today = UIAlertAction(title: "Quay về ngày hôm nay", style: .default){_ in
+            switch self.getUnitTime(Range: TimeRange){
+            case 1.day: TimeRange.update(start: dateCur, end: dateCur)
+            case 1.month:
+                let start:Date = df.date(from: "01-\(month)-\(year)")!
+                let end:Date = df.date(from: "\(range.count)-\(month)-\(year)")!
+                TimeRange.update(start: start, end: end)
+            case 1.year: TimeRange.update(start: df.date(from: "01-01-\(year)")!, end: df.date(from: "31-12-\(year)")!)
+            default:
+                break
+            }
+            
+            self.setupTitleTimeRange()
+            refreshUserdefault_TBV()
+        }
+        let byDay = UIAlertAction(title: "Xem theo ngày", style: .default){_ in
+            TimeRange.update(start: dateCur, end: dateCur)
+            self.setupTitleTimeRange()
+            refreshUserdefault_TBV()
+        }
+        let byMonth = UIAlertAction(title: "Xem theo tháng", style: .default){_ in
+            let start:Date = df.date(from: "01-\(month)-\(year)")!
+            let end:Date = df.date(from: "\(range.count)-\(month)-\(year)")!
+            TimeRange.update(start: start, end: end)
+            self.setupTitleTimeRange()
+            refreshUserdefault_TBV()
+        }
+        let byYear = UIAlertAction(title: "Xem theo năm", style: .default){_ in
+            TimeRange.update(start: df.date(from: "01-01-\(year)")!, end: df.date(from: "31-12-\(year)")!)
+            self.setupTitleTimeRange()
+            refreshUserdefault_TBV()
+        }
+        let searchTransacntion = UIAlertAction(title: "Tìm kiếm giao dịch", style: .default){_ in
+            self.pushToVC(withStoryboardID: "SearchTransactionVC", animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "Huỷ", style: .cancel, handler: nil)
+        
+        let sheetCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        sheetCtrl.addAction(today)
+        sheetCtrl.addAction(byDay)
+        sheetCtrl.addAction(byMonth)
+        sheetCtrl.addAction(byYear)
+        sheetCtrl.addAction(searchTransacntion)
+        sheetCtrl.addAction(cancelAction)
+        
+        sheetCtrl.popoverPresentationController?.sourceView = self.view
+        //sheetCtrl.popoverPresentationController?.sourceRect = self.changeLanguageButton.frame
+        present(sheetCtrl, animated: true, completion: nil)
+    }
+    
     func  getWalletCurrent() {
         if UserDefaults.standard.value(forKey: "Wallet") != nil{
             let ID:Int = UserDefaults.standard.value(forKey: "Wallet") as! Int
@@ -202,7 +289,21 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         sqlite3_close(db)
         print("Tiền tệ mặc định: \(c[0].ID!)")
     }
-
+    func getCurrentTimeRange(){
+        let df = DateFormatter()
+        df.dateFormat = "dd-MM-yyyy"
+        df.timeZone = TimeZone.init(abbreviation: "UTC")
+        if UserDefaults.standard.value(forKey: "TimeRangeStart") != nil{
+            let ts:String = UserDefaults.standard.value(forKey: "TimeRangeStart") as! String
+            let te:String = UserDefaults.standard.value(forKey: "TimeRangeEnd") as! String
+            
+            TimeRange.update(start: df.date(from: ts)!, end: df.date(from: te)!)
+        }else{
+            TimeRange.update(start: Date().current, end: Date().current)
+            UserDefaults.standard.setValue(df.string(from: TimeRange.start), forKey: "TimeRangeStart")
+            UserDefaults.standard.setValue(df.string(from: TimeRange.end), forKey: "TimeRangeEnd")
+        }
+    }
     func getTransactionByCategoryID()->[[Int]]{
         var tmp = [[Int]]()
         for i in 0..<Categories.count{
@@ -218,7 +319,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func getTitleByTimeRange(Range: TIMERANGE) -> [String] {
-        let df = dateFormattor
+        let df = DateFormatter()
         df.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
         var Titles = ["","",""]
         if Range.end == Range.start + 1.day - 1.second{
@@ -235,9 +336,9 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }else if Range.end == Range.start + 1.month - 1.second{
             df.dateFormat = "MM/yyyy"
             if df.string(from: Range.start) == df.string(from: Date()){
-                Titles = ["THÁNG QUA","THÁNG NAY","THÁNG SAU"]
+                Titles = ["THÁNG QUA","THÁNG NÀY","THÁNG SAU"]
             }else if df.string(from: Range.start) == df.string(from: Date() - 1.month){
-                Titles = [df.string(from: Range.start - 1.month),"THÁNG QUA","THÁNG NAY"]
+                Titles = [df.string(from: Range.start - 1.month),"THÁNG QUA","THÁNG NÀY"]
             }else if df.string(from: Range.start) == df.string(from: Date() - 2.months){
                 Titles = [df.string(from: Range.start - 1.month),df.string(from: Range.start),"THÁNG QUA"]
             }else{
@@ -268,26 +369,29 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         default:
             break
         }
-        return 1.day
+        return 0.second
     }
     
     func changeTimeRange(Operator: String){
         let unit = getUnitTime(Range: TimeRange)
-        
         if Operator == "+"{
-            if TimeRange.start + unit > Date().current{return}
+            //if TimeRange.start + unit > Date().current{return} //Ko cho phép xem sổ giao dịch ở tương lai
             TimeRange.update(start:  (TimeRange.start + unit), end: (TimeRange.end + unit))
         }else if Operator == "-"{
             TimeRange.update(start:  (TimeRange.start - unit), end: (TimeRange.end - unit))
         }
-        let Titles = getTitleByTimeRange(Range: TimeRange)
-        previousDay_Button.setTitle(Titles[0], for: .normal)
-        currentDay_Button.setTitle(Titles[1], for: .normal)
-        nextDay_Button.setTitle(Titles[2], for: .normal)
+        setupTitleTimeRange()
         
         let WalletID:Int = wallet_GV != nil ? (wallet_GV?.ID)!:-1
         filterTable(WalletID: WalletID, Range: TimeRange)
         Book_TableView.reloadData()
+    }
+    
+    func setupTitleTimeRange() {
+        let Titles = getTitleByTimeRange(Range: TimeRange)
+        previousDay_Button.setTitle(Titles[0], for: .normal)
+        currentDay_Button.setTitle(Titles[1], for: .normal)
+        nextDay_Button.setTitle(Titles[2], for: .normal)
     }
     
     func getAmountOfCategory(Secion: Int)->Double{

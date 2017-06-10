@@ -37,7 +37,9 @@ class AddWalletViewController: UIViewController{
     }
     @IBAction func Save_ButtonTapped(_ sender: Any) {
         self.tabBarController?.tabBar.isHidden = isSelectWallet ? true: false
-        //Thao tác lưu ở đây        let walletName = WalletName_textField.text!
+        //Thao tác lưu ở đây
+        
+        let walletName = WalletName_textField.text!
         let moneyAmount = Double(currAmount_txtField.text!)!
         let currency = currCurrency_btn.titleLabel!.text!
         let walletIcon = "Vi-icon"
