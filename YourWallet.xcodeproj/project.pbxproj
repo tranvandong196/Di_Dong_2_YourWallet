@@ -47,6 +47,7 @@
 		0A799C3E1EDF9F8C00A22A0C /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */; };
 		0A9746D11EE2D39700B25346 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9746D01EE2D39700B25346 /* TabBarViewController.swift */; };
 		0AEB3E7A1EE2657300359619 /* SelectTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */; };
+		23734D121EEB36A6007DD4EB /* AddWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23734D111EEB36A6007DD4EB /* AddWallet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +94,7 @@
 		0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		0A9746D01EE2D39700B25346 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTimeViewController.swift; sourceTree = "<group>"; };
+		23734D111EEB36A6007DD4EB /* AddWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWallet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				0A799C301EDF3FD000A22A0C /* Category.swift */,
 				0A799C341EDF3FFF00A22A0C /* Wallet.swift */,
 				0A799C361EDF402400A22A0C /* Currency.swift */,
+				23734D111EEB36A6007DD4EB /* AddWallet.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				0A4D56A51EDDC9E80009779A /* BookHeaderCell.swift in Sources */,
 				0A9746D11EE2D39700B25346 /* TabBarViewController.swift in Sources */,
 				0A39DC5F1EE070BC00EE8917 /* SelectWalletCell.swift in Sources */,
+				23734D121EEB36A6007DD4EB /* AddWallet.swift in Sources */,
 				0A384E8A1EDCC275006CEAA9 /* StatisticsViewController.swift in Sources */,
 				0A39DC611EE08B5000EE8917 /* CategoryViewController.swift in Sources */,
 				0A384E5C1EDC7CFF006CEAA9 /* AppDelegate.swift in Sources */,
@@ -503,6 +507,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 49B65JV2Q3;
 				INFOPLIST_FILE = YourWallet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = M1412132.YourWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -517,6 +522,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 49B65JV2Q3;
 				INFOPLIST_FILE = YourWallet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = M1412132.YourWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
