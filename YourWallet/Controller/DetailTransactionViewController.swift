@@ -14,14 +14,26 @@ class DetailTransactionViewController: UIViewController,UITableViewDelegate,UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         dateFormattor.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
-        dateFormattor.dateFormat = "M yyyy, EEEE"
+        dateFormattor.dateFormat = "EEEE, dd MMMM yyyy"
+        //dateFormattor.dateFormat = "yyyy-MM-dd HH:mm:ss"
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         isAddTransaction = false
+        
+        let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+        let C = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Ma = '\(String(describing: (transaction_GV?.ID_Category)!))'", database: database)
+        category_GV = C[0]
+        if wallet_detail == nil{
+            let W = GetWalletsFromSQLite(query: "SELECT * FROM Nhom WHERE Ma = \(String(describing: (transaction_GV?.ID_Wallet)!))", database: database)
+            wallet_detail = W[0]
+        }
+        sqlite3_close(database)
+        
+        DetailTransaction_TableView.reloadData()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -30,7 +42,7 @@ class DetailTransactionViewController: UIViewController,UITableViewDelegate,UITa
     
     @IBAction func EditTransaction_ButtonTapped(_ sender: Any) {
         //isAddTransaction = true
-        //pushToVC(withStoryboardID: "AddTransactionVC", animated: true)
+        pushToVC(withStoryboardID: "AddTransactionVC", animated: true)
     }
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,11 +69,19 @@ class DetailTransactionViewController: UIViewController,UITableViewDelegate,UITa
                 let cell0 = tableView.dequeueReusableCell(withIdentifier: Cells[0], for: indexPath) as! OverviewDetailCell
                 cell0.CategoryIcon_ImageView.image = UIImage(named: (category_GV?.Icon)!)
                 cell0.CategoryName_Label.text = category_GV?.Name
+                
+                var money = (transaction_GV?.Amount)!.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
+                if category_GV?.Kind == 1{
+                    money = "+" + money
+                }
+                cell0.Amount_Label.text = "\(money)"
+                cell0.Amount_Label.textColor = category_GV?.Kind == 1 ? UIColor.init(red: 4.0/255.0, green: 155.0/255.0, blue: 229.0/255.0, alpha: 1.0):UIColor.red
+                
                 cell0.NoteTransaction_Label.text = transaction_GV?.Name
                 return cell0
             case 1:
                 let cell1 = tableView.dequeueReusableCell(withIdentifier: Cells[1], for: indexPath) as! TimeDetailCell
-                cell1.Time_Label.text = "thg " + dateFormattor.string(from: (transaction_GV?.Time)!)
+                cell1.Time_Label.text = dateFormattor.string(from: (transaction_GV?.Time)!)
                 return cell1
             case 2:
                 let cell2 = tableView.dequeueReusableCell(withIdentifier: Cells[2], for: indexPath) as! WalletDetailCell
@@ -83,7 +103,11 @@ class DetailTransactionViewController: UIViewController,UITableViewDelegate,UITa
             let db = Connect_DB_SQLite(dbName: DBName, type: DBType)
             let ID:Int = (transaction_GV?.ID)!
             if Query(Sql: "DELETE FROM GiaoDich WHERE Ma = \(ID)", database: db){
-                print("Đã xoá: \((transaction_GV?.Name)!) - \((transaction_GV?.Amount)!)\((currency_GV?.Symbol)!)")
+                print("🗑 Đã xoá: \((transaction_GV?.Name)!) - \((transaction_GV?.Amount)!)\((currency_GV?.Symbol)!)")
+                let balanceFinal:Double = (wallet_detail?.Balance)! - (transaction_GV?.Amount)!
+                if Query(Sql: "UPDATE ViTien SET SoDu = \(balanceFinal) WHERE Ma = \((wallet_detail?.ID)!)", database: db){
+                    print("Đã cập nhật số dư ví: \((wallet_detail?.Name)!)")
+                }
             }
             sqlite3_close(db)
             self.navigationController?.popViewController(animated: true)
@@ -91,7 +115,7 @@ class DetailTransactionViewController: UIViewController,UITableViewDelegate,UITa
         
         if indexPath.section == 1{
             let sheetCtrl = UIAlertController(title: "Xoá giao dịch này?", message: nil, preferredStyle: .actionSheet)
-
+            
             let action = UIAlertAction(title: "Xoá", style: .destructive) { _ in
                 deleteTrasactions()
             }
@@ -100,18 +124,18 @@ class DetailTransactionViewController: UIViewController,UITableViewDelegate,UITa
             sheetCtrl.addAction(action)
             sheetCtrl.addAction(cancelAction)
             
-            sheetCtrl.popoverPresentationController?.sourceView = self.view
+            //sheetCtrl.popoverPresentationController?.sourceView = self.view
             present(sheetCtrl, animated: true, completion: nil)
         }
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

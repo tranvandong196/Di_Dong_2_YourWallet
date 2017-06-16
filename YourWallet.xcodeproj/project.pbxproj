@@ -51,6 +51,7 @@
 		0A799C3E1EDF9F8C00A22A0C /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */; };
 		0A9746D11EE2D39700B25346 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9746D01EE2D39700B25346 /* TabBarViewController.swift */; };
 		0AEB3E7A1EE2657300359619 /* SelectTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */; };
+		0AF34D551EF3A0C10064B243 /* SelectCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF34D541EF3A0C10064B243 /* SelectCurrencyViewController.swift */; };
 		231388981EEC88E0008029B1 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231388951EEC88C5008029B1 /* Charts.framework */; };
 		231388991EEC88E0008029B1 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231388951EEC88C5008029B1 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		23734D121EEB36A6007DD4EB /* AddWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23734D111EEB36A6007DD4EB /* AddWallet.swift */; };
@@ -142,6 +143,7 @@
 		0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		0A9746D01EE2D39700B25346 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTimeViewController.swift; sourceTree = "<group>"; };
+		0AF34D541EF3A0C10064B243 /* SelectCurrencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCurrencyViewController.swift; sourceTree = "<group>"; };
 		2313888F1EEC88C5008029B1 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-master/Charts.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		23734D111EEB36A6007DD4EB /* AddWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWallet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -322,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */,
+				0AF34D541EF3A0C10064B243 /* SelectCurrencyViewController.swift */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				0A39DC591EE0701200EE8917 /* SelectCategoryCell.swift in Sources */,
 				0A384E921EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift in Sources */,
 				0A799C2F1EDF3FA300A22A0C /* Budget.swift in Sources */,
+				0AF34D551EF3A0C10064B243 /* SelectCurrencyViewController.swift in Sources */,
 				0A384E8E1EDCC319006CEAA9 /* AddTransaction ViewController.swift in Sources */,
 				0A39DC6A1EE0BFED00EE8917 /* WalletCell.swift in Sources */,
 				0A384E901EDCC648006CEAA9 /* SearchTransactionViewController.swift in Sources */,

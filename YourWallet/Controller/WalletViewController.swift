@@ -13,7 +13,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     @IBOutlet weak var Wallets_TableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +65,14 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TotalWallet", for: indexPath) as! AllWalletCell
-            cell.TotalMoney_Label.text = "chưa tính"
+            
+            var sum:Double = 0
+            for w in Wallets{
+                sum += w.Balance!
+            }
+            let sumstr:String = sum.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
+            
+            cell.TotalMoney_Label.text = "\(sumstr)" + (currency_GV?.Symbol)!
             if isSelectWallet && wallet_GV == nil{
                 cell.accessoryType = .checkmark
             }
@@ -74,8 +81,8 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             let cell = tableView.dequeueReusableCell(withIdentifier: "ListWallet", for: indexPath) as! WalletCell
             cell.WalletIcon_ImageView.image = UIImage(named: Wallets[indexPath.row].Icon)
             cell.WalletName_Label.text = Wallets[indexPath.row].Name
-            cell.WalletEndingBalance_Label.text = "Chưa tính"
-            
+            let tmp = Wallets[indexPath.row].Balance!.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
+            cell.WalletEndingBalance_Label.text = "\(tmp)" + (currency_GV?.Symbol)!
             if isSelectWallet && wallet_GV?.ID == Wallets[indexPath.row].ID{
                 cell.accessoryType = .checkmark
             }
@@ -96,18 +103,67 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             self.navigationController?.popViewController(animated: true)
         }else{
             wallet_detail = Wallets[indexPath.row]
+            self.navigationController?.popViewController(animated: true)
             //pushToVC(withStoryboardID: "ID Màn hình xem chi tiết ví", animated: true)
         }
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    //Thêm tuỳ chọn khi vuốt cell trừ phải qua trái
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .normal, title: "Sửa") { (rowAction, indexPath) in
+            wallet_detail = self.Wallets[indexPath.row]
+            //self.pushToVC(withStoryboardID: "AddWallet_VC", animated: true)
+        }
+        let delAction = UITableViewRowAction(style: .normal, title: "Xoá") { (rowAction, indexPath) in
+            let sheetCtrl = UIAlertController(title: "Xoá ví này?", message: nil, preferredStyle: .actionSheet)
+            
+            let action = UIAlertAction(title: "Xoá", style: .destructive) { _ in
+                let IDw:Int = self.Wallets[indexPath.row].ID
+                let Namew:String = self.Wallets[indexPath.row].Name
+                
+                let DB = Connect_DB_SQLite(dbName: DBName, type: DBType)
+                if Query(Sql: "DELETE FROM ViTien WHERE Ma = \(IDw)", database: DB){
+                    print("🗑 Đã xoá ví: \(Namew)")
+                    
+                    if wallet_GV != nil && (wallet_GV?.ID)! == IDw {
+                        wallet_GV = nil
+                        UserDefaults.standard.setValue(Int(-1), forKey: "Wallet")
+                        print("Chọn tất cả ví")
+                    }
+                    
+                    self.Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: DB)
+                    self.Wallets_TableView.reloadData()
+                    
+                    if Query(Sql: "DELETE FROM GiaoDich WHERE MaVi = \(IDw)", database: DB){
+                        print("🗑 Đã xoá toàn bộ giao dịch từ ví: \(Namew)")
+                    }
+                    if Query(Sql: "DELETE FROM NganSach WHERE MaVi = \(IDw)", database: DB){
+                        print("🗑 Đã xoá toàn bộ ngân sách từ ví: \(Namew)")
+                    }
+                }
+                sqlite3_close(DB)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            sheetCtrl.addAction(action)
+            sheetCtrl.addAction(cancelAction)
+            
+            self.present(sheetCtrl, animated: true, completion: nil)
+        }
+        editAction.backgroundColor = UIColor.init(red: 28.0/255.0, green: 179.0/255.0, blue: 29.0/255.0, alpha: 1.0)
+        delAction.backgroundColor = UIColor.red
+        return [editAction,delAction]
     }
-    */
-
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

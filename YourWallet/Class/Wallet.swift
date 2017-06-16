@@ -13,6 +13,7 @@ struct Wallet {
     var Name:String!
     var Currency:String!
     var Amount:Double!
+    var Balance:Double!
     var Icon:String!
 }
 
@@ -35,7 +36,10 @@ func GetWalletsFromSQLite(query: String, database: OpaquePointer?) -> [Wallet]{
                 W.Amount = Double(sqlite3_column_double(queryStatement, 3))
             }
             if sqlite3_column_text(queryStatement, 4) != nil {
-                W.Icon = String(cString: sqlite3_column_text(queryStatement, 4))
+                W.Balance = Double(sqlite3_column_double(queryStatement, 4))
+            }
+            if sqlite3_column_text(queryStatement, 5) != nil {
+                W.Icon = String(cString: sqlite3_column_text(queryStatement, 5))
             }
             
             Wallets.append(W)

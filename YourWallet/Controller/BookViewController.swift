@@ -34,10 +34,12 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         getWalletCurrent()
         getCurrencyDefault()
         getCurrentTimeRange()
-        
+        let locale = NSTimeZone.init(abbreviation: "UTC")
+        NSTimeZone.default = locale! as TimeZone
         dateFormattor.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
         dateFormattor.dateFormat = "M yyyy, EEEE"
         
+        //dateFormattor.dateFormat = "MM-dd HH:mm:ss"
         if VNDCurrency == nil{
             let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
             let C = GetCurrenciesFromSQLite(query: "SELECT * FROM TienTe WHERE Ma = 'VND'", database: database)
@@ -46,7 +48,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         
         print(TimeRange)
-       
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         print("🖥 Sổ giao dịch --------------------------------")
@@ -97,13 +99,13 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     @IBAction func SwipeRight_Gesture(_ sender: Any) {
         changeTimeRange(Operator: "-")
-  
+        
     }
     
     @IBAction func SwipeLeft_Gesture(_ sender: Any) {
         changeTimeRange(Operator: "+")
     }
-
+    
     // MARK: *** Filter Table
     func filterTable(WalletID: Int, Range: TIMERANGE){
         let dateFormat = DateFormatter()
@@ -119,7 +121,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             conditionByWallet = " AND MaVi = \(WalletID)"
         }
         
-        let sqlT = "SELECT * FROM GiaoDich WHERE ThoiDiem BETWEEN '\(date1)' AND '\(date2)'\(conditionByWallet)"
+        let sqlT = "SELECT * FROM GiaoDich WHERE ThoiDiem BETWEEN '\(date1)' AND '\(date2)'\(conditionByWallet) ORDER BY ThoiDiem ASC"
         let sqlC = "SELECT * FROM Nhom WHERE Ma IN (SELECT MaNhom FROM GiaoDich WHERE ThoiDiem BETWEEN '\(date1)' AND '\(date2)'\(conditionByWallet) GROUP BY MaNhom) "
         let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
         Transactions = GetTransactionsFromSQLite(query: sqlT, database: database)
@@ -132,7 +134,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         refreshOverview()
         return Categories.count
     }
-  
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! BookHeaderCell
         header.CategoryIcon_ImageView.image = UIImage(named: Categories[section].Icon)
@@ -252,7 +254,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         sheetCtrl.addAction(searchTransacntion)
         sheetCtrl.addAction(cancelAction)
         
-        sheetCtrl.popoverPresentationController?.sourceView = self.view
+        //sheetCtrl.popoverPresentationController?.sourceView = self.view
         //sheetCtrl.popoverPresentationController?.sourceRect = self.changeLanguageButton.frame
         present(sheetCtrl, animated: true, completion: nil)
     }
@@ -321,14 +323,14 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func getTitleByTimeRange(Range: TIMERANGE) -> [String] {
         let df = DateFormatter()
         df.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
-        var Titles = ["","",""]
+        var Titles = ["???","???","???"]
         if Range.end == Range.start + 1.day - 1.second{
             df.dateFormat = "dd/MM/yyyy"
-            if df.string(from: Range.start) == df.string(from: Date()){
+            if df.string(from: Range.start) == df.string(from: Date().current){
                 Titles = ["HÔM QUA","HÔM NAY","NGÀY MAI"]
-            }else if df.string(from: Range.start) == df.string(from: Date() - 1.day){
+            }else if df.string(from: Range.start) == df.string(from: Date().current - 1.day){
                 Titles = [df.string(from: Range.start - 1.day),"HÔM QUA","HÔM NAY"]
-            }else if df.string(from: Range.start) == df.string(from: Date() - 2.days){
+            }else if df.string(from: Range.start) == df.string(from: Date().current - 2.days){
                 Titles = [df.string(from: Range.start - 1.day),df.string(from: Range.start),"HÔM QUA"]
             }else{
                 Titles = [df.string(from: Range.start - 1.day),df.string(from: Range.start),df.string(from: Range.start + 1.day)]
@@ -346,11 +348,11 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }
         }else if Range.end == Range.start + 1.year - 1.second{
             df.dateFormat = "yyyy"
-            if df.string(from: Range.start) == df.string(from: Date()){
+            if df.string(from: Range.start) == df.string(from: Date().current){
                 Titles = ["NĂM QUA","NĂM NAY","NĂM SAU"]
-            }else if df.string(from: Range.start) == df.string(from: Date() - 1.year){
+            }else if df.string(from: Range.start) == df.string(from: Date().current - 1.year){
                 Titles = [df.string(from: Range.start - 1.year),"NĂM QUA","NĂM NAY"]
-            }else if df.string(from: Range.start) == df.string(from: Date() - 2.years){
+            }else if df.string(from: Range.start) == df.string(from: Date().current - 2.years){
                 Titles = [df.string(from: Range.start - 1.year),df.string(from: Range.start),"NĂM QUA"]
             }else{
                 Titles = [df.string(from: Range.start - 1.year),df.string(from: Range.start),df.string(from: Range.start + 1.year)]
@@ -373,6 +375,8 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func changeTimeRange(Operator: String){
+        var locale = NSTimeZone.init(abbreviation: "BST")
+        NSTimeZone.default = locale! as TimeZone
         let unit = getUnitTime(Range: TimeRange)
         if Operator == "+"{
             //if TimeRange.start + unit > Date().current{return} //Ko cho phép xem sổ giao dịch ở tương lai
@@ -381,7 +385,8 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             TimeRange.update(start:  (TimeRange.start - unit), end: (TimeRange.end - unit))
         }
         setupTitleTimeRange()
-        
+        locale = NSTimeZone.init(abbreviation: "UTC")
+        NSTimeZone.default = locale! as TimeZone
         let WalletID:Int = wallet_GV != nil ? (wallet_GV?.ID)!:-1
         filterTable(WalletID: WalletID, Range: TimeRange)
         Book_TableView.reloadData()
@@ -416,21 +421,21 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let unit = getUnitTime(Range: TimeRange)
         
         let date2 = dateFormat.string(from: Range.end - unit) + " 23:59:59"
-        
+      
         var conditionByWallet = ""
         if wallet_GV != nil{
             conditionByWallet = " AND MaVi = \((wallet_GV?.ID)!)"
         }
         
         let sqlT = "SELECT * FROM GiaoDich WHERE ThoiDiem <= '\(date2)'\(conditionByWallet)"
-
+        
         let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
         let TransactionsPreviousRangeTime = GetTransactionsFromSQLite(query: sqlT, database: database)
         
         
         var sum:Double = 0
-        for i in 0..<TransactionsPreviousRangeTime.count{
-            sum += TransactionsPreviousRangeTime[i].Amount
+        for i in TransactionsPreviousRangeTime{
+            sum += i.Amount
         }
         
         if wallet_GV != nil{
@@ -441,32 +446,46 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             sqlite3_close(database)
             
             var sum2:Double = 0
-            for i in 0..<wallets.count{
-                sum2 += wallets[i].Amount
+            for i in wallets{
+                sum2 += i.Amount
             }
             
-            return sum2 - sum
+            return sum2 + sum
         }
     }
     
     func refreshOverview(){
         let openingBalance = getOpeningBalance(Range: TimeRange)
         let endingBalance = openingBalance + getAmountAllTransaction()
-        WalletEndingBalance_Label.text = "\(endingBalance.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!))" + (currency_GV?.Symbol)!
+        var sum:Double = 0
+        if wallet_GV == nil{
+            let DB = Connect_DB_SQLite(dbName: DBName, type: DBType)
+            let Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: DB)
+            sqlite3_close(DB)
+            for w in Wallets{
+                sum += w.Balance!
+            }
+        }else{
+            sum = (wallet_GV?.Balance)!
+        }
+        let sumstr:String = sum.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
+        
+        WalletEndingBalance_Label.text = sumstr + (currency_GV?.Symbol)!
         OpeningBalance_Label.text = "\(openingBalance.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!))" + (currency_GV?.Symbol)!
         EndingBalance_Label.text = "\((endingBalance).VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!))" + (currency_GV?.Symbol)!
-        TotalMoneyTransactions_Label.text = "\((-openingBalance + endingBalance).VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!))" + (currency_GV?.Symbol)!
+        let txt:String = "\((-openingBalance + endingBalance).VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!))" + (currency_GV?.Symbol)!
+        TotalMoneyTransactions_Label.text = (-openingBalance + endingBalance) <= 0 ? txt:"+" + txt
     }
     /*
-    
      
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

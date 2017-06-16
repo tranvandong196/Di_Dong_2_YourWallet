@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddWalletViewController: UIViewController{
+class AddWalletViewController: UIViewController,UITextFieldDelegate{
 
     @IBOutlet weak var WalletIcon_ImageView: UIImageView!
     @IBOutlet weak var WalletName_textField: UITextField!
@@ -18,7 +18,9 @@ class AddWalletViewController: UIViewController{
     @IBOutlet weak var Save_Button: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.WalletName_textField.delegate = self
+        
+        currCurrency_btn.setTitle(currency_GV?.ID, for: .normal)
         // Do any additional setup after loading the view.
 
     }
@@ -45,10 +47,27 @@ class AddWalletViewController: UIViewController{
         let walletIcon = "Vi-icon"
         
         let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-        let sqlQueryStr = "INSERT INTO ViTien (Ma,Ten,TienTe,TongGiaTri,Icon) VALUES (null, '\(walletName)', '\(currency)', \(moneyAmount), '\(walletIcon)')"
+        let sqlQueryStr = "INSERT INTO ViTien (Ma,Ten,TienTe,TongGiaTri,SoDu,Icon) VALUES (null, '\(walletName)', '\(currency)', \(moneyAmount),\(moneyAmount), '\(walletIcon)')"
         
-        Query(Sql: sqlQueryStr, database: database)
+        if Query(Sql: sqlQueryStr, database: database){
+            print("Đã thêm ví: \(walletName)")
+        }
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    //Hide or switch next keyboard when user Presses "return" key (for textField)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    //Hide keyboard when user touches outside keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     /*
     // MARK: - Navigation

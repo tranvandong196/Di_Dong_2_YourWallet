@@ -16,11 +16,12 @@ class AddAmountCell: UITableViewCell,UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addAmount_TextField.delegate = self
-        selectCurrency_Button.setTitle(currency_GV?.ID, for: .normal)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        selectCurrency_Button.setTitle(currency_GV?.ID, for: .normal)
         // Configure the view for the selected state
     }
 }

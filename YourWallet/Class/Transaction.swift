@@ -52,10 +52,24 @@ func GetTransactionsFromSQLite(query: String, database: OpaquePointer?) -> [Tran
 func insertTransaction(name: String, amount: Double, time: Date, ID_Category: Int,ID_Wallet: Int){
     let dateFormattor = DateFormatter()
     dateFormattor.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    //dateFormattor.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
     let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
     var sql = "INSERT INTO GiaoDich VALUES(null, '\(name)', \(amount), '\(dateFormattor.string(from: time))', \(ID_Category), \(ID_Wallet))"
     if Query(Sql: sql, database: database){
         sql += "✅ Thêm thành công: "
+    }
+    print(sql)
+    sqlite3_close(database)
+    
+}
+func updateTransaction(name: String, amount: Double, time: Date, ID_Category: Int,ID_Wallet: Int, ID_Transaction: Int){
+    let dateFormattor = DateFormatter()
+    dateFormattor.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    dateFormattor.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
+    let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+    var sql = "UPDATE GiaoDich SET Ten = '\(name)', SoTien = \(amount), ThoiDiem = '\(dateFormattor.string(from: time))', MaNhom = \(ID_Category), MaVi = \(ID_Wallet) WHERE Ma = \(ID_Transaction)"
+    if Query(Sql: sql, database: database){
+        sql += "✅ Cập nhật thành công: "
     }
     print(sql)
     sqlite3_close(database)
