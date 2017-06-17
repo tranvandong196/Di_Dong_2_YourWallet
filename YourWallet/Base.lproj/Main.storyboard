@@ -1458,8 +1458,44 @@
                                                     <segue destination="Y8N-AO-y0u" kind="push" id="Xzo-fr-z2I"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutUs-Cell" rowHeight="46" id="FJf-tl-mFU">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Primary-Cell" rowHeight="46" id="GUs-fD-VBo">
                                                 <rect key="frame" x="0.0" y="194" width="375" height="46"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GUs-fD-VBo" id="Add-Su-nVf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Setting-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Xda-no-0GK">
+                                                            <rect key="frame" x="15" y="10" width="26" height="26"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="26" id="T9o-RY-cFK"/>
+                                                                <constraint firstAttribute="height" constant="26" id="sBv-Uy-k37"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bảo mật" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4X-KD-u9o">
+                                                            <rect key="frame" x="56" y="12" width="100" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="2aE-Vh-RRv"/>
+                                                                <constraint firstAttribute="height" constant="21" id="YQl-wM-5xz"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Xda-no-0GK" firstAttribute="centerY" secondItem="Add-Su-nVf" secondAttribute="centerY" id="66d-tX-eYd"/>
+                                                        <constraint firstItem="Xda-no-0GK" firstAttribute="leading" secondItem="Add-Su-nVf" secondAttribute="leading" constant="15" id="6GZ-mc-rKF"/>
+                                                        <constraint firstItem="u4X-KD-u9o" firstAttribute="centerY" secondItem="Add-Su-nVf" secondAttribute="centerY" id="FNC-U9-zr6"/>
+                                                        <constraint firstItem="u4X-KD-u9o" firstAttribute="leading" secondItem="Xda-no-0GK" secondAttribute="trailing" constant="15" id="Kix-v3-YGH"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <segue destination="Plw-wj-Gwk" kind="push" id="dKM-qZ-8Zr"/>
+                                                </connections>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutUs-Cell" rowHeight="46" id="FJf-tl-mFU">
+                                                <rect key="frame" x="0.0" y="240" width="375" height="46"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FJf-tl-mFU" id="Rn4-x9-1BP">
                                                     <rect key="frame" x="0.0" y="0.0" width="342" height="45"/>
@@ -1745,6 +1781,126 @@
             </objects>
             <point key="canvasLocation" x="1212" y="2020"/>
         </scene>
+        <!--Bảo mật-->
+        <scene sceneID="MAv-m3-Sv9">
+            <objects>
+                <viewController storyboardIdentifier="PrimaryVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Plw-wj-Gwk" customClass="PrimaryViewController" customModule="YourWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AT4-vL-19y"/>
+                        <viewControllerLayoutGuide type="bottom" id="ojH-lQ-xNx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oD5-ng-vPS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Khoá bằng mật khẩu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6p9-VF-tkE">
+                                <rect key="frame" x="20" y="134" width="180" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="EUf-Rh-LWE"/>
+                                    <constraint firstAttribute="height" constant="30" id="eYn-51-ueL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vgK-xR-24T">
+                                <rect key="frame" x="306" y="133.5" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="SnJ-wg-ysl"/>
+                                    <constraint firstAttribute="height" constant="31" id="kuM-zi-cj2"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="SwitchLockApp_SwitchTapped:" destination="Plw-wj-Gwk" eventType="valueChanged" id="xjh-tW-bB8"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4E-jh-hy3">
+                                <rect key="frame" x="20" y="199" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="TXE-P9-Btj"/>
+                                    <constraint firstAttribute="height" constant="30" id="ZDW-eF-D5w"/>
+                                </constraints>
+                                <state key="normal" title="Đổi mật khẩu"/>
+                                <connections>
+                                    <action selector="ChangePassword_ButtonTapped:" destination="Plw-wj-Gwk" eventType="touchUpInside" id="0Tc-YF-hil"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fhk-yY-CtO">
+                                <rect key="frame" x="127.5" y="254" width="120" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="874-Q3-o5d"/>
+                                    <constraint firstAttribute="height" constant="40" id="C9c-5o-4jT"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="exr-2L-NoU"/>
+                                    <constraint firstAttribute="width" constant="120" id="rUf-z9-mpD"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" secureTextEntry="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhập mật khẩu mới" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCR-Sm-w3f">
+                                <rect key="frame" x="20" y="301" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kjb-bw-DfL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGd-ze-tby">
+                                <rect key="frame" x="255" y="199" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="2fa-Yq-fia"/>
+                                    <constraint firstAttribute="height" constant="30" id="jMi-bx-j8a"/>
+                                </constraints>
+                                <state key="normal" title="Xoá mât khẩu"/>
+                                <connections>
+                                    <action selector="DeletePassword_ButtonTapped:" destination="Plw-wj-Gwk" eventType="touchUpInside" id="76z-6r-5Yg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Đã thêm mật khẩu" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnF-ZF-0KF">
+                                <rect key="frame" x="24" y="385" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Bq2-NJ-hOU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6p9-VF-tkE" firstAttribute="top" secondItem="AT4-vL-19y" secondAttribute="bottom" constant="70" id="3l4-db-ouY"/>
+                            <constraint firstItem="g4E-jh-hy3" firstAttribute="top" secondItem="6p9-VF-tkE" secondAttribute="bottom" constant="35" id="ABv-VL-vyc"/>
+                            <constraint firstItem="JnF-ZF-0KF" firstAttribute="centerY" secondItem="oD5-ng-vPS" secondAttribute="centerY" id="EaZ-e7-ubq"/>
+                            <constraint firstItem="rCR-Sm-w3f" firstAttribute="leading" secondItem="oD5-ng-vPS" secondAttribute="leading" constant="20" id="MPM-ku-8CL"/>
+                            <constraint firstAttribute="trailing" secondItem="vgK-xR-24T" secondAttribute="trailing" constant="20" id="Nk9-uU-3er"/>
+                            <constraint firstItem="g4E-jh-hy3" firstAttribute="leading" secondItem="6p9-VF-tkE" secondAttribute="leading" id="Ppi-nR-uNw"/>
+                            <constraint firstItem="6p9-VF-tkE" firstAttribute="leading" secondItem="oD5-ng-vPS" secondAttribute="leading" constant="20" id="XhH-wY-zJL"/>
+                            <constraint firstAttribute="trailing" secondItem="rCR-Sm-w3f" secondAttribute="trailing" constant="20" id="ZVQ-bC-RRk"/>
+                            <constraint firstItem="rCR-Sm-w3f" firstAttribute="top" secondItem="Fhk-yY-CtO" secondAttribute="bottom" constant="7" id="cFT-9L-eUN"/>
+                            <constraint firstItem="Fhk-yY-CtO" firstAttribute="centerX" secondItem="oD5-ng-vPS" secondAttribute="centerX" id="cLA-m5-4Og"/>
+                            <constraint firstAttribute="trailing" secondItem="JGd-ze-tby" secondAttribute="trailing" constant="20" id="eVt-jU-Iej"/>
+                            <constraint firstItem="Fhk-yY-CtO" firstAttribute="top" secondItem="g4E-jh-hy3" secondAttribute="bottom" constant="25" id="gPc-Pf-ro8"/>
+                            <constraint firstAttribute="trailing" secondItem="JnF-ZF-0KF" secondAttribute="trailing" constant="20" id="m8N-rE-FSS"/>
+                            <constraint firstItem="vgK-xR-24T" firstAttribute="centerY" secondItem="6p9-VF-tkE" secondAttribute="centerY" id="ozX-RB-JjG"/>
+                            <constraint firstItem="JGd-ze-tby" firstAttribute="centerY" secondItem="g4E-jh-hy3" secondAttribute="centerY" id="wFR-UP-D1g"/>
+                            <constraint firstItem="JnF-ZF-0KF" firstAttribute="leading" secondItem="oD5-ng-vPS" secondAttribute="leading" constant="20" id="zN6-b0-j0b"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Bảo mật" id="eN2-5V-hxv"/>
+                    <connections>
+                        <outlet property="ChangePassword_Button" destination="g4E-jh-hy3" id="rCs-hG-NgK"/>
+                        <outlet property="DeletePassword_Button" destination="JGd-ze-tby" id="fr4-SJ-PHA"/>
+                        <outlet property="DescribeToUser_Label" destination="rCR-Sm-w3f" id="N9g-NK-bC6"/>
+                        <outlet property="EnterPassword_TextField" destination="Fhk-yY-CtO" id="bKy-n5-3Xt"/>
+                        <outlet property="Result_Label" destination="JnF-ZF-0KF" id="AhY-1w-qok"/>
+                        <outlet property="SwitchLockApp_Switch" destination="vgK-xR-24T" id="wlA-Zl-bWI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="efu-IN-njP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1888.8" y="2019.9400299850076"/>
+        </scene>
         <!--Giới thiệu-->
         <scene sceneID="QNc-De-dfh">
             <objects>
@@ -1774,7 +1930,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6t-xh-Dbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1913" y="2020"/>
+            <point key="canvasLocation" x="2522" y="2020"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="wg7-f3-ORb">
@@ -1948,10 +2104,62 @@
             </objects>
             <point key="canvasLocation" x="3114" y="382"/>
         </scene>
+        <!--Enter Password View Controller-->
+        <scene sceneID="HM8-Gh-htw">
+            <objects>
+                <viewController storyboardIdentifier="EnterPasswordVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j6z-5b-Mmu" customClass="EnterPasswordViewController" customModule="YourWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lie-9C-Vlo"/>
+                        <viewControllerLayoutGuide type="bottom" id="FQ3-Nz-xEV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rxP-1D-fOn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n3n-gz-y4H">
+                                <rect key="frame" x="127.5" y="220" width="120" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="MeD-pd-yps"/>
+                                    <constraint firstAttribute="height" constant="40" id="U0Z-lP-BH9"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhập mật khẩu để mở khoá" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUu-Ep-DeH">
+                                <rect key="frame" x="20" y="285" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="aJN-Rf-JOs"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="pQU-0a-4ee"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="n3n-gz-y4H" firstAttribute="top" secondItem="Lie-9C-Vlo" secondAttribute="bottom" constant="200" id="Asu-og-U2h"/>
+                            <constraint firstItem="JUu-Ep-DeH" firstAttribute="top" secondItem="n3n-gz-y4H" secondAttribute="bottom" constant="25" id="Che-SU-9zm"/>
+                            <constraint firstAttribute="trailing" secondItem="JUu-Ep-DeH" secondAttribute="trailing" constant="20" id="GkM-cN-hf4"/>
+                            <constraint firstItem="JUu-Ep-DeH" firstAttribute="leading" secondItem="rxP-1D-fOn" secondAttribute="leading" constant="20" id="kIq-kY-Cul"/>
+                            <constraint firstItem="n3n-gz-y4H" firstAttribute="centerX" secondItem="rxP-1D-fOn" secondAttribute="centerX" id="qwk-Ua-9JS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DescribeToUser_Label" destination="JUu-Ep-DeH" id="nbW-bV-r1u"/>
+                        <outlet property="EnterPassword_TextField" destination="n3n-gz-y4H" id="FTl-gi-Jnh"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="MoveToHomeVC" id="igq-Ex-bTP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kr3-Ix-G87" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-783" y="0.0"/>
+        </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" customClass="TabBarViewController" customModule="YourWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" customClass="TabBarViewController" customModule="YourWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -1977,12 +2185,15 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="twT-iu-Fv8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="Ví" image="Wallet-icon" selectedImage="Wallet-icon" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="kzd-4V-dhy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kzd-4V-dhy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.68551409244537354" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.0" green="0.68551409244537354" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2068,7 +2279,7 @@
         <!--Mở rộng-->
         <scene sceneID="Fw3-nH-Knb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HVU-wa-ivO" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MoreVC_nav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HVU-wa-ivO" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Mở rộng" image="More-icon" selectedImage="More-icon" id="we5-Q8-qkH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dau-86-PWQ">

@@ -115,7 +115,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let date1 = dateFormat.string(from: Range.start)
         let date2 = dateFormat.string(from: Range.end)
         
-        print("Khoảng thời gian: (\(date1), \(date2))")
+        //print("Khoảng thời gian: (\(date1), \(date2))")
         var conditionByWallet = ""
         if WalletID != -1{
             conditionByWallet = " AND MaVi = \(WalletID)"

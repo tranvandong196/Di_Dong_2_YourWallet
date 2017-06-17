@@ -13,7 +13,7 @@ import ImageIO
 
 extension UIViewController {
     // Hiển thị thông báo đơn giản
-    func alert(title: String, message: String) {
+    func alert(title: String, message: String?) {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(okAction)

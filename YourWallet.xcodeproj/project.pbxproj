@@ -49,6 +49,8 @@
 		0A799C371EDF402400A22A0C /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C361EDF402400A22A0C /* Currency.swift */; };
 		0A799C391EDF514A00A22A0C /* YourWallet-DB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0A799C381EDF514A00A22A0C /* YourWallet-DB.sqlite */; };
 		0A799C3E1EDF9F8C00A22A0C /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */; };
+		0A8B3F3D1EF494AD008BD5C7 /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B3F3C1EF494AD008BD5C7 /* EnterPasswordViewController.swift */; };
+		0A8B3F401EF4A14A008BD5C7 /* PrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B3F3F1EF4A14A008BD5C7 /* PrimaryViewController.swift */; };
 		0A9746D11EE2D39700B25346 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9746D01EE2D39700B25346 /* TabBarViewController.swift */; };
 		0AEB3E7A1EE2657300359619 /* SelectTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */; };
 		0AF34D551EF3A0C10064B243 /* SelectCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF34D541EF3A0C10064B243 /* SelectCurrencyViewController.swift */; };
@@ -141,6 +143,8 @@
 		0A799C361EDF402400A22A0C /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		0A799C381EDF514A00A22A0C /* YourWallet-DB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YourWallet-DB.sqlite"; sourceTree = "<group>"; };
 		0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		0A8B3F3C1EF494AD008BD5C7 /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
+		0A8B3F3F1EF4A14A008BD5C7 /* PrimaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryViewController.swift; sourceTree = "<group>"; };
 		0A9746D01EE2D39700B25346 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTimeViewController.swift; sourceTree = "<group>"; };
 		0AF34D541EF3A0C10064B243 /* SelectCurrencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCurrencyViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +329,8 @@
 			children = (
 				0A799C3D1EDF9F8C00A22A0C /* MoreViewController.swift */,
 				0AF34D541EF3A0C10064B243 /* SelectCurrencyViewController.swift */,
+				0A8B3F3C1EF494AD008BD5C7 /* EnterPasswordViewController.swift */,
+				0A8B3F3F1EF4A14A008BD5C7 /* PrimaryViewController.swift */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -439,10 +445,12 @@
 			files = (
 				0A0E1D841EE1895D0050B282 /* AddCategoryViewController.swift in Sources */,
 				0A39DC5D1EE070AB00EE8917 /* ChangeTimeCell.swift in Sources */,
+				0A8B3F401EF4A14A008BD5C7 /* PrimaryViewController.swift in Sources */,
 				0A799C3E1EDF9F8C00A22A0C /* MoreViewController.swift in Sources */,
 				0A384E7C1EDC7D51006CEAA9 /* NotificationExtension.swift in Sources */,
 				0A39DC641EE09D0700EE8917 /* CategoryCell.swift in Sources */,
 				0A384E801EDC7D51006CEAA9 /* SQLite.swift in Sources */,
+				0A8B3F3D1EF494AD008BD5C7 /* EnterPasswordViewController.swift in Sources */,
 				0A39DC5B1EE0705400EE8917 /* AddNodeCell.swift in Sources */,
 				0A39DC661EE0A78C00EE8917 /* Global variable.swift in Sources */,
 				0A799C311EDF3FD000A22A0C /* Category.swift in Sources */,

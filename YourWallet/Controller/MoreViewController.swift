@@ -36,20 +36,20 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 2:1
+        return section != 2 ? 2:1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 46
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if indexPath.section == 0 {
             let cellIden = indexPath.row == 0 ? "Budgets-Cell":"Categories-Cell"
             return tableView.dequeueReusableCell(withIdentifier: cellIden, for: indexPath)
             
         }
         if indexPath.section == 1{
-            return tableView.dequeueReusableCell(withIdentifier: "SetCurrency-Cell", for: indexPath)
+            let cellIden = indexPath.row == 0 ? "SetCurrency-Cell":"Primary-Cell"
+            return tableView.dequeueReusableCell(withIdentifier: cellIden, for: indexPath)
         }else{
             return tableView.dequeueReusableCell(withIdentifier: "AboutUs-Cell", for: indexPath)
         }
