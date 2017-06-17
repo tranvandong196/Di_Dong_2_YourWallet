@@ -165,7 +165,7 @@ class PrimaryViewController: UIViewController,UITextFieldDelegate {
                 case 5:
                     if textField.text! + string == oldPw{
                         UserDefaults.standard.removeObject(forKey: "isLockApp")
-                        SwitchLockApp_Switch.isOn = true
+                        SwitchLockApp_Switch.isOn = false
                         
                         Result_Label.text = "Đã tắt khoá bằng mật khẩu"
                         HideEnterPassword()
