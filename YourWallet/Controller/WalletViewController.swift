@@ -116,7 +116,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             //self.pushToVC(withStoryboardID: "AddWallet_VC", animated: true)
         }
         let delAction = UITableViewRowAction(style: .normal, title: "Xoá") { (rowAction, indexPath) in
-            let sheetCtrl = UIAlertController(title: "Xoá ví này?", message: nil, preferredStyle: .actionSheet)
+            let sheetCtrl = UIAlertController(title: "Xoá ví này?", message: "⚠️Lưu ý: Tất cả giao dịch và ngân sách thuộc ví này sẽ bị mất!", preferredStyle: .actionSheet)
             
             let action = UIAlertAction(title: "Xoá", style: .destructive) { _ in
                 let IDw:Int = self.Wallets[indexPath.row].ID
@@ -145,7 +145,9 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
                 sqlite3_close(DB)
             }
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "Huỷ", style: .cancel){ _ in
+                self.Wallets_TableView.reloadData()
+            }
             sheetCtrl.addAction(action)
             sheetCtrl.addAction(cancelAction)
             

@@ -42,9 +42,8 @@ var transaction_GV: Transaction? = nil
 var currency_GV: Currency? = nil
 var category_GV: Category? = nil
 var wallet_GV: Wallet? = nil
-
+var iconName:String? = nil
 var wallet_detail: Wallet? = nil
-
 // Sau khi (Huỷ/Lưu) ở màn hình thêm giao dịch, sẽ trở về màn hình TabBar hiện tại
 var currentTabBarItem:Int = 0
 /*

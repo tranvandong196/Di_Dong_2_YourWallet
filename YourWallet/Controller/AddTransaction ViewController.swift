@@ -16,7 +16,7 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
     var datePicker : UIDatePicker!
     var doneButton:UIButton!
     var datePickerContainer: UIView!
-    var addTime = Date()
+    var addTime = Date().current
     var amount:String = ""
     var name:String = ""
     var colorLabel:UIColor = UIColor.init(red: 43.0/255.0, green: 43.0/255.0, blue: 43.0/255.0, alpha: 1.0)

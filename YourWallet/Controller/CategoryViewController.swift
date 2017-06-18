@@ -12,9 +12,11 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var CategoriesIn = [Category]()
     var CategoriesOut = [Category]()
     @IBOutlet weak var Categories_TableView: UITableView!
+    @IBOutlet weak var KindOfCategory_SegmentedControl: UISegmentedControl!
+    var segment:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        KindOfCategory_SegmentedControl.selectedSegmentIndex = segment
         // Do any additional setup after loading the view.
     }
 
@@ -34,26 +36,20 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         Categories_TableView.reloadData()
 
     }
+    @IBAction func KindOfCategory_SegmentedControlTapped(_ sender: Any) {
+        segment = KindOfCategory_SegmentedControl.selectedSegmentIndex
+        self.Categories_TableView.reloadData()
+    }
     @IBAction func addCategory_ButtonTapped(_ sender: Any) {
         pushToVC(withStoryboardID: "AddCategoryVC", animated: true)
     }
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
-    }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Chi tiêu":"Thu nhập"
-    }
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.textLabel?.textAlignment = .center
-        }
-    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? CategoriesOut.count:CategoriesIn.count
+        return segment == 0 ? CategoriesOut.count:CategoriesIn.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 56
@@ -61,12 +57,12 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Category-Cell", for: indexPath) as! CategoryCell
         
-        let nameIcon = indexPath.section == 0 ? CategoriesOut[indexPath.row].Icon:CategoriesIn[indexPath.row].Icon
+        let nameIcon = segment == 0 ? CategoriesOut[indexPath.row].Icon:CategoriesIn[indexPath.row].Icon
         cell.CategoryIcon_ImageView.image = UIImage(named: nameIcon!)
-        cell.CategoryName_Label.text = indexPath.section == 0 ? CategoriesOut[indexPath.row].Name:CategoriesIn[indexPath.row].Name
+        cell.CategoryName_Label.text = segment == 0 ? CategoriesOut[indexPath.row].Name:CategoriesIn[indexPath.row].Name
         
         if isSelectCategory && category_GV?.ID != nil {
-            let ID = indexPath.section == 0 ? CategoriesOut[indexPath.row].ID:CategoriesIn[indexPath.row].ID
+            let ID = segment == 0 ? CategoriesOut[indexPath.row].ID:CategoriesIn[indexPath.row].ID
             cell.accessoryType = category_GV?.ID == ID ? .checkmark:.none
         }
         
@@ -74,7 +70,7 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        category_GV = indexPath.section == 0 ? CategoriesOut[indexPath.row]:CategoriesIn[indexPath.row]
+        category_GV = segment == 0 ? CategoriesOut[indexPath.row]:CategoriesIn[indexPath.row]
         
         if isSelectCategory{
             self.navigationController?.popViewController(animated: true)

@@ -120,7 +120,7 @@ class DetailTransactionViewController: UIViewController,UITableViewDelegate,UITa
                 deleteTrasactions()
             }
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "Huỷ", style: .cancel, handler: nil)
             sheetCtrl.addAction(action)
             sheetCtrl.addAction(cancelAction)
             

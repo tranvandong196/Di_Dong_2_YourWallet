@@ -10,6 +10,7 @@ import UIKit
 
 class PrimaryViewController: UIViewController,UITextFieldDelegate {
 
+    @IBOutlet weak var SwitchLockApp_Label: UILabel!
     @IBOutlet weak var SwitchLockApp_Switch: UISwitch!
     
     @IBOutlet weak var DescribeToUser_Label: UILabel!
@@ -18,6 +19,11 @@ class PrimaryViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var DeletePassword_Button: UIButton!
     @IBOutlet weak var ChangePassword_Button: UIButton!
+    
+    @IBOutlet weak var Line0_View: UIView!
+    @IBOutlet weak var Line1_View: UIView!
+    @IBOutlet weak var Line2_View: UIView!
+    
     var isSetPw = false
     var oldPw:String = ""
     override func viewDidLoad() {
@@ -55,7 +61,6 @@ class PrimaryViewController: UIViewController,UITextFieldDelegate {
             }
             return
         }else if isSetPw{
-            SwitchLockApp_Switch.isOn = true
             DescribeToUser_Label.text = "Nhập mật khẩu để khoá"
             ShowEnterPassword()
             step = 5
@@ -168,8 +173,10 @@ class PrimaryViewController: UIViewController,UITextFieldDelegate {
                         SwitchLockApp_Switch.isOn = false
                         
                         Result_Label.text = "Đã tắt khoá bằng mật khẩu"
+                        step = 1
                         HideEnterPassword()
                     }else{
+                        SwitchLockApp_Switch.isOn = true
                         DescribeToUser_Label.textColor = UIColor.red
                         DescribeToUser_Label.text = "Sai mật khẩu!"
                     }
@@ -194,21 +201,41 @@ class PrimaryViewController: UIViewController,UITextFieldDelegate {
         if UserDefaults.standard.value(forKey: "Password") != nil{
             oldPw = UserDefaults.standard.value(forKey: "Password") as! String
         }
+        ChangePassword_Button.isHidden = true
+        DeletePassword_Button.isHidden = true
+        SwitchLockApp_Label.isHidden = true
+        SwitchLockApp_Switch.isHidden = true
+        Line0_View.isHidden = true
+        Line1_View.isHidden = true
+        Line2_View.isHidden = true
+        
         EnterPassword_TextField.isHidden = false
         DescribeToUser_Label.isHidden = false
         EnterPassword_TextField.becomeFirstResponder()
         DescribeToUser_Label.textColor = UIColor.black
     }
     func HideEnterPassword(_ isHiddenResult:Bool = false){
+        ChangePassword_Button.isHidden = false
+        SwitchLockApp_Label.isHidden = false
+        SwitchLockApp_Switch.isHidden = false
+        Line0_View.isHidden = false
+        Line1_View.isHidden = false
+        Line2_View.isHidden = false
         DescribeToUser_Label.isHidden = true
         EnterPassword_TextField.text = ""
         EnterPassword_TextField.isHidden = true
         EnterPassword_TextField.endEditing(true)
-        
+      
+        if step == 5{
+            SwitchLockApp_Switch.isOn = true
+        }
+        if isSetPw{
+            DeletePassword_Button.isHidden = false
+        }
         if !isHiddenResult{
             Result_Label.alpha = 0
-            Result_Label.fadeIn(withDuration: 1.2)
-            Result_Label.fadeOut(withDuration: 1.2)
+            Result_Label.fadeIn(withDuration: 1.8)
+            Result_Label.fadeOut(withDuration: 1.4)
         }
         newPw = ""
         step = 1
