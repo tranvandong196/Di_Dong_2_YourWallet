@@ -21,12 +21,13 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         if !isAddTransaction{
             currentTabBarItem = 1
         }
+        
         isAddWallet = false
         self.tabBarController?.tabBar.isHidden = isSelectWallet ? true:false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         let db = Connect_DB_SQLite(dbName: DBName, type: DBType)
-        Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: db)
+        Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien ORDER BY Ten", database: db)
         sqlite3_close(db)
         Wallets_TableView.reloadData()
         
@@ -43,6 +44,11 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
+        if isSelectWallet || isAddWallet || isAddTransaction || isAddBudget{
+            Wallets_TableView.allowsSelection = true
+        }else {
+            Wallets_TableView.allowsSelection = false
+        }
         return 2
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -83,7 +89,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             cell.WalletName_Label.text = Wallets[indexPath.row].Name
             let tmp = Wallets[indexPath.row].Balance!.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
             cell.WalletEndingBalance_Label.text = "\(tmp)" + (currency_GV?.Symbol)!
-            if isSelectWallet && wallet_GV?.ID == Wallets[indexPath.row].ID{
+            if (isSelectWallet && wallet_GV?.ID == Wallets[indexPath.row].ID) || (wallet_detail != nil && (wallet_detail?.ID)! == Wallets[indexPath.row].ID){
                 cell.accessoryType = .checkmark
             }
             return cell
@@ -111,11 +117,11 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     //Thêm tuỳ chọn khi vuốt cell trừ phải qua trái
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: .normal, title: "Sửa") { (rowAction, indexPath) in
+        let editAction = UITableViewRowAction(style: .normal, title: "✏️") { (rowAction, indexPath) in
             wallet_detail = self.Wallets[indexPath.row]
             //self.pushToVC(withStoryboardID: "AddWallet_VC", animated: true)
         }
-        let delAction = UITableViewRowAction(style: .normal, title: "Xoá") { (rowAction, indexPath) in
+        let delAction = UITableViewRowAction(style: .normal, title: "🗑") { (rowAction, indexPath) in
             let sheetCtrl = UIAlertController(title: "Xoá ví này?", message: "⚠️Lưu ý: Tất cả giao dịch và ngân sách thuộc ví này sẽ bị mất!", preferredStyle: .actionSheet)
             
             let action = UIAlertAction(title: "Xoá", style: .destructive) { _ in
@@ -132,7 +138,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
                         print("Chọn tất cả ví")
                     }
                     
-                    self.Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: DB)
+                    self.Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien ORDER BY Ten", database: DB)
                     self.Wallets_TableView.reloadData()
                     
                     if Query(Sql: "DELETE FROM GiaoDich WHERE MaVi = \(IDw)", database: DB){
@@ -146,7 +152,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             }
             
             let cancelAction = UIAlertAction(title: "Huỷ", style: .cancel){ _ in
-                self.Wallets_TableView.reloadData()
+                self.Wallets_TableView.setEditing(false, animated: true)
             }
             sheetCtrl.addAction(action)
             sheetCtrl.addAction(cancelAction)
@@ -155,7 +161,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
         editAction.backgroundColor = UIColor.init(red: 28.0/255.0, green: 179.0/255.0, blue: 29.0/255.0, alpha: 1.0)
         delAction.backgroundColor = UIColor.red
-        return [editAction,delAction]
+        return (isSelectWallet || isAddWallet || isAddTransaction || isAddBudget) ? [editAction]:[editAction,delAction]
     }
     
     /*

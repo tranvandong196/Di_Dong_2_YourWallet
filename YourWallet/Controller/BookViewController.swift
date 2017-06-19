@@ -62,7 +62,11 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.tabBarController?.tabBar.tintColor = UIColor.init(red: 28.0/255.0, green: 179.0/255.0, blue: 29.0/255.0, alpha: 1.0)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        SelectWallet_Button.imageView?.image = wallet_GV != nil ? UIImage(named: (wallet_GV?.Icon)!):#imageLiteral(resourceName: "All-Wallet-icon")
+        if wallet_GV != nil {
+            SelectWallet_Button.setImage(UIImage(named: (wallet_GV?.Icon)!), for: .normal)
+        }else {
+            SelectWallet_Button.setImage(#imageLiteral(resourceName: "All-Wallet-icon"), for: .normal)
+        }
         WalletName_Label.text = wallet_GV?.Name ?? "Tất cả các ví"
         
         let Wallet_ID:Int = wallet_GV != nil ? (wallet_GV?.ID)!:-1

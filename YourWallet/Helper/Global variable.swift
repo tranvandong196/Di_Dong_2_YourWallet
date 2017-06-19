@@ -35,6 +35,7 @@ var TimeRange = TIMERANGE(start: Date(),end: Date())    //Chỉ màn hình sổ 
 */
 var isAddTransaction:Bool = false
 var isAddWallet:Bool = false
+var isAddBudget:Bool = false
 var isSelectWallet:Bool = false
 var isSelectCategory:Bool = false
 

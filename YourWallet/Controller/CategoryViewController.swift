@@ -16,7 +16,8 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var segment:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        KindOfCategory_SegmentedControl.selectedSegmentIndex = segment
+        KindOfCategory_SegmentedControl.selectedSegmentIndex = category_GV == nil ? segment:(category_GV?.Kind)!
+        segment = KindOfCategory_SegmentedControl.selectedSegmentIndex
         // Do any additional setup after loading the view.
     }
 
@@ -45,6 +46,8 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
+        self.Categories_TableView.allowsSelection = (isAddTransaction || isAddBudget) ? true:false
+        
         return 1
     }
 
@@ -78,6 +81,53 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
             //pushToVC(withStoryboardID: "ID của màn hình xem chi tiết nhóm", animated: true)
         }
     }
+    //Thêm tuỳ chọn khi vuốt cell trừ phải qua trái
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .normal, title: "✏️") { (rowAction, indexPath) in
+            category_GV = self.segment == 0 ? self.CategoriesOut[indexPath.row]:self.CategoriesIn[indexPath.row]
+            //self.pushToVC(withStoryboardID: "AddWallet_VC", animated: true)
+        }
+        let delAction = UITableViewRowAction(style: .normal, title: "🗑") { (rowAction, indexPath) in
+            let sheetCtrl = UIAlertController(title: "Xoá nhóm này?", message: "⚠️Lưu ý: Tất cả giao dịch và ngân sách thuộc nhóm này sẽ bị mất!", preferredStyle: .actionSheet)
+            
+            let action = UIAlertAction(title: "Xoá", style: .destructive) { _ in
+                let IDc:Int = self.segment == 0 ? self.CategoriesOut[indexPath.row].ID:self.CategoriesIn[indexPath.row].ID
+                let Namec:String = self.segment == 0 ? self.CategoriesOut[indexPath.row].Name:self.CategoriesIn[indexPath.row].Name
+                
+                let DB = Connect_DB_SQLite(dbName: DBName, type: DBType)
+                if Query(Sql: "DELETE FROM Nhom WHERE Ma = \(IDc)", database: DB){
+                    print("🗑 Đã xoá nhóm: \(Namec)")
+                    
+                    if self.segment == 0 {
+                        self.CategoriesOut = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Loai = 1", database: DB)
+                    }else {
+                        self.CategoriesIn = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Loai = 1", database: DB)
+                    }
+                    self.Categories_TableView.reloadData()
+                    
+                    if Query(Sql: "DELETE FROM GiaoDich WHERE MaNhom = \(IDc)", database: DB){
+                        print("🗑 Đã xoá toàn bộ giao dịch thuộc nhóm: \(Namec)")
+                    }
+                    if Query(Sql: "DELETE FROM NganSach WHERE MaNhom = \(IDc)", database: DB){
+                        print("🗑 Đã xoá toàn bộ ngân sách thuộc nhóm: \(Namec)")
+                    }
+                }
+                sqlite3_close(DB)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Huỷ", style: .cancel){ _ in
+                self.Categories_TableView.setEditing(false, animated: true)
+            }
+            sheetCtrl.addAction(action)
+            sheetCtrl.addAction(cancelAction)
+            
+            self.present(sheetCtrl, animated: true, completion: nil)
+        }
+        editAction.backgroundColor = UIColor.init(red: 28.0/255.0, green: 179.0/255.0, blue: 29.0/255.0, alpha: 1.0)
+        delAction.backgroundColor = UIColor.red
+        return (isAddTransaction || isAddBudget) ? [editAction]:[editAction,delAction]
+    }
+
     /*
     // MARK: - Navigation
 

@@ -34,7 +34,11 @@ class StatisticsViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)
        
-        SelectWallet_Button.imageView?.image = wallet_GV != nil ? UIImage(named: (wallet_GV?.Icon)!):#imageLiteral(resourceName: "All-Wallet-icon")
+        if wallet_GV != nil {
+            SelectWallet_Button.setImage(UIImage(named: (wallet_GV?.Icon)!), for: .normal)
+        }else {
+            SelectWallet_Button.setImage(#imageLiteral(resourceName: "All-Wallet-icon"), for: .normal)
+        }
         
     }
     override func didReceiveMemoryWarning() {

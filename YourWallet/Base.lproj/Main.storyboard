@@ -40,7 +40,7 @@
                                             <constraint firstAttribute="height" constant="30" id="2Kx-Mo-9a0"/>
                                             <constraint firstAttribute="width" constant="30" id="qW0-xr-MQZ"/>
                                         </constraints>
-                                        <state key="normal" title="W" image="Wallet-2-icon"/>
+                                        <state key="normal" title="💰" image="Wallet-2-icon"/>
                                         <connections>
                                             <action selector="SelectWallet_ButtonTapped:" destination="6Tu-5B-dAf" eventType="touchUpInside" id="qLr-5c-EWd"/>
                                         </connections>
@@ -2096,7 +2096,7 @@
                                             <constraint firstAttribute="height" constant="30" id="G8z-e6-sEY"/>
                                             <constraint firstAttribute="width" constant="30" id="hhE-ST-VZa"/>
                                         </constraints>
-                                        <state key="normal" title="W" image="Wallet-2-icon"/>
+                                        <state key="normal" title="💰" image="Wallet-2-icon"/>
                                         <connections>
                                             <action selector="SelectWallet_ButtonTapped:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="vfd-M0-PjH"/>
                                         </connections>

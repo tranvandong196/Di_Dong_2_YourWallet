@@ -49,19 +49,22 @@ class AddWalletViewController: UIViewController,UITextFieldDelegate{
     @IBAction func Save_ButtonTapped(_ sender: Any) {
         self.tabBarController?.tabBar.isHidden = isSelectWallet ? true: false
         //Thao tác lưu ở đây
-        
-        let walletName = WalletName_textField.text!
-        let moneyAmount = Double(currAmount_txtField.text!)!
-        let currency = currCurrency_btn.titleLabel!.text!
-        let walletIcon:String = iconName != nil ? iconName!:""
-        
-        let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-        let sqlQueryStr = "INSERT INTO ViTien (Ma,Ten,TienTe,TongGiaTri,SoDu,Icon) VALUES (null, '\(walletName)', '\(currency)', \(moneyAmount),\(moneyAmount), '\(walletIcon)')"
-        
-        if Query(Sql: sqlQueryStr, database: database){
-            print("Đã thêm ví: \(walletName)")
+        if WalletName_textField.text! != ""{
+            let walletName = WalletName_textField.text!
+            let moneyAmount = currAmount_txtField.text! == "" ? 0.0:Double(currAmount_txtField.text!)!
+            let currency = currCurrency_btn.titleLabel!.text!
+            let walletIcon:String = iconName != nil ? iconName!:""
+            
+            let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+            let sqlQueryStr = "INSERT INTO ViTien (Ma,Ten,TienTe,TongGiaTri,SoDu,Icon) VALUES (null, '\(walletName)', '\(currency)', \(moneyAmount),\(moneyAmount), '\(walletIcon)')"
+            
+            if Query(Sql: sqlQueryStr, database: database){
+                print("Đã thêm ví: \(walletName)")
+            }
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            alert(title: "⚠️ Bạn chưa nhập tên ví", message: nil)
         }
-        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func WalletIcon_ButtonTapped(_ sender: Any) {

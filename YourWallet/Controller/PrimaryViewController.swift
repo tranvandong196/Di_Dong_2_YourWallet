@@ -83,7 +83,7 @@ class PrimaryViewController: UIViewController,UITextFieldDelegate {
                 self.DescribeToUser_Label.text = "Nhập mật khẩu để xoá"
             }
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "Huỷ", style: .cancel, handler: nil)
             sheetCtrl.addAction(action)
             sheetCtrl.addAction(cancelAction)
             

@@ -29,7 +29,6 @@
 		0A384E8E1EDCC319006CEAA9 /* AddTransaction ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E8D1EDCC319006CEAA9 /* AddTransaction ViewController.swift */; };
 		0A384E901EDCC648006CEAA9 /* SearchTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E8F1EDCC648006CEAA9 /* SearchTransactionViewController.swift */; };
 		0A384E921EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E911EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift */; };
-		0A384E941EDCDF57006CEAA9 /* SelectWallet_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */; };
 		0A39DC571EE06C3E00EE8917 /* AddAmountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC561EE06C3E00EE8917 /* AddAmountCell.swift */; };
 		0A39DC591EE0701200EE8917 /* SelectCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC581EE0701200EE8917 /* SelectCategoryCell.swift */; };
 		0A39DC5B1EE0705400EE8917 /* AddNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A39DC5A1EE0705400EE8917 /* AddNodeCell.swift */; };
@@ -124,7 +123,6 @@
 		0A384E8D1EDCC319006CEAA9 /* AddTransaction ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddTransaction ViewController.swift"; sourceTree = "<group>"; };
 		0A384E8F1EDCC648006CEAA9 /* SearchTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTransactionViewController.swift; sourceTree = "<group>"; };
 		0A384E911EDCD0BB006CEAA9 /* SelectTimeRange_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTimeRange_ViewController.swift; sourceTree = "<group>"; };
-		0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWallet_ViewController.swift; sourceTree = "<group>"; };
 		0A39DC561EE06C3E00EE8917 /* AddAmountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAmountCell.swift; sourceTree = "<group>"; };
 		0A39DC581EE0701200EE8917 /* SelectCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryCell.swift; sourceTree = "<group>"; };
 		0A39DC5A1EE0705400EE8917 /* AddNodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNodeCell.swift; sourceTree = "<group>"; };
@@ -290,7 +288,6 @@
 			isa = PBXGroup;
 			children = (
 				0A384E871EDCC24E006CEAA9 /* WalletViewController.swift */,
-				0A384E931EDCDF57006CEAA9 /* SelectWallet_ViewController.swift */,
 				0A39DC671EE0BFCE00EE8917 /* AllWalletCell.swift */,
 				0A39DC691EE0BFED00EE8917 /* WalletCell.swift */,
 				0A0E1D851EE18DAA0050B282 /* AddWalletViewController.swift */,
@@ -463,7 +460,6 @@
 				0A384E7B1EDC7D51006CEAA9 /* FileManagerExtension.swift in Sources */,
 				0A39DC571EE06C3E00EE8917 /* AddAmountCell.swift in Sources */,
 				0A3220711EEBC47B00E6CE6C /* DetailTransactionViewController.swift in Sources */,
-				0A384E941EDCDF57006CEAA9 /* SelectWallet_ViewController.swift in Sources */,
 				0A384E7E1EDC7D51006CEAA9 /* UIExtension.swift in Sources */,
 				0A799C371EDF402400A22A0C /* Currency.swift in Sources */,
 				0A4D56A71EDDCA260009779A /* BookTransactionCell.swift in Sources */,

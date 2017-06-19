@@ -288,6 +288,16 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
         let sheetCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         sheetCtrl.addAction(today)
         sheetCtrl.addAction(yesterday)
+        let df = DateFormatter()
+        df.timeZone = TimeZone.init(abbreviation: "UTC")
+        df.dateFormat = "dd/MM/yyyy"
+        if df.string(from: TimeRange.start) != df.string(from: Date().current) && TimeRange.end == TimeRange.start + 1.day - 1.second && df.string(from: TimeRange.start) != df.string(from: Date().current - 1.day){
+            let asBookTimeCurrent = UIAlertAction(title: df.string(from: TimeRange.start), style: .default){_ in
+                self.addTime = TimeRange.start
+                self.NewTransaction_TableView.reloadData()
+            }
+            sheetCtrl.addAction(asBookTimeCurrent)
+        }
         sheetCtrl.addAction(Custom)
         sheetCtrl.addAction(cancelAction)
         
