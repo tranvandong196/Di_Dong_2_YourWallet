@@ -27,7 +27,13 @@ class AddWalletViewController: UIViewController,UITextFieldDelegate{
         currCurrency_btn.layer.borderWidth = 0.7
         currCurrency_btn.layer.borderColor = UIColor.lightGray.cgColor
         currCurrency_btn.setTitle(currency_GV?.ID, for: .normal)
-        // Do any additional setup after loading the view.
+        
+        if wallet_detail != nil{
+            iconName = (wallet_detail?.Icon)!
+            WalletName_textField.text = (wallet_detail?.Name)!
+            let tmp:Double = (wallet_detail?.Balance)!
+            currAmount_txtField.text = currency_GV?.ID == "VND" ? String(describing: Int(tmp)):String(describing: tmp)
+        }
 
     }
 
@@ -43,6 +49,9 @@ class AddWalletViewController: UIViewController,UITextFieldDelegate{
     }
 
     @IBAction func Cancel_ButtonTapped(_ sender: Any) {
+        if wallet_detail != nil {
+            wallet_detail = nil
+        }
         self.tabBarController?.tabBar.isHidden = isSelectWallet ? true: false
         self.navigationController?.popViewController(animated: true)
     }
@@ -51,16 +60,33 @@ class AddWalletViewController: UIViewController,UITextFieldDelegate{
         //Thao tác lưu ở đây
         if WalletName_textField.text! != ""{
             let walletName = WalletName_textField.text!
-            let moneyAmount = currAmount_txtField.text! == "" ? 0.0:Double(currAmount_txtField.text!)!
+            let moneyAmount = currAmount_txtField.text! == "" ? 0.0:(currAmount_txtField.text!).doubleValue.toVND(ExchangeRate: (currency_GV?.ExchangeRate)!)
             let currency = currCurrency_btn.titleLabel!.text!
             let walletIcon:String = iconName != nil ? iconName!:""
-            
             let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-            let sqlQueryStr = "INSERT INTO ViTien (Ma,Ten,TienTe,TongGiaTri,SoDu,Icon) VALUES (null, '\(walletName)', '\(currency)', \(moneyAmount),\(moneyAmount), '\(walletIcon)')"
-            
-            if Query(Sql: sqlQueryStr, database: database){
-                print("Đã thêm ví: \(walletName)")
+            if wallet_detail != nil{
+                let sql = "UPDATE ViTien SET Ten = '\(walletName)', TienTe = '\(currency)', SoDu = \(moneyAmount), Icon = '\(walletIcon)' WHERE Ma = \((wallet_detail?.ID)!)"
+                if Query(Sql: sql, database: database) {
+                    print("Đã cập nhật ví: \(walletName)")
+                    
+                    let x = moneyAmount - (wallet_detail?.Balance)!
+                    
+                    if x > 0 {
+                        insertTransaction(name: "Cập nhật số dư ví", amount: x, time: Date().current, ID_Category: 20, ID_Wallet: (wallet_detail?.ID)!)
+                    }else if x < 0 {
+                        insertTransaction(name: "Cập nhật số dư ví", amount: x, time: Date().current, ID_Category: 21, ID_Wallet: (wallet_detail?.ID)!)
+                    }
+                }
+                wallet_detail = nil
+            }else{
+                let sqlQueryStr = "INSERT INTO ViTien (Ma,Ten,TienTe,TongGiaTri,SoDu,Icon) VALUES (null, '\(walletName)', '\(currency)', \(moneyAmount),\(moneyAmount), '\(walletIcon)')"
+                
+                if Query(Sql: sqlQueryStr, database: database){
+                    print("Đã thêm ví: \(walletName)")
+                }
+                
             }
+            sqlite3_close(database)
             self.navigationController?.popViewController(animated: true)
         }else{
             alert(title: "⚠️ Bạn chưa nhập tên ví", message: nil)

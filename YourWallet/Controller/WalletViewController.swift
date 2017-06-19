@@ -68,10 +68,12 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? 80:70
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == 0 ? false:true
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TotalWallet", for: indexPath) as! AllWalletCell
-            
             var sum:Double = 0
             for w in Wallets{
                 sum += w.Balance!
@@ -119,7 +121,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .normal, title: "✏️") { (rowAction, indexPath) in
             wallet_detail = self.Wallets[indexPath.row]
-            //self.pushToVC(withStoryboardID: "AddWallet_VC", animated: true)
+            self.pushToVC(withStoryboardID: "AddWalletVC", animated: true)
         }
         let delAction = UITableViewRowAction(style: .normal, title: "🗑") { (rowAction, indexPath) in
             let sheetCtrl = UIAlertController(title: "Xoá ví này?", message: "⚠️Lưu ý: Tất cả giao dịch và ngân sách thuộc ví này sẽ bị mất!", preferredStyle: .actionSheet)

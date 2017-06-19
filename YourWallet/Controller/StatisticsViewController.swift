@@ -37,7 +37,7 @@ class StatisticsViewController: UIViewController {
         if wallet_GV != nil {
             SelectWallet_Button.setImage(UIImage(named: (wallet_GV?.Icon)!), for: .normal)
         }else {
-            SelectWallet_Button.setImage(#imageLiteral(resourceName: "All-Wallet-icon"), for: .normal)
+            SelectWallet_Button.setImage(#imageLiteral(resourceName: "All-Wallet-2-icon"), for: .normal)
         }
         
     }

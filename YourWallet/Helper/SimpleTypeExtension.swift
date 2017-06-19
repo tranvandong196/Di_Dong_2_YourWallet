@@ -54,6 +54,32 @@ extension String {
         let cs = CharacterSet.init(charactersIn: characterSetIn)
         return self.trimmingCharacters(in: cs)
     }
+    var floatValue: Float {
+        let nf = NumberFormatter()
+        nf.decimalSeparator = "."
+        if let result = nf.number(from: self) {
+            return result.floatValue
+        } else {
+            nf.decimalSeparator = ","
+            if let result = nf.number(from: self) {
+                return result.floatValue
+            }
+        }
+        return 0
+    }
+    var doubleValue: Double {
+        let nf = NumberFormatter()
+        nf.decimalSeparator = "."
+        if let result = nf.number(from: self) {
+            return result.doubleValue
+        } else {
+            nf.decimalSeparator = ","
+            if let result = nf.number(from: self) {
+                return result.doubleValue
+            }
+        }
+        return 0
+    }
     
 }
 // http://www.globalnerdy.com/2016/08/30/how-to-work-with-dates-and-times-in-swift-3-part-4-adding-swift-syntactic-magic/

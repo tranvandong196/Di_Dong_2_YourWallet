@@ -54,6 +54,10 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
         isSelectCategory = false
         isSelectWallet = false
         isAddTransaction = true
+        if wallet_detail == nil && wallet_GV != nil{
+            wallet_detail = wallet_GV
+        }
+        
         NewTransaction_TableView.reloadData()
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -85,7 +89,8 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
             print("Tiền: \(amount)")
             alert(title: "⚠️", message: "Bạn chưa nhập đầy đủ thông tin")
         }else{
-            let tmp:Double = category_GV?.Kind == 0 ? -Double(amount)!:Double(amount)!
+            var tmp:Double = category_GV?.Kind == 0 ? -(amount.doubleValue):(amount.doubleValue)
+            tmp = tmp.toVND(ExchangeRate: (currency_GV?.ExchangeRate)!)
             let db = Connect_DB_SQLite(dbName: DBName, type: DBType)
             
             if transaction_GV == nil{

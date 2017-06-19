@@ -1,16 +1,15 @@
 //
-//  AddCategoryViewController.swift
+//  AddBudgetViewController.swift
 //  YourWallet
 //
-//  Created by Tran Van Dong on 2/6/17.
+//  Created by Tran Van Dong on 19/6/17.
 //  Copyright © 2017 Tran Van Dong. All rights reserved.
 //
 
 import UIKit
 
-class AddCategoryViewController: UIViewController {
+class AddBudgetViewController: UIViewController {
 
-    @IBOutlet weak var Save_Button: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,16 +22,17 @@ class AddCategoryViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     @IBAction func Cancel_ButtonTapped(_ sender: Any) {
-        self.tabBarController?.tabBar.isHidden = isSelectCategory ? true: false
+        //Huỷ ở đây
+        
+        self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func Save_ButtonTapped(_ sender: Any) {
-        self.tabBarController?.tabBar.isHidden = isSelectCategory ? true: false
-        //Thao tác lưu ở đây
+        //Lưu ở đây
+        self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.popViewController(animated: true)
     }
     /*
