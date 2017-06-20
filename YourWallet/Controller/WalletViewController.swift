@@ -62,7 +62,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         return "Tính vào tổng"
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let num = !isAddTransaction ? 1:0
+        let num = !isAddTransaction && !isAddBudget ? 1:0
         return section == 0 ? num:Wallets.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -94,7 +94,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             if isFilterByWallet && wallet_GV?.ID == Wallets[indexPath.row].ID{
                 cell.accessoryType = .checkmark
             }
-            if !isFilterByWallet && wallet_detail != nil && (wallet_detail?.ID)! == Wallets[indexPath.row].ID{
+            if !isFilterByWallet && (isAddTransaction || isAddBudget) && wallet_detail != nil && (wallet_detail?.ID)! == Wallets[indexPath.row].ID{
                 cell.accessoryType = .checkmark
             }
             return cell

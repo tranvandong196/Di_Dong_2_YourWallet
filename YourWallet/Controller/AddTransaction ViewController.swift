@@ -100,6 +100,10 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
                     print("Đã cập nhật số dư ví: \((wallet_detail?.Name)!)")
                 }
                 sqlite3_close(db)
+                amount = ""
+                name = ""
+                category_GV = nil
+                isAddTransaction = false
                 self.tabBarController?.selectedIndex = currentTabBarItem
             }else{
                 updateTransaction(name: name, amount: tmp, time: addTime, ID_Category: (category_GV?.ID)!, ID_Wallet: (wallet_detail?.ID)!, ID_Transaction: (transaction_GV?.ID)!)
@@ -127,12 +131,13 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
                 
                 transaction_GV = GetTransactionsFromSQLite(query: "SELECT * FROM GiaoDich WHERE Ma = \((transaction_GV?.ID)!)", database: db)[0]
                 sqlite3_close(db)
+                amount = ""
+                name = ""
+                category_GV = nil
+                isAddTransaction = false
                 self.navigationController?.popViewController(animated: true)
             }
-            amount = ""
-            name = ""
-            category_GV = nil
-            isAddTransaction = false
+           
             self.tabBarController?.tabBar.isHidden = false
         }
         

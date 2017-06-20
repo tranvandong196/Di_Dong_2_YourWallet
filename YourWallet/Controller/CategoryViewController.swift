@@ -84,15 +84,15 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         filterTableView(ind: segment,searchText: searchBar.text)
     }
     func filterTableView(ind:Int,searchText: String?){
-            Categories = Categories_Backup.filter({(mod) -> Bool in
-                return mod.Kind == ind
-            })
+        Categories = Categories_Backup.filter({(mod) -> Bool in
+            return mod.Kind == ind
+        })
         if searchText != nil && searchText! != ""{
             Categories = Categories.filter({(mod) -> Bool in
                 return mod.Name!.lowercased().contains(searchText!.lowercased()) ? true:searchText!.lowercased().contains(mod.Name!.lowercased())
             })
         }
-        Categories_TableView.reloadData()
+        self.Categories_TableView.reloadData()
     }
 
     
@@ -148,7 +148,7 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 if Query(Sql: "DELETE FROM Nhom WHERE Ma = \(IDc)", database: DB){
                     print("🗑 Đã xoá nhóm: \(Namec)")
                     //self.Categories_TableView.deleteRows(at: [indexPath], with: .left)
-                    self.Categories = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom", database: DB)
+                    self.Categories_Backup = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom", database: DB)
                     self.filterTableView(ind: self.segment, searchText: nil)
                     
                     if Query(Sql: "DELETE FROM GiaoDich WHERE MaNhom = \(IDc)", database: DB){
