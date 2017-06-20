@@ -39,6 +39,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     @IBAction func AddWallet_ButtonTapped(_ sender: Any) {
         isAddWallet = true
+        wallet_detail = nil
         pushToVC(withStoryboardID: "AddWalletVC", animated: true)
     }
     
