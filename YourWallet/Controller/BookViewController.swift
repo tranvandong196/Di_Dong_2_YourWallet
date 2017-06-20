@@ -27,7 +27,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var OpeningBalance_Label: UILabel!
     @IBOutlet weak var EndingBalance_Label: UILabel!
     @IBOutlet weak var TotalMoneyTransactions_Label: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         Copy_DB_To_DocURL(dbName: DBName, type: DBType)
@@ -328,7 +328,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let df = DateFormatter()
         df.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
         var Titles = ["???","???","???"]
-        if Range.end == Range.start + 1.day - 1.second{
+        if getUnitTime(Range: TimeRange) == 1.day{
             df.dateFormat = "dd/MM/yyyy"
             if df.string(from: Range.start) == df.string(from: Date().current){
                 Titles = ["HÔM QUA","HÔM NAY","NGÀY MAI"]
@@ -339,7 +339,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }else{
                 Titles = [df.string(from: Range.start - 1.day),df.string(from: Range.start),df.string(from: Range.start + 1.day)]
             }
-        }else if Range.end == Range.start + 1.month - 1.second{
+        }else if getUnitTime(Range: TimeRange) == 1.month{
             df.dateFormat = "MM/yyyy"
             if df.string(from: Range.start) == df.string(from: Date()){
                 Titles = ["THÁNG QUA","THÁNG NÀY","THÁNG SAU"]
@@ -350,7 +350,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }else{
                 Titles = [df.string(from: Range.start - 1.month),df.string(from: Range.start),df.string(from: Range.start + 1.month)]
             }
-        }else if Range.end == Range.start + 1.year - 1.second{
+        }else if getUnitTime(Range: TimeRange) == 1.year{
             df.dateFormat = "yyyy"
             if df.string(from: Range.start) == df.string(from: Date().current){
                 Titles = ["NĂM QUA","NĂM NAY","NĂM SAU"]
@@ -375,7 +375,8 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         default:
             break
         }
-        return 0.second
+        
+        return 1.month
     }
     
     func changeTimeRange(Operator: String){
@@ -388,6 +389,8 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }else if Operator == "-"{
             TimeRange.update(start:  (TimeRange.start - unit), end: (TimeRange.end - unit))
         }
+        print(unit)
+        print(TimeRange)
         setupTitleTimeRange()
         locale = NSTimeZone.init(abbreviation: "UTC")
         NSTimeZone.default = locale! as TimeZone
