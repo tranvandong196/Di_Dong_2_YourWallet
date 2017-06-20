@@ -30,13 +30,13 @@ struct TIMERANGE{
 }
 var TimeRange = TIMERANGE(start: Date(),end: Date())    //Chỉ màn hình sổ giao dịch mới được thay đổi giá trị, màn hình thống kê mặc định sẽ sử dụng
 /* Màn hình danh sách ví và nhóm sẽ có chức năng khác nhau: giữa CHỌN và XEM
-    -> Đặt biến isSelectWallet = false ở viewWillAppear ở màn hình Sổ giao dịch, thống kê
+    -> Đặt biến isFilterByWallet = false ở viewWillAppear ở màn hình Sổ giao dịch, thống kê
     -> Đặt biến isSelectCategory = false ở viewWillAppear ở màn hình Thêm giao dịch, ví
 */
 var isAddTransaction:Bool = false
 var isAddWallet:Bool = false
 var isAddBudget:Bool = false
-var isSelectWallet:Bool = false
+var isFilterByWallet:Bool = false
 var isSelectCategory:Bool = false
 
 var transaction_GV: Transaction? = nil

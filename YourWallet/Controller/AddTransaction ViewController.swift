@@ -52,7 +52,7 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
         
         print("🖥 Thêm giao dịch --------------------------------")
         isSelectCategory = false
-        isSelectWallet = false
+        //isFilterByWallet = false
         isAddTransaction = true
         if wallet_detail == nil && wallet_GV != nil{
             wallet_detail = wallet_GV
@@ -120,6 +120,8 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
                     if Query(Sql: "UPDATE ViTien SET SoDu = \(balanceFinal) WHERE Ma = \((wallet_detail?.ID)!)", database: db){
                         print("Đã cập nhật số dư ví: \((wallet_detail?.Name)!)")
                     }
+                    
+                    //wallet_detail = nil
                 }
                 
                 
@@ -130,7 +132,6 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
             amount = ""
             name = ""
             category_GV = nil
-            //wallet_detail = nil
             isAddTransaction = false
             self.tabBarController?.tabBar.isHidden = false
         }

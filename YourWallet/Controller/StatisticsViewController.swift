@@ -28,7 +28,7 @@ class StatisticsViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         print("🖥 Thống kê --------------------------------")
-        isSelectWallet = false
+        isFilterByWallet = false
         isAddTransaction = false
         currentTabBarItem = 3
         self.tabBarController?.tabBar.isHidden = false
@@ -47,7 +47,7 @@ class StatisticsViewController: UIViewController {
     }
     
     @IBAction func SelectWallet_ButtonTapped(_ sender: Any) {
-        isSelectWallet = true
+        isFilterByWallet = true
         pushToVC(withStoryboardID: "WalletVC",animated: true)
     }
 

@@ -52,11 +52,11 @@ class AddWalletViewController: UIViewController,UITextFieldDelegate{
         if wallet_detail != nil {
             wallet_detail = nil
         }
-        self.tabBarController?.tabBar.isHidden = isSelectWallet ? true: false
+        self.tabBarController?.tabBar.isHidden = isFilterByWallet ? true: false
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func Save_ButtonTapped(_ sender: Any) {
-        self.tabBarController?.tabBar.isHidden = isSelectWallet ? true: false
+        self.tabBarController?.tabBar.isHidden = isFilterByWallet ? true: false
         //Thao tác lưu ở đây
         if WalletName_textField.text! != ""{
             let walletName = WalletName_textField.text!

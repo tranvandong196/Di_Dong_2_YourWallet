@@ -23,7 +23,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
         
         isAddWallet = false
-        self.tabBarController?.tabBar.isHidden = isSelectWallet ? true:false
+        self.tabBarController?.tabBar.isHidden = isFilterByWallet ? true:false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         let db = Connect_DB_SQLite(dbName: DBName, type: DBType)
@@ -44,7 +44,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        if isSelectWallet || isAddWallet || isAddTransaction || isAddBudget{
+        if isFilterByWallet || isAddWallet || isAddTransaction || isAddBudget{
             Wallets_TableView.allowsSelection = true
         }else {
             Wallets_TableView.allowsSelection = false
@@ -81,7 +81,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             let sumstr:String = sum.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
             
             cell.TotalMoney_Label.text = "\(sumstr)" + (currency_GV?.Symbol)!
-            if isSelectWallet && wallet_GV == nil{
+            if isFilterByWallet && wallet_GV == nil{
                 cell.accessoryType = .checkmark
             }
             return cell
@@ -91,14 +91,17 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             cell.WalletName_Label.text = Wallets[indexPath.row].Name
             let tmp = Wallets[indexPath.row].Balance!.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
             cell.WalletEndingBalance_Label.text = "\(tmp)" + (currency_GV?.Symbol)!
-            if (isSelectWallet && wallet_GV?.ID == Wallets[indexPath.row].ID) || (wallet_detail != nil && (wallet_detail?.ID)! == Wallets[indexPath.row].ID){
+            if isFilterByWallet && wallet_GV?.ID == Wallets[indexPath.row].ID{
+                cell.accessoryType = .checkmark
+            }
+            if !isFilterByWallet && wallet_detail != nil && (wallet_detail?.ID)! == Wallets[indexPath.row].ID{
                 cell.accessoryType = .checkmark
             }
             return cell
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isSelectWallet{
+        if isFilterByWallet{
             if indexPath.section == 0{
                 wallet_GV = nil
                 UserDefaults.standard.setValue(Int(-1), forKey: "Wallet")
@@ -163,7 +166,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
         editAction.backgroundColor = UIColor.init(red: 28.0/255.0, green: 179.0/255.0, blue: 29.0/255.0, alpha: 1.0)
         delAction.backgroundColor = UIColor.red
-        return (isSelectWallet || isAddWallet || isAddTransaction || isAddBudget) ? [editAction]:[editAction,delAction]
+        return (isFilterByWallet || isAddWallet || isAddTransaction || isAddBudget) ? [editAction]:[editAction,delAction]
     }
     
     /*

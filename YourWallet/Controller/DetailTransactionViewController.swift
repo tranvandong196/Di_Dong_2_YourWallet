@@ -23,12 +23,11 @@ class DetailTransactionViewController: UIViewController,UITableViewDelegate,UITa
         isAddTransaction = false
         
         let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-        let C = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Ma = '\(String(describing: (transaction_GV?.ID_Category)!))'", database: database)
-        category_GV = C[0]
-        if wallet_detail == nil{
-            let W = GetWalletsFromSQLite(query: "SELECT * FROM Nhom WHERE Ma = \(String(describing: (transaction_GV?.ID_Wallet)!))", database: database)
-            wallet_detail = W[0]
-        }
+        
+        transaction_GV = GetTransactionsFromSQLite(query: "SELECT * FROM GiaoDich WHERE Ma = \((transaction_GV?.ID)!)", database: database)[0]
+        category_GV = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Ma = '\(String(describing: (transaction_GV?.ID_Category)!))'", database: database)[0]
+        wallet_detail = GetWalletsFromSQLite(query: "SELECT * FROM ViTien WHERE Ma = \(String(describing: (transaction_GV?.ID_Wallet)!))", database: database)[0]
+
         sqlite3_close(database)
         
         DetailTransaction_TableView.reloadData()

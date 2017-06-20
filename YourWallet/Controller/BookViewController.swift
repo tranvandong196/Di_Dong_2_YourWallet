@@ -52,7 +52,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     override func viewWillAppear(_ animated: Bool) {
         print("🖥 Sổ giao dịch --------------------------------")
-        isSelectWallet = false
+        isFilterByWallet = false
         transaction_GV = nil
         isAddTransaction = false
         currentTabBarItem = 0
@@ -81,7 +81,7 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     @IBAction func SelectWallet_ButtonTapped(_ sender: Any) {
-        isSelectWallet = true
+        isFilterByWallet = true
         pushToVC(withStoryboardID: "WalletVC",animated: true)
     }
     @IBAction func MoreOption_ButtonTapped(_ sender: Any, forEvent event: UIEvent) {
