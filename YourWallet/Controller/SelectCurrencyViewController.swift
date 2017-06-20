@@ -36,9 +36,12 @@ class SelectCurrencyViewController: UIViewController,UITableViewDelegate, UITabl
         return 50
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Currency-Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Currency-Cell", for: indexPath)
         cell.textLabel?.text = Currencies[indexPath.row].ID + "   ⇢   " + Currencies[indexPath.row].Name
-            return cell
+        if (currency_GV?.ID)! == Currencies[indexPath.row].ID {
+            cell.accessoryType = .checkmark
+        }
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         currency_GV = Currencies[indexPath.row]
