@@ -16,6 +16,7 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
     @IBOutlet weak var Categories_TableView: UITableView!
     @IBOutlet weak var KindOfCategory_SegmentedControl: UISegmentedControl!
     var segment:Int = 0
+    var searchTextLast:String? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         KindOfCategory_SegmentedControl.selectedSegmentIndex = category_GV == nil ? segment:(category_GV?.Kind)!
@@ -23,32 +24,29 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         searchBarSetup()
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-       
+        
         // Dispose of any resources that can be recreated.
     }
     override func viewWillAppear(_ animated: Bool) {
         print("🖥 Nhóm --------------------------------")
         self.tabBarController?.tabBar.isHidden = (isAddTransaction || isAddWallet) ? true:false
         let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-
-        //CategoriesOut = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Loai = 0", database: database)
-        //CategoriesIn = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom WHERE Loai = 1", database: database)
-        Categories = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom", database: database)
-        Categories_Backup = Categories
+        
+        Categories_Backup = GetCategoriesFromSQLite(query: "SELECT * FROM Nhom", database: database)
         sqlite3_close(database)
         
-        filterTableView(ind: segment, searchText: nil)
-
+        filterTableView(ind: segment, searchText: searchTextLast)
+        
     }
     @IBAction func KindOfCategory_SegmentedControlTapped(_ sender: Any) {
         segment = KindOfCategory_SegmentedControl.selectedSegmentIndex
         self.filterTableView(ind: segment, searchText: nil)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         searchBarSetup()
-       
+        
     }
     @IBAction func addCategory_ButtonTapped(_ sender: Any) {
         pushToVC(withStoryboardID: "AddCategoryVC", animated: true)
@@ -64,7 +62,7 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         //searchBar.selectedScopeButtonIndex = 0
         self.Categories_TableView.tableHeaderView = searchBar
     }
-
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         searchBar.setShowsCancelButton(true, animated: true)
@@ -81,6 +79,7 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         searchBar.endEditing(true)
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchTextLast = searchBar.text
         filterTableView(ind: segment,searchText: searchBar.text)
     }
     func filterTableView(ind:Int,searchText: String?){
@@ -94,7 +93,7 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
         self.Categories_TableView.reloadData()
     }
-
+    
     
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -102,7 +101,7 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Categories.count
     }
@@ -121,7 +120,7 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         category_GV = Categories[indexPath.row]
         
@@ -173,15 +172,15 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         delAction.backgroundColor = UIColor.red
         return (isAddTransaction || isAddBudget) ? [editAction]:[editAction,delAction]
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

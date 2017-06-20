@@ -14,9 +14,7 @@ class SearchTransactionViewController: UIViewController,UITableViewDelegate,UITa
     let dateFormattor = DateFormatter()
     var Transactions = [Transaction]()
     var Transactions_Backup = [Transaction]()
-    var Transaction_primaryCount:Int = 0
-    var TransID:Int = -1
-    var indexCell:IndexPath!
+    var searchTextLast:String? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,24 +22,16 @@ class SearchTransactionViewController: UIViewController,UITableViewDelegate,UITa
         NSTimeZone.default = locale! as TimeZone
         dateFormattor.timeZone = TimeZone.init(abbreviation: "UTC") //Tránh tự động cộng giờ theo vùng
         dateFormattor.dateFormat = "M yyyy, EEEE"
-        let ID:Int = wallet_GV == nil ? -1:(wallet_GV?.ID)!
-        getTransactionList(WalletID: ID, Range: TimeRange)
-        Transaction_primaryCount = Transactions_Backup.count
         searchBarSetup()
-        filterTableView(searchText: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         let ID:Int = wallet_GV == nil ? -1:(wallet_GV?.ID)!
         getTransactionList(WalletID: ID, Range: TimeRange)
-        if Transaction_primaryCount != Transactions_Backup.count{
-            ListTransaction_TableView.deleteRows(at: [indexCell!], with: .left)
-        }
-        
-        
-        
+        filterTableView(searchText: searchTextLast)
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -75,6 +65,7 @@ class SearchTransactionViewController: UIViewController,UITableViewDelegate,UITa
         searchBar.endEditing(true)
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchTextLast = searchBar.text
         filterTableView(searchText: searchBar.text)
     }
     func filterTableView(searchText: String?){
@@ -108,14 +99,14 @@ class SearchTransactionViewController: UIViewController,UITableViewDelegate,UITa
         let sqlT = "SELECT * FROM GiaoDich WHERE ThoiDiem BETWEEN '\(date1)' AND '\(date2)'\(conditionByWallet) ORDER BY ThoiDiem ASC"
         let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
         Transactions_Backup = GetTransactionsFromSQLite(query: sqlT, database: database)
-        Transactions = Transactions_Backup
+        //Transactions = Transactions_Backup
         sqlite3_close(database)
     }
     // MARK: ** TableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Transactions.count
     }
@@ -140,8 +131,6 @@ class SearchTransactionViewController: UIViewController,UITableViewDelegate,UITa
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        indexCell = indexPath
-        Transaction_primaryCount = Transactions_Backup.count
         transaction_GV = Transactions[indexPath.row]
         let IDW:Int = (transaction_GV?.ID_Wallet)!
         if wallet_GV == nil{
@@ -153,15 +142,15 @@ class SearchTransactionViewController: UIViewController,UITableViewDelegate,UITa
         }
         pushToVC(withStoryboardID: "DetailTransactionVC", animated: true)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
