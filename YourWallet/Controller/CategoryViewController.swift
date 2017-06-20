@@ -70,6 +70,7 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         searchBar.setShowsCancelButton(false, animated: true)
+        searchTextLast = nil
         filterTableView(ind: segment, searchText: nil)
         searchBar.text = nil
         searchBar.resignFirstResponder()
