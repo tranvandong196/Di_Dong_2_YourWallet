@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "StatisticsViewController.viewDidLoad() -&gt; ():StatisticsViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "StatisticsViewController.viewWillAppear(Bool) -&gt; ():StatisticsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "StatisticsViewController.date2">
+            </PersistentString>
+            <PersistentString
+               value = "StatisticsViewController.date1">
+            </PersistentString>
+            <PersistentString
+               value = "sqlite3_column_text(statement, 1)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SelectTimeRange_ViewController.done() -&gt; Bool:SelectTimeRange_ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "StatisticsViewController.date2">
+            </PersistentString>
+            <PersistentString
+               value = "date1">
+            </PersistentString>
+            <PersistentString
+               value = "StatisticsViewController.date1">
+            </PersistentString>
+            <PersistentString
+               value = "date2">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
