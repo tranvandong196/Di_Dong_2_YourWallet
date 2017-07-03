@@ -3,19 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "StatisticsViewController.viewDidLoad() -&gt; ():StatisticsViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "StatisticsViewController.viewWillAppear(Bool) -&gt; ():StatisticsViewController.swift">
+         contextName = "AddBudgetViewController.viewWillAppear(Bool) -&gt; ():AddBudgetViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "StatisticsViewController.date2">
-            </PersistentString>
-            <PersistentString
-               value = "StatisticsViewController.date1">
-            </PersistentString>
-            <PersistentString
-               value = "sqlite3_column_text(statement, 1)">
+               value = "String(cString: sqlite3_column_text(statement, 1))">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -35,6 +26,37 @@
                value = "date2">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddBudgetViewController.createDatePicker() -&gt; ():AddBudgetViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "BudgetViewController.viewWillAppear(Bool) -&gt; ():BudgetViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "budgetNames">
+            </PersistentString>
+            <PersistentString
+               value = "budget">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "StatisticsViewController.viewWillAppear(Bool) -&gt; ():StatisticsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "StatisticsViewController.date2">
+            </PersistentString>
+            <PersistentString
+               value = "StatisticsViewController.date1">
+            </PersistentString>
+            <PersistentString
+               value = "sqlite3_column_text(statement, 1)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "StatisticsViewController.viewDidLoad() -&gt; ():StatisticsViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

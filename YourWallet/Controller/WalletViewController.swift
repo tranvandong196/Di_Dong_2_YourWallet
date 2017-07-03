@@ -102,22 +102,35 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isFilterByWallet{
-            if indexPath.section == 0{
-                wallet_GV = nil
-                UserDefaults.standard.setValue(Int(-1), forKey: "Wallet")
-                print("Chọn tất cả ví")
-            }else{
-                wallet_GV = Wallets[indexPath.row]
-                UserDefaults.standard.setValue(Wallets[indexPath.row].ID, forKey: "Wallet")
+        if(AddBudgetViewController.isAddingBudget == true)
+        {
+            if indexPath.section != 0{
+                
                 print("Đã chọn ví: \(Wallets[indexPath.row].Name!)")
+                AddBudgetViewController.WalletCode = Wallets[indexPath.row].ID
+                self.navigationController?.popViewController(animated: true)
             }
-            self.navigationController?.popViewController(animated: true)
-        }else{
-            wallet_detail = Wallets[indexPath.row]
-            self.navigationController?.popViewController(animated: true)
-            //pushToVC(withStoryboardID: "ID Màn hình xem chi tiết ví", animated: true)
         }
+        else{
+            if isFilterByWallet{
+                if indexPath.section == 0{
+                    wallet_GV = nil
+                    UserDefaults.standard.setValue(Int(-1), forKey: "Wallet")
+                    print("Chọn tất cả ví")
+                }else{
+                    wallet_GV = Wallets[indexPath.row]
+                    UserDefaults.standard.setValue(Wallets[indexPath.row].ID, forKey: "Wallet")
+                    print("Đã chọn ví: \(Wallets[indexPath.row].Name!)")
+                }
+                self.navigationController?.popViewController(animated: true)
+            }else{
+                wallet_detail = Wallets[indexPath.row]
+                self.navigationController?.popViewController(animated: true)
+                //pushToVC(withStoryboardID: "ID Màn hình xem chi tiết ví", animated: true)
+            }
+        }
+        
+        
         
     }
     

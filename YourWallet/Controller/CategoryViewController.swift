@@ -124,7 +124,10 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         category_GV = Categories[indexPath.row]
-        
+        if(AddBudgetViewController.isAddingBudget == true){//Goi tu man hinh them ngan sach
+            AddBudgetViewController.CategoryCode = Categories[indexPath.row].ID
+            self.navigationController?.popViewController(animated: true)
+        }
         if isSelectCategory{
             self.navigationController?.popViewController(animated: true)
         }else{
