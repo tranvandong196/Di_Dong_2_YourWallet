@@ -49,6 +49,7 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
     }
     @IBAction func addCategory_ButtonTapped(_ sender: Any) {
+        category_GV = nil
         pushToVC(withStoryboardID: "AddCategoryVC", animated: true)
     }
     

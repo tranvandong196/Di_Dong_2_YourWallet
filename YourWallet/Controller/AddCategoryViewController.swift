@@ -13,9 +13,20 @@ class AddCategoryViewController: UIViewController {
     @IBOutlet weak var CategoryName_Label: UITextField!
     @IBOutlet weak var SelectIconCategory_Button: UIButton!
     @IBOutlet weak var Save_Button: UIBarButtonItem!
+    
+    @IBOutlet weak var SelectKind_Segment: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        iconName = nil
+        if category_GV == nil{
+            iconName = nil
+            SelectKind_Segment.selectedSegmentIndex = 0
+        }else{
+            iconName = (category_GV?.Icon)!
+            SelectKind_Segment.selectedSegmentIndex = (category_GV?.Kind)!
+            CategoryName_Label.text = (category_GV?.Name)!
+        }
+
         // Do any additional setup after loading the view.
     }
 
@@ -32,6 +43,7 @@ class AddCategoryViewController: UIViewController {
     }
     
     @IBAction func Cancel_ButtonTapped(_ sender: Any){
+        category_GV = nil
         self.tabBarController?.tabBar.isHidden = isSelectCategory ? true: false
         self.navigationController?.popViewController(animated: true)
     }
@@ -41,13 +53,23 @@ class AddCategoryViewController: UIViewController {
             self.tabBarController?.tabBar.isHidden = isSelectCategory ? true: false
             //Thao tác lưu ở đây
             let name:String = CategoryName_Label.text!
+            let kind:Int = SelectKind_Segment.selectedSegmentIndex
             let DB = Connect_DB_SQLite(dbName: DBName, type: DBType)
-            let sql = "INSERT INTO Nhom(Ma, Ten, Loai, Icon) VALUES(null, '\(name)', 1, '\(iconName!)')"
-            print(sql)
-            if Query(Sql: sql, database: DB){
-                print("Đã thêm nhóm: \(name)")
+            if category_GV == nil{
+                let sql = "INSERT INTO Nhom(Ma, Ten, Loai, Icon) VALUES(null, '\(name)', \(kind), '\(iconName!)')"
+                print(sql)
+                if Query(Sql: sql, database: DB){
+                    print("Đã thêm nhóm: \(name)")
+                }
+            }else{
+                let sql = "UPDATE Nhom SET Ten = '\(name)', Loai = \(kind), Icon = '\(iconName!)' WHERE Ma = \((category_GV?.ID)!)"
+                print(sql)
+                if Query(Sql: sql, database: DB){
+                    print("Đã cập nhật nhóm: \(name)")
+                }
             }
             sqlite3_close(DB)
+            category_GV = nil
             self.navigationController?.popViewController(animated: true)
         }
     }
