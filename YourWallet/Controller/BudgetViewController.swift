@@ -16,10 +16,10 @@ class BudgetViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var endedOutlet: UIButton!
     @IBAction func endedBtn(_ sender: Any) {
         if (showEndedBudget == true){
-            endedOutlet.setTitle("Xem ngân sách đang hoạt động", for: .normal)
+            endedOutlet.setTitle("Xem ngân sách đã kết thúc", for: .normal)
         }
         else{
-            endedOutlet.setTitle("Xem ngân sách đã kết thúc", for: .normal)
+            endedOutlet.setTitle("Xem ngân sách đang hoạt động", for: .normal)
         }
         showEndedBudget = !showEndedBudget
         reload()
