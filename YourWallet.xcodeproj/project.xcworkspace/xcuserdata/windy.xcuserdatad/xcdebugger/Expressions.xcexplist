@@ -73,6 +73,9 @@
                value = "CategoryCode">
             </PersistentString>
             <PersistentString
+               value = "AddBudgetViewController.isAddingBudget">
+            </PersistentString>
+            <PersistentString
                value = "String(cString: sqlite3_column_text(statement, 1))">
             </PersistentString>
             <PersistentString

@@ -222,6 +222,7 @@ class BudgetViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .normal, title: "✏️") { (rowAction, indexPath) in
             BudgetViewController.isEditing = true
+            isAddBudget = true
             AddBudgetViewController.Id = self.budget[indexPath.row].ID
             AddBudgetViewController.CategoryCode = self.budget[indexPath.row].ID_Category
             AddBudgetViewController.WalletCode = self.budget[indexPath.row].ID_Wallet
