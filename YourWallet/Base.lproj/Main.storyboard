@@ -1754,7 +1754,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="147" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YPS-b2-MoC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="147" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YPS-b2-MoC">
                                 <rect key="frame" x="16" y="72" width="343" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -2558,7 +2558,7 @@
         <!--Statistics View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController storyboardIdentifier="StatisticsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" customClass="StatisticsViewController" customModule="YourWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StatisticsVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" customClass="StatisticsViewController" customModule="YourWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -2631,12 +2631,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veS-Ji-7Qj" userLabel="Content">
                                 <rect key="frame" x="0.0" y="109" width="375" height="509"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dIt-4f-TTQ">
-                                        <rect key="frame" x="8" y="323" width="359" height="186"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dIt-4f-TTQ">
+                                        <rect key="frame" x="8" y="315" width="359" height="194"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="p6R-zj-833" customClass="StatisticTableViewCell" customModule="YourWallet" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="359" height="44"/>
+                                                <rect key="frame" x="0.0" y="55.5" width="359" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p6R-zj-833" id="bmG-XE-zWX">
                                                     <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
@@ -2728,7 +2728,7 @@
                                     <constraint firstItem="hfr-oe-s8K" firstAttribute="centerX" secondItem="B4j-Sx-2t9" secondAttribute="centerX" id="KRr-Tz-tyG"/>
                                     <constraint firstItem="B4j-Sx-2t9" firstAttribute="top" secondItem="veS-Ji-7Qj" secondAttribute="top" constant="46" id="Tbx-ZU-rch"/>
                                     <constraint firstAttribute="trailing" secondItem="B4j-Sx-2t9" secondAttribute="trailing" constant="8" id="dOa-Pe-jBe"/>
-                                    <constraint firstItem="dIt-4f-TTQ" firstAttribute="top" secondItem="B4j-Sx-2t9" secondAttribute="bottom" constant="8" symbolic="YES" id="hfn-JR-oHF"/>
+                                    <constraint firstItem="dIt-4f-TTQ" firstAttribute="top" secondItem="B4j-Sx-2t9" secondAttribute="bottom" id="hfn-JR-oHF"/>
                                     <constraint firstItem="B4j-Sx-2t9" firstAttribute="leading" secondItem="veS-Ji-7Qj" secondAttribute="leading" constant="8" id="iQq-a1-UUn"/>
                                 </constraints>
                             </view>
