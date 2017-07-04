@@ -97,6 +97,14 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBAction func ViewStatistic_ButtonTapped(_ sender: Any) {
         self.view.removeFromSuperview()
         //pushToVC(withStoryboardID: "StatisticsVC", animated: true)
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormat.timeZone = TimeZone.init(abbreviation: "UTC")
+
+        StatisticsViewController.showOnlyOneDay = true
+        StatisticsViewController.date1 = dateFormat.string(from: TimeRange.start)
+        StatisticsViewController.date2 = dateFormat.string(from: TimeRange.end)
+        
         self.tabBarController?.selectedViewController = self.tabBarController?.viewControllers?[Int(3)]
         self.tabBarController?.selectedIndex = 3
     }

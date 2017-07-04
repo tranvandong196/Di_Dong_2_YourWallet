@@ -47,7 +47,7 @@ class SelectTimeRange_ViewController: UIViewController {
         // format for picker
         datePicker.datePickerMode = .date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateRaw1 = dateFormatter.date(from: StatisticsViewController.date1)!
         dateFormatter.dateFormat = "dd-MM-yyyy"
         datePicker.setDate(dateRaw1, animated: true)
@@ -151,7 +151,7 @@ class SelectTimeRange_ViewController: UIViewController {
             
             
             //Bills.removeAll()
-            StatisticsViewController.date1 = date1!
+            StatisticsViewController.date1 = date1! + " 00:00:00"
             StatisticsViewController.date2 = date2! + " 23:59:59"
             
             self.navigationController?.popViewController(animated: true)

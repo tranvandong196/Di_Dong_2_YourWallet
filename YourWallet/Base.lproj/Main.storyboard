@@ -2030,7 +2030,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwS-sf-gqt">
                                 <rect key="frame" x="117" y="89" width="140" height="30"/>
@@ -2064,13 +2064,13 @@
                                 <rect key="frame" x="86" y="268" width="241" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bxW-46-GTz">
                                 <rect key="frame" x="86" y="345" width="241" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2s-z9-Mdj">
                                 <rect key="frame" x="117" y="133" width="140" height="30"/>
@@ -2705,8 +2705,19 @@
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B4j-Sx-2t9" customClass="PieChartView" customModule="Charts">
                                         <rect key="frame" x="8" y="8" width="359" height="307"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông báo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icC-5Y-5Ac">
+                                                <rect key="frame" x="8" y="8" width="351" height="19.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" red="1" green="0.092556328756368766" blue="0.057343643349790585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="icC-5Y-5Ac" secondAttribute="trailing" id="Gcp-nh-dSQ"/>
+                                            <constraint firstItem="icC-5Y-5Ac" firstAttribute="leading" secondItem="B4j-Sx-2t9" secondAttribute="leadingMargin" id="biq-Ye-52x"/>
+                                            <constraint firstItem="icC-5Y-5Ac" firstAttribute="top" secondItem="B4j-Sx-2t9" secondAttribute="topMargin" id="eIn-8S-QkV"/>
                                             <constraint firstAttribute="width" secondItem="B4j-Sx-2t9" secondAttribute="height" multiplier="359:275" constant="-41.774545454545432" id="yBj-jz-hus"/>
                                         </constraints>
                                     </view>
@@ -2743,6 +2754,7 @@
                         <outlet property="pieChartView" destination="B4j-Sx-2t9" id="RKI-sX-oxK"/>
                         <outlet property="tableView" destination="dIt-4f-TTQ" id="zD7-Po-wK8"/>
                         <outlet property="txtDate" destination="1ve-xF-6VA" id="C8O-7a-iix"/>
+                        <outlet property="txtNotif" destination="icC-5Y-5Ac" id="syK-Tc-yYI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -2768,7 +2780,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cik-Ee-PXj">
                                 <rect key="frame" x="107" y="137" width="203" height="30"/>
@@ -2777,7 +2789,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đến ngày:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9P-Ex-Emo">
                                 <rect key="frame" x="49" y="194" width="125" height="29"/>

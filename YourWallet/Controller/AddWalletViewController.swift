@@ -9,8 +9,7 @@
 import UIKit
 
 class AddWalletViewController: UIViewController,UITextFieldDelegate{
-
-
+    
     @IBOutlet weak var WalletName_textField: UITextField!
     @IBOutlet weak var currCurrency_btn: UIButton!
     @IBOutlet weak var currAmount_txtField: UITextField!
@@ -21,7 +20,7 @@ class AddWalletViewController: UIViewController,UITextFieldDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        iconName = nil
+        iconName = "ATM-icon"
         self.WalletName_textField.delegate = self
         currCurrency_btn.layer.cornerRadius = 3
         currCurrency_btn.layer.borderWidth = 0.7

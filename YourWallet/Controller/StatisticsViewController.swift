@@ -13,6 +13,7 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
 
     static var date1 = "";
     static var date2 = "";
+    static var showOnlyOneDay = false
     
     var typeNameArray = [String]()
     var iconArray = [String]()
@@ -23,6 +24,7 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
     @IBOutlet weak var txtDate: UILabel!
     @IBOutlet weak var pieChartView: PieChartView!
     
+    @IBOutlet weak var txtNotif: UILabel!
     @IBOutlet weak var SelectWallet_Button: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,28 +42,34 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
         
         let firstDate = "01/\(components.month!)/\(components.year!)"
         
-        
+    
         txtDate.text = firstDate + "-" + currDate
         
-        StatisticsViewController.date1 = "\(components.year!)-\(components.month!)-01"
-        StatisticsViewController.date2 = "\(components.year!)-\(components.month!)-\(components.day!)" + " 23:59:59"
+        if(StatisticsViewController.showOnlyOneDay == false){
+            
+            StatisticsViewController.date1 = "\(components.year!)-\(components.month!)-01 00:00:00"
+            StatisticsViewController.date2 = "\(components.year!)-\(components.month!)-\(components.day!)" + " 23:59:59"
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-M-dd HH:mm:ss"
+            let dateRaw1 = dateFormatter.date(from: StatisticsViewController.date1)!
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            StatisticsViewController.date1 = dateFormatter.string(from: dateRaw1)
+            
+            dateFormatter.dateFormat = "yyyy-M-dd HH:mm:ss"
+            let dateRaw2 = dateFormatter.date(from: StatisticsViewController.date2)!
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            StatisticsViewController.date2 = dateFormatter.string(from: dateRaw2)
+
+        }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-M-dd"
-        let dateRaw1 = dateFormatter.date(from: StatisticsViewController.date1)!
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        StatisticsViewController.date1 = dateFormatter.string(from: dateRaw1)
         
-        dateFormatter.dateFormat = "yyyy-M-dd HH:mm:ss"
-        let dateRaw2 = dateFormatter.date(from: StatisticsViewController.date2)!
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        StatisticsViewController.date2 = dateFormatter.string(from: dateRaw2)
     }
     override func viewWillAppear(_ animated: Bool) {
         print("🖥 Thống kê --------------------------------")
-        
+        txtNotif.text = ""
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateRaw1 = dateFormatter.date(from: StatisticsViewController.date1)!
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let firstDate = dateFormatter.string(from: dateRaw1)
@@ -71,15 +79,21 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let currDate = dateFormatter.string(from: dateRaw2)
 
-        
-        txtDate.text = firstDate + "-" + currDate
+        if(StatisticsViewController.showOnlyOneDay == false)
+        {
+            txtDate.text = firstDate + "-" + currDate
+        }
+        else{
+            txtDate.text = firstDate
+        }
+        StatisticsViewController.showOnlyOneDay = false
         
         typeNameArray = [String]()
         iconArray = [String]()
         valueArray = [Double]()
         
         //Lay du lieu tu dbs
-        let sql = "Select * From (Select Sum(SoTien), MaNhom From GiaoDich Where ThoiDiem >= '2014-05-01' AND ThoiDiem <= '2019-05-11' GROUP BY MaNhom) as A JOIN Nhom WHERE NHOM.MA = A.MANHOM and Nhom.Loai = 0"
+        let sql = "Select * From (Select Sum(SoTien), MaNhom From GiaoDich Where ThoiDiem >= '" + StatisticsViewController.date1 + "' AND ThoiDiem <= '" + StatisticsViewController.date2 + "' GROUP BY MaNhom) as A JOIN Nhom WHERE NHOM.MA = A.MANHOM and Nhom.Loai = 0"
         
         print(sql)
     
@@ -181,6 +195,11 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
             SelectWallet_Button.setImage(UIImage(named: (wallet_GV?.Icon)!), for: .normal)
         }else {
             SelectWallet_Button.setImage(#imageLiteral(resourceName: "All-Wallet-2-icon"), for: .normal)
+        }
+        
+        if(i == -1)//Khong co ket qua
+        {
+            txtNotif.text = "Không có giao dịch trong khoảng thời gian này!"
         }
         
     }
