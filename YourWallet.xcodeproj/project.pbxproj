@@ -59,6 +59,7 @@
 		231388981EEC88E0008029B1 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231388951EEC88C5008029B1 /* Charts.framework */; };
 		231388991EEC88E0008029B1 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231388951EEC88C5008029B1 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		23734D121EEB36A6007DD4EB /* AddWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23734D111EEB36A6007DD4EB /* AddWallet.swift */; };
+		CC34E8981F0B477200AD6896 /* SelectIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC34E8971F0B477200AD6896 /* SelectIconCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +155,7 @@
 		0AF34D541EF3A0C10064B243 /* SelectCurrencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCurrencyViewController.swift; sourceTree = "<group>"; };
 		2313888F1EEC88C5008029B1 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-master/Charts.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		23734D111EEB36A6007DD4EB /* AddWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWallet.swift; sourceTree = "<group>"; };
+		CC34E8971F0B477200AD6896 /* SelectIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectIconCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +347,7 @@
 				0A8B3F3C1EF494AD008BD5C7 /* EnterPasswordViewController.swift */,
 				0A8B3F3F1EF4A14A008BD5C7 /* PrimaryViewController.swift */,
 				0A70EAE01EF7197500FAA660 /* SelectIconViewController.swift */,
+				CC34E8971F0B477200AD6896 /* SelectIconCell.swift */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				0A43F3591EF862E300454258 /* AddBudgetViewController.swift in Sources */,
 				0A4D56A71EDDCA260009779A /* BookTransactionCell.swift in Sources */,
 				0A799C2D1EDF3F8200A22A0C /* Transaction.swift in Sources */,
+				CC34E8981F0B477200AD6896 /* SelectIconCell.swift in Sources */,
 				0A43F35B1EF862E300454258 /* BudgetViewController.swift in Sources */,
 				0A4D56A51EDDC9E80009779A /* BookHeaderCell.swift in Sources */,
 				0A9746D11EE2D39700B25346 /* TabBarViewController.swift in Sources */,
