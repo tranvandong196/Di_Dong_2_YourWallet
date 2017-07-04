@@ -8,6 +8,7 @@
 
 import UIKit
 
+var Category_willEdit:Category? = nil
 class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
     //var CategoriesIn = [Category]()
     //var CategoriesOut = [Category]()
@@ -137,7 +138,7 @@ class CategoryViewController: UIViewController,UITableViewDelegate,UITableViewDa
     //Thêm tuỳ chọn khi vuốt cell trừ phải qua trái
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .normal, title: "✏️") { (rowAction, indexPath) in
-            category_GV = self.Categories[indexPath.row]
+            Category_willEdit = self.Categories[indexPath.row]
             self.pushToVC(withStoryboardID: "AddCategoryVC", animated: true)
         }
         let delAction = UITableViewRowAction(style: .normal, title: "🗑") { (rowAction, indexPath) in
