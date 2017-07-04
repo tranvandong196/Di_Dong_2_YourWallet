@@ -473,16 +473,19 @@ class BookViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let openingBalance = getOpeningBalance(Range: TimeRange)
         let endingBalance = openingBalance + getAmountAllTransaction()
         var sum:Double = 0
+        
+        let DB = Connect_DB_SQLite(dbName: DBName, type: DBType)
         if wallet_GV == nil{
-            let DB = Connect_DB_SQLite(dbName: DBName, type: DBType)
             let Wallets = GetWalletsFromSQLite(query: "SELECT * FROM ViTien", database: DB)
-            sqlite3_close(DB)
+
             for w in Wallets{
                 sum += w.Balance!
             }
         }else{
+            wallet_GV = GetWalletsFromSQLite(query: "SELECT * FROM ViTien WHERE Ma = \((wallet_GV?.ID)!)", database: DB)[0]
             sum = (wallet_GV?.Balance)!
         }
+        sqlite3_close(DB)
         let sumstr:String = sum.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
         
         WalletEndingBalance_Label.text = sumstr + (currency_GV?.Symbol)!
