@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddBudgetViewController: UIViewController {
+class AddBudgetViewController: UIViewController,UITextFieldDelegate {
     
     static var isAddingBudget = false
     
@@ -34,7 +34,7 @@ class AddBudgetViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.Amount.delegate = self
         createDatePicker()
         createDatePicker1()
         // Do any additional setup after loading the view.
@@ -256,4 +256,19 @@ class AddBudgetViewController: UIViewController {
         
         return false
     }
+    //Hide or switch next keyboard when user Presses "return" key (for textField)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    //Hide keyboard when user touches outside keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
+

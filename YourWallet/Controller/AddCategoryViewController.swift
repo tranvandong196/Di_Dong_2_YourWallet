@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddCategoryViewController: UIViewController {
+class AddCategoryViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var CategoryName_Label: UITextField!
     @IBOutlet weak var SelectIconCategory_Button: UIButton!
@@ -18,6 +18,7 @@ class AddCategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.CategoryName_Label.delegate = self
         if Category_willEdit == nil{
             iconName = nil
             SelectKind_Segment.selectedSegmentIndex = 0
@@ -84,7 +85,20 @@ class AddCategoryViewController: UIViewController {
     @IBAction func SelectIconCategory_ButtonTapped(_ sender: Any) {
         pushToVC(withStoryboardID: "SelectIconVC", animated: true)
     }
-    
+    //Hide or switch next keyboard when user Presses "return" key (for textField)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    //Hide keyboard when user touches outside keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     /*
     // MARK: - Navigation
 
