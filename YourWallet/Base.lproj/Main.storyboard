@@ -1791,7 +1791,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="1c3-tb-Mmo" secondAttribute="height" multiplier="88:7" id="s37-ch-ZPf"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.47682561528497414" green="0.47682561528497414" blue="0.47682561528497414" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2704,10 +2704,10 @@
                                         </prototypes>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B4j-Sx-2t9" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="8" y="8" width="359" height="307"/>
+                                        <rect key="frame" x="8" y="46" width="359" height="269"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông báo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icC-5Y-5Ac">
-                                                <rect key="frame" x="8" y="8" width="351" height="19.5"/>
+                                                <rect key="frame" x="0.0" y="8" width="351" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" red="1" green="0.092556328756368766" blue="0.057343643349790585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2715,19 +2715,32 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="icC-5Y-5Ac" secondAttribute="trailing" id="Gcp-nh-dSQ"/>
-                                            <constraint firstItem="icC-5Y-5Ac" firstAttribute="leading" secondItem="B4j-Sx-2t9" secondAttribute="leadingMargin" id="biq-Ye-52x"/>
-                                            <constraint firstItem="icC-5Y-5Ac" firstAttribute="top" secondItem="B4j-Sx-2t9" secondAttribute="topMargin" id="eIn-8S-QkV"/>
-                                            <constraint firstAttribute="width" secondItem="B4j-Sx-2t9" secondAttribute="height" multiplier="359:275" constant="-41.774545454545432" id="yBj-jz-hus"/>
+                                            <constraint firstItem="icC-5Y-5Ac" firstAttribute="trailing" secondItem="B4j-Sx-2t9" secondAttribute="trailingMargin" id="0QH-Cs-bbd"/>
+                                            <constraint firstItem="icC-5Y-5Ac" firstAttribute="top" secondItem="B4j-Sx-2t9" secondAttribute="topMargin" id="5dV-fh-Ul6"/>
+                                            <constraint firstItem="icC-5Y-5Ac" firstAttribute="leading" secondItem="B4j-Sx-2t9" secondAttribute="leading" id="DgT-xq-Fwq"/>
+                                            <constraint firstAttribute="width" secondItem="B4j-Sx-2t9" secondAttribute="height" multiplier="359:275" constant="7.8327272727272543" id="yBj-jz-hus"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfr-oe-s8K">
+                                        <rect key="frame" x="85" y="8" width="204" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39" id="8JY-4V-LAX"/>
+                                        </constraints>
+                                        <state key="normal" title="Xem thống kê thu nhập"/>
+                                        <connections>
+                                            <action selector="showIncomeClick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="gJV-qp-42M"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="hfr-oe-s8K" firstAttribute="leading" secondItem="veS-Ji-7Qj" secondAttribute="leading" constant="85" id="43A-bM-NJb"/>
                                     <constraint firstAttribute="bottom" secondItem="dIt-4f-TTQ" secondAttribute="bottom" id="9uw-gu-FS7"/>
+                                    <constraint firstItem="hfr-oe-s8K" firstAttribute="top" secondItem="veS-Ji-7Qj" secondAttribute="topMargin" id="DGS-Wl-kAk"/>
                                     <constraint firstItem="dIt-4f-TTQ" firstAttribute="leading" secondItem="B4j-Sx-2t9" secondAttribute="leading" id="H1F-yv-iHG"/>
                                     <constraint firstItem="dIt-4f-TTQ" firstAttribute="trailing" secondItem="B4j-Sx-2t9" secondAttribute="trailing" id="JG0-vq-KkP"/>
-                                    <constraint firstItem="B4j-Sx-2t9" firstAttribute="top" secondItem="veS-Ji-7Qj" secondAttribute="top" constant="8" id="Tbx-ZU-rch"/>
+                                    <constraint firstItem="hfr-oe-s8K" firstAttribute="centerX" secondItem="B4j-Sx-2t9" secondAttribute="centerX" id="KRr-Tz-tyG"/>
+                                    <constraint firstItem="B4j-Sx-2t9" firstAttribute="top" secondItem="veS-Ji-7Qj" secondAttribute="top" constant="46" id="Tbx-ZU-rch"/>
                                     <constraint firstAttribute="trailing" secondItem="B4j-Sx-2t9" secondAttribute="trailing" constant="8" id="dOa-Pe-jBe"/>
                                     <constraint firstItem="dIt-4f-TTQ" firstAttribute="top" secondItem="B4j-Sx-2t9" secondAttribute="bottom" constant="8" symbolic="YES" id="hfn-JR-oHF"/>
                                     <constraint firstItem="B4j-Sx-2t9" firstAttribute="leading" secondItem="veS-Ji-7Qj" secondAttribute="leading" constant="8" id="iQq-a1-UUn"/>
@@ -2752,6 +2765,7 @@
                     <connections>
                         <outlet property="SelectWallet_Button" destination="gt8-15-FUV" id="HPt-kV-qm3"/>
                         <outlet property="pieChartView" destination="B4j-Sx-2t9" id="RKI-sX-oxK"/>
+                        <outlet property="showIncomeOutlet" destination="hfr-oe-s8K" id="zVp-Gi-moW"/>
                         <outlet property="tableView" destination="dIt-4f-TTQ" id="zD7-Po-wK8"/>
                         <outlet property="txtDate" destination="1ve-xF-6VA" id="C8O-7a-iix"/>
                         <outlet property="txtNotif" destination="icC-5Y-5Ac" id="syK-Tc-yYI"/>

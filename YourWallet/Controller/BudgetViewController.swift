@@ -187,8 +187,18 @@ class BudgetViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.icon.image = UIImage(named: budgetIcons[indexPath.row])
         cell.txt_Categories.text = budgetNames[indexPath.row]
-        cell.txt_TotalCash.text = "\(budget[indexPath.row].Amount!)"
-        cell.txt_Left.text = "Còn lại: \(budgetLeft[indexPath.row])"
+        
+        let tmp = budget[indexPath.row].Amount!.VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
+        
+        let currencyStr = "\(tmp)" + (currency_GV?.Symbol)!
+        
+        cell.txt_TotalCash.text = currencyStr
+        
+        let tmp2 = budgetLeft[indexPath.row].VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
+        
+        let currencyStr2 = "\(tmp2)" + (currency_GV?.Symbol)!
+        
+        cell.txt_Left.text = "Còn lại: " + currencyStr2
         cell.iconWallet.image = UIImage(named: walletIcons[indexPath.row])
         cell.txt_WalletName.text = walletNames[indexPath.row]
         

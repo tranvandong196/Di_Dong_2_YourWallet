@@ -15,6 +15,20 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
     static var date2 = "";
     static var showOnlyOneDay = false
     
+    var showIncome = false
+    
+    @IBOutlet weak var showIncomeOutlet: UIButton!
+    @IBAction func showIncomeClick(_ sender: Any) {
+        if(showIncome == false)
+        {
+            showIncomeOutlet.setTitle("Xem thống kê chi tiêu", for: .normal)
+        }
+        else{
+            showIncomeOutlet.setTitle("Xem thống kê thu nhập", for: .normal)
+        }
+        showIncome = !showIncome
+        reload()
+    }
     var typeNameArray = [String]()
     var iconArray = [String]()
     var valueArray = [Double]()
@@ -67,6 +81,10 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
     }
     override func viewWillAppear(_ animated: Bool) {
         print("🖥 Thống kê --------------------------------")
+        reload()
+    }
+    
+    func reload(){
         txtNotif.text = ""
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -78,7 +96,7 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
         let dateRaw2 = dateFormatter.date(from: StatisticsViewController.date2)!
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let currDate = dateFormatter.string(from: dateRaw2)
-
+        
         if(StatisticsViewController.showOnlyOneDay == false)
         {
             txtDate.text = firstDate + "-" + currDate
@@ -92,11 +110,14 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
         iconArray = [String]()
         valueArray = [Double]()
         
+        var showCode = 0
+        if (showIncome == true){
+            showCode = 1
+        }
         //Lay du lieu tu dbs
-        let sql = "Select * From (Select Sum(SoTien), MaNhom From GiaoDich Where ThoiDiem >= '" + StatisticsViewController.date1 + "' AND ThoiDiem <= '" + StatisticsViewController.date2 + "' GROUP BY MaNhom) as A JOIN Nhom WHERE NHOM.MA = A.MANHOM and Nhom.Loai = 0"
-        
+        let sql = "Select * From (Select Sum(SoTien), MaNhom From GiaoDich Where ThoiDiem >= '" + StatisticsViewController.date1 + "' AND ThoiDiem <= '" + StatisticsViewController.date2 + "' GROUP BY MaNhom) as A JOIN Nhom WHERE NHOM.MA = A.MANHOM and Nhom.Loai = \(showCode)"
         print(sql)
-    
+        
         
         let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
         //Lay data
@@ -188,7 +209,7 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
         currentTabBarItem = 3
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-       
+        
         tableView.reloadData()
         
         if wallet_GV != nil {
@@ -201,8 +222,9 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
         {
             txtNotif.text = "Không có giao dịch trong khoảng thời gian này!"
         }
-        
+
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -239,7 +261,15 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
         
         let percent = String(format:"%.02f", valueArray[indexPath.row]/sum*100)
         cell.LabelName.text = typeNameArray[indexPath.row]
-        cell.Label_Value.text = "-\(valueArray[indexPath.row]) - (" + percent + "%) "
+        var str = ""
+        if(showIncome == false){
+            str = "-"
+        }
+        let tmp = valueArray[indexPath.row].VNDtoCurrency(ExchangeRate: (currency_GV?.ExchangeRate)!).toCurrencyFormatter(CurrencyID: (currency_GV?.ID)!)
+        
+        let currencyStr = "\(tmp)" + (currency_GV?.Symbol)!
+//      str + "\(valueArray[indexPath.row]) - (" + percent + "%) "
+        cell.Label_Value.text = str + currencyStr + " - (" + percent + "%) "
         return cell
     }
     
