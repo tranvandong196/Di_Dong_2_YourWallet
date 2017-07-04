@@ -14,6 +14,7 @@ class AddBudgetViewController: UIViewController {
     
     static public var WalletCode = 0
     static public var CategoryCode = 0
+    static public var Id = 0
     
     @IBOutlet weak var Amount: UITextField!
     
@@ -27,15 +28,17 @@ class AddBudgetViewController: UIViewController {
     let datePicker = UIDatePicker()
     let datePicker1 = UIDatePicker()
     
-    var date1 = String("")
-    var date2 = String("")
-    
+    static var date1 = String("")
+    static var date2 = String("")
+    static var amount = 0.0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createDatePicker()
         createDatePicker1()
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +49,20 @@ class AddBudgetViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         AddBudgetViewController.isAddingBudget = true
+        
+        if(BudgetViewController.isEditing == true){
+            Amount.text = "\(AddBudgetViewController.amount)"
+            datePickerTxt.text = AddBudgetViewController.date1
+            datePickerTxt1.text = AddBudgetViewController.date2
+        }
+        else{
+            AddBudgetViewController.WalletCode = 0
+            AddBudgetViewController.CategoryCode = 0
+            AddBudgetViewController.amount = 0.0
+            AddBudgetViewController.date1 = String("")
+            AddBudgetViewController.date2 = String("")
+            
+        }
         
         var sql = "Select * from ViTien where ma = \(AddBudgetViewController.WalletCode)"
         print(sql)
@@ -167,7 +184,7 @@ class AddBudgetViewController: UIViewController {
         //        dateFormattor.timeStyle = .none
         
         datePickerTxt.text = dateFormattor.string(from: datePicker.date)
-        date1 = dateFormattor.string(from: datePicker.date)
+        AddBudgetViewController.date1 = dateFormattor.string(from: datePicker.date)
         
         self.view.endEditing(true)
     }
@@ -182,40 +199,46 @@ class AddBudgetViewController: UIViewController {
         //dateFormattor.dateStyle = .medium
         //dateFormattor.timeStyle = .none
         datePickerTxt1.text = dateFormattor.string(from: datePicker.date)
-        date2 = dateFormattor.string(from: datePicker.date)
+        AddBudgetViewController.date2 = dateFormattor.string(from: datePicker.date)
         
         
         self.view.endEditing(true)
     }
     
     func done() -> Bool {
-        if(date1 == nil || date2 == nil || Amount.text == nil)//phai chon ca hai moc ngay
+        if(AddBudgetViewController.date1 == nil || AddBudgetViewController.date2 == nil || Amount.text == nil)//phai chon ca hai moc ngay
         {
             return false
         }
-        if(date1 != "" || date2 != ""){
+        if(AddBudgetViewController.date1 != "" || AddBudgetViewController.date2 != ""){
             
-            if (date1 == ""){
-                date1 = date2
+            if (AddBudgetViewController.date1 == ""){
+                AddBudgetViewController.date1 = AddBudgetViewController.date2
             }
             else{
-                if(date2 == ""){
-                    date2 = date1
+                if(AddBudgetViewController.date2 == ""){
+                    AddBudgetViewController.date2 = AddBudgetViewController.date1
                 }
             }
             
             
-            if (date1! > date2!){
-                let dateTemp = date1
-                date1 = date2
-                date2 = dateTemp
+            if (AddBudgetViewController.date1! > AddBudgetViewController.date2!){
+                let dateTemp = AddBudgetViewController.date1
+                AddBudgetViewController.date1 = AddBudgetViewController.date2
+                AddBudgetViewController.date2 = dateTemp
                 
             }
-            date1 =  date1! + " 00:00:00"
-            date2 =  date2! + " 23:59:59"
+            AddBudgetViewController.date1 =  AddBudgetViewController.date1! + " 00:00:00"
+            AddBudgetViewController.date2 =  AddBudgetViewController.date2! + " 23:59:59"
             
-            var sql = "INSERT INTO NganSach VALUES (null, " + Amount.text! + ", '"
-            sql = sql + date1! + "','" + date2! + "', \(AddBudgetViewController.CategoryCode), \(AddBudgetViewController.WalletCode))"
+            var sql = ""
+            
+            if( BudgetViewController.isEditing == false){
+                sql = "INSERT INTO NganSach VALUES (null, " + Amount.text! + ", '" + AddBudgetViewController.date1! + "','" + AddBudgetViewController.date2! + "', \(AddBudgetViewController.CategoryCode), \(AddBudgetViewController.WalletCode))"
+            }
+            else{
+                sql = "UPDATE NganSach SET TongGiaTri = " + Amount.text! + ", NgayBD = '" + AddBudgetViewController.date1! + "', NgayKT = '" + AddBudgetViewController.date2! + "', MaNhom = \(AddBudgetViewController.CategoryCode), MaVi = \(AddBudgetViewController.WalletCode)   WHERE Ma = \(AddBudgetViewController.Id)"
+            }
             
             print(sql)
             

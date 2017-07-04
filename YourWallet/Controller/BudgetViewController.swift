@@ -11,6 +11,7 @@ import UIKit
 class BudgetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var showEndedBudget = false
+    static public var isEditing = false
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var endedOutlet: UIButton!
@@ -47,7 +48,7 @@ class BudgetViewController: UIViewController, UITableViewDataSource, UITableView
     }
     override func viewWillAppear(_ animated: Bool) {
         isAddBudget = false
-        
+        BudgetViewController.isEditing = false
         reload()
         
     }
@@ -217,9 +218,57 @@ class BudgetViewController: UIViewController, UITableViewDataSource, UITableView
 //        cell.Name.text = Foods[indexPath.row].TenMon
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .normal, title: "✏️") { (rowAction, indexPath) in
+            BudgetViewController.isEditing = true
+            AddBudgetViewController.Id = self.budget[indexPath.row].ID
+            AddBudgetViewController.CategoryCode = self.budget[indexPath.row].ID_Category
+            AddBudgetViewController.WalletCode = self.budget[indexPath.row].ID_Wallet
+            AddBudgetViewController.amount = self.budget[indexPath.row].Amount
+            
+            let dateFormattor = DateFormatter()
+            dateFormattor.dateFormat = "yyyy-MM-dd"
+            
+            AddBudgetViewController.date1 = dateFormattor.string(from: self.budget[indexPath.row].StartDate)
+            AddBudgetViewController.date2 = dateFormattor.string(from: self.budget[indexPath.row].EndDate)
+            
+            
+            self.pushToVC(withStoryboardID: "AddBudgetVC", animated: true)
+        }
+        let delAction = UITableViewRowAction(style: .normal, title: "🗑") { (rowAction, indexPath) in
+            let sheetCtrl = UIAlertController(title: "⚠️Xoá ngân sách này?", message: "", preferredStyle: .actionSheet)
+            
+            let action = UIAlertAction(title: "Xoá", style: .destructive) { _ in
+                let sql = "DELETE FROM NganSach WHERE Ma = \(self.budget[indexPath.row].ID!)"
+                print(sql)
+                
+                let database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+                
+                Query(sql: sql, database: database)
+                
+                self.reload()
+
+            }
+            
+            let cancelAction = UIAlertAction(title: "Huỷ", style: .cancel){ _ in
+                tableView.setEditing(false, animated: true)
+            }
+            sheetCtrl.addAction(action)
+            sheetCtrl.addAction(cancelAction)
+            
+            self.present(sheetCtrl, animated: true, completion: nil)
+        }
+        editAction.backgroundColor = UIColor.init(red: 28.0/255.0, green: 179.0/255.0, blue: 29.0/255.0, alpha: 1.0)
+        delAction.backgroundColor = UIColor.red
+        return [editAction,delAction]
+    }
     //Table View func end
 
+    
 }
+
+
 
 class NganSachCell: UITableViewCell {
     

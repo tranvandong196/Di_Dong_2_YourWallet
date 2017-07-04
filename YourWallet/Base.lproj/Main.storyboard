@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1756,7 +1756,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="147" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YPS-b2-MoC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="147" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YPS-b2-MoC">
                                 <rect key="frame" x="16" y="72" width="343" height="481"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1764,7 +1764,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="147"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5br-zX-JWs" id="Y4E-85-N3W">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="147"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="146"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="erk-Io-NBd">
@@ -1878,7 +1878,7 @@
                         <constraints>
                             <constraint firstItem="YPS-b2-MoC" firstAttribute="top" secondItem="TZe-mA-o2T" secondAttribute="bottom" constant="8" id="2ee-Vj-o7Y"/>
                             <constraint firstItem="8BD-Ch-9MN" firstAttribute="centerX" secondItem="Fef-Xx-DL7" secondAttribute="centerX" id="GAb-X5-NS8"/>
-                            <constraint firstItem="8BD-Ch-9MN" firstAttribute="top" secondItem="YPS-b2-MoC" secondAttribute="bottom" constant="8" id="L6s-wd-llE"/>
+                            <constraint firstItem="8BD-Ch-9MN" firstAttribute="top" secondItem="YPS-b2-MoC" secondAttribute="bottom" constant="-25" id="L6s-wd-llE"/>
                             <constraint firstItem="QIs-nk-evU" firstAttribute="top" secondItem="8BD-Ch-9MN" secondAttribute="bottom" constant="8" id="NJF-rd-NOI"/>
                             <constraint firstItem="YPS-b2-MoC" firstAttribute="trailing" secondItem="Fef-Xx-DL7" secondAttribute="trailingMargin" id="Voe-VX-dQi"/>
                             <constraint firstItem="YPS-b2-MoC" firstAttribute="leading" secondItem="Fef-Xx-DL7" secondAttribute="leadingMargin" id="cZg-i9-msX"/>
@@ -2641,7 +2641,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p6R-zj-833" id="bmG-XE-zWX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jV7-Zg-2V5">
@@ -2928,7 +2928,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="twT-iu-Fv8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="Ví" image="Wallet-icon" selectedImage="Wallet-icon" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kzd-4V-dhy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kzd-4V-dhy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.68551409244537354" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2953,7 +2953,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g39-EK-J8B" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Sổ giao dịch" image="Book-icon" selectedImage="Book-icon" id="zbD-jM-ebK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Puj-Az-Akn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Puj-Az-Akn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.11888689547777176" green="0.70133465528488159" blue="0.11776981502771378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2978,7 +2978,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1nh-Hh-O00" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Thống kê" image="Statistics-icon" selectedImage="Statistics-icon" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NKv-md-cal">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NKv-md-cal">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.12305691093206406" green="0.70904427766799927" blue="0.12576785683631897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3005,7 +3005,7 @@
                     <tabBarItem key="tabBarItem" title="Thêm giao dịch" id="ysv-Mu-MuE"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="rKs-6j-Rgf"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tsb-qG-hQ8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tsb-qG-hQ8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.11888689547777176" green="0.70133465528488159" blue="0.11776981502771378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3025,7 +3025,7 @@
                 <navigationController storyboardIdentifier="MoreVC_nav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HVU-wa-ivO" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Mở rộng" image="More-icon" selectedImage="More-icon" id="we5-Q8-qkH"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Dau-86-PWQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dau-86-PWQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.64313725490196072" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
