@@ -32,6 +32,7 @@ class AddWalletViewController: UIViewController,UITextFieldDelegate{
             WalletName_textField.text = (wallet_detail?.Name)!
             let tmp:Double = (wallet_detail?.Balance)!
             currAmount_txtField.text = currency_GV?.ID == "VND" ? String(describing: Int(tmp)):String(describing: tmp)
+            self.navigationItem.title = "Sửa ví"
         }
 
     }

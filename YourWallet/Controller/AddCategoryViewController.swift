@@ -18,14 +18,18 @@ class AddCategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if category_GV == nil{
+        if Category_willEdit == nil{
             iconName = nil
             SelectKind_Segment.selectedSegmentIndex = 0
+            
         }else{
-            iconName = (category_GV?.Icon)!
-            SelectKind_Segment.selectedSegmentIndex = (category_GV?.Kind)!
-            CategoryName_Label.text = (category_GV?.Name)!
+            iconName = (Category_willEdit?.Icon)!
+            SelectKind_Segment.selectedSegmentIndex = (Category_willEdit?.Kind)!
+            CategoryName_Label.text = (Category_willEdit?.Name)!
+            self.navigationItem.title = "Sửa nhóm"
         }
+
+        
 
         // Do any additional setup after loading the view.
     }
@@ -37,13 +41,15 @@ class AddCategoryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        if iconName != nil{
+        if iconName != nil && iconName != ""{
             self.SelectIconCategory_Button.setImage(UIImage(named: iconName!), for: .normal)
+        }else{
+            self.SelectIconCategory_Button.setImage(#imageLiteral(resourceName: "SelectCategory-Circle-icon"), for: .normal)
         }
     }
     
     @IBAction func Cancel_ButtonTapped(_ sender: Any){
-        category_GV = nil
+        Category_willEdit = nil
         self.tabBarController?.tabBar.isHidden = isSelectCategory ? true: false
         self.navigationController?.popViewController(animated: true)
     }
@@ -54,22 +60,23 @@ class AddCategoryViewController: UIViewController {
             //Thao tác lưu ở đây
             let name:String = CategoryName_Label.text!
             let kind:Int = SelectKind_Segment.selectedSegmentIndex
+            let icon:String = iconName == nil ? "":iconName!
             let DB = Connect_DB_SQLite(dbName: DBName, type: DBType)
-            if category_GV == nil{
-                let sql = "INSERT INTO Nhom(Ma, Ten, Loai, Icon) VALUES(null, '\(name)', \(kind), '\(iconName!)')"
+            if Category_willEdit == nil{
+                let sql = "INSERT INTO Nhom(Ma, Ten, Loai, Icon) VALUES(null, '\(name)', \(kind), '\(icon)')"
                 print(sql)
                 if Query(Sql: sql, database: DB){
                     print("Đã thêm nhóm: \(name)")
                 }
             }else{
-                let sql = "UPDATE Nhom SET Ten = '\(name)', Loai = \(kind), Icon = '\(iconName!)' WHERE Ma = \((category_GV?.ID)!)"
+                let sql = "UPDATE Nhom SET Ten = '\(name)', Loai = \(kind), Icon = '\(icon)' WHERE Ma = \((Category_willEdit?.ID)!)"
                 print(sql)
                 if Query(Sql: sql, database: DB){
                     print("Đã cập nhật nhóm: \(name)")
                 }
+                Category_willEdit = nil
             }
             sqlite3_close(DB)
-            category_GV = nil
             self.navigationController?.popViewController(animated: true)
         }
     }
