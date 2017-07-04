@@ -56,11 +56,11 @@ class AddBudgetViewController: UIViewController,UITextFieldDelegate {
             datePickerTxt1.text = AddBudgetViewController.date2
         }
         else{
-            AddBudgetViewController.WalletCode = 0
-            AddBudgetViewController.CategoryCode = 0
-            AddBudgetViewController.amount = 0.0
-            AddBudgetViewController.date1 = String("")
-            AddBudgetViewController.date2 = String("")
+//            AddBudgetViewController.WalletCode = 0
+//            AddBudgetViewController.CategoryCode = 0
+//            AddBudgetViewController.amount = 0.0
+//            AddBudgetViewController.date1 = String("")
+//            AddBudgetViewController.date2 = String("")
             
         }
         

@@ -51,10 +51,10 @@
          contextName = "BudgetViewController.viewWillAppear(Bool) -&gt; ():BudgetViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "budget">
+               value = "budgetNames">
             </PersistentString>
             <PersistentString
-               value = "budgetNames">
+               value = "budget">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -70,7 +70,13 @@
          contextName = "AddBudgetViewController.viewWillAppear(Bool) -&gt; ():AddBudgetViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "CategoryCode">
+            </PersistentString>
+            <PersistentString
                value = "String(cString: sqlite3_column_text(statement, 1))">
+            </PersistentString>
+            <PersistentString
+               value = "WalletCode">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

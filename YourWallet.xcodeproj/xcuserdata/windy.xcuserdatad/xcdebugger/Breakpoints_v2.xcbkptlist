@@ -591,5 +591,99 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YourWallet/Controller/AddBudgetViewController.swift"
+            timestampString = "520895702.226287"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "AddBudgetViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YourWallet.AddBudgetViewController.Amount.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "YourWallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/windy/Documents/Di_Dong_2_YourWallet/YourWallet/Controller/AddBudgetViewController.swift"
+                  timestampString = "520895706.522301"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YourWallet.AddBudgetViewController.Amount.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "YourWallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/windy/Documents/Di_Dong_2_YourWallet/YourWallet/Controller/AddBudgetViewController.swift"
+                  timestampString = "520895706.527142"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YourWallet.AddBudgetViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; YourWallet.AddBudgetViewController"
+                  moduleName = "YourWallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/windy/Documents/Di_Dong_2_YourWallet/YourWallet/Controller/AddBudgetViewController.swift"
+                  timestampString = "520895706.530895"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YourWallet.AddBudgetViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;YourWallet.AddBudgetViewController&gt;"
+                  moduleName = "YourWallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/windy/Documents/Di_Dong_2_YourWallet/YourWallet/Controller/AddBudgetViewController.swift"
+                  timestampString = "520895706.534594"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YourWallet/Controller/AddBudgetViewController.swift"
+            timestampString = "520895777.111767"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
