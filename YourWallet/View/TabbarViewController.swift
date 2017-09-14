@@ -32,7 +32,7 @@ class TabBarViewController: UITabBarController,UITabBarControllerDelegate {
     }
     func addCenterButton(withImage buttonImage : UIImage, highlightImage: UIImage) {
         
-        let paddingBottom : CGFloat = 10.0
+        let paddingBottom : CGFloat = self.view.frame.height == 812.0 ? -160.0:10.0
         
         let button = UIButton(type: .system)
         button.autoresizingMask = [.flexibleRightMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin]
