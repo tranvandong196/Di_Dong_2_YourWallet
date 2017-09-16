@@ -31,7 +31,6 @@ class TabBarViewController: UITabBarController,UITabBarControllerDelegate {
 //        }
     }
     func addCenterButton(withImage buttonImage : UIImage, highlightImage: UIImage) {
-        
         let paddingBottom : CGFloat = self.view.frame.height == 812.0 ? -160.0:10.0
         
         let button = UIButton(type: .system)
