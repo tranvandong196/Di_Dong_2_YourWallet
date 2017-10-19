@@ -18,7 +18,7 @@ struct Number {
     }()
 }
 
-extension Integer {
+extension BinaryInteger {
     var stringFormattedWithSeparator: String {
         return Number.formatterWithSeparator.string(for: self) ?? ""
     }

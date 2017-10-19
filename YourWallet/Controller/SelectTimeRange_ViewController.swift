@@ -90,7 +90,7 @@ class SelectTimeRange_ViewController: UIViewController {
     }
     
     // nút done 1
-    func donePressed()
+    @objc func donePressed()
     {
         // format date
         let dateFormattor = DateFormatter()
@@ -107,7 +107,7 @@ class SelectTimeRange_ViewController: UIViewController {
     }
     
     // nút done 2
-    func donePressed1()
+    @objc func donePressed1()
     {
         // format date
         let dateFormattor = DateFormatter()
@@ -139,7 +139,7 @@ class SelectTimeRange_ViewController: UIViewController {
             }
             
             
-            if (date1! > date2!){
+            if (date1 > date2){
                 let dateTemp = date1
                 date1 = date2
                 date2 = dateTemp
@@ -151,8 +151,8 @@ class SelectTimeRange_ViewController: UIViewController {
             
             
             //Bills.removeAll()
-            StatisticsViewController.date1 = date1! + " 00:00:00"
-            StatisticsViewController.date2 = date2! + " 23:59:59"
+            StatisticsViewController.date1 = date1 + " 00:00:00"
+            StatisticsViewController.date2 = date2 + " 23:59:59"
             
             self.navigationController?.popViewController(animated: true)
             

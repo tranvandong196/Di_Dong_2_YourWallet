@@ -173,7 +173,7 @@ class AddBudgetViewController: UIViewController,UITextFieldDelegate {
     }
     
     // nút done 1
-    func donePressed()
+    @objc func donePressed()
     {
         // format date
         let dateFormattor = DateFormatter()
@@ -190,7 +190,7 @@ class AddBudgetViewController: UIViewController,UITextFieldDelegate {
     }
     
     // nút done 2
-    func donePressed1()
+    @objc func donePressed1()
     {
         // format date
         let dateFormattor = DateFormatter()
@@ -222,22 +222,22 @@ class AddBudgetViewController: UIViewController,UITextFieldDelegate {
             }
             
             
-            if (AddBudgetViewController.date1! > AddBudgetViewController.date2!){
+            if (AddBudgetViewController.date1 > AddBudgetViewController.date2){
                 let dateTemp = AddBudgetViewController.date1
                 AddBudgetViewController.date1 = AddBudgetViewController.date2
                 AddBudgetViewController.date2 = dateTemp
                 
             }
-            AddBudgetViewController.date1 =  AddBudgetViewController.date1! + " 00:00:00"
-            AddBudgetViewController.date2 =  AddBudgetViewController.date2! + " 23:59:59"
+            AddBudgetViewController.date1 =  AddBudgetViewController.date1 + " 00:00:00"
+            AddBudgetViewController.date2 =  AddBudgetViewController.date2 + " 23:59:59"
             
             var sql = ""
             
             if( BudgetViewController.isEditing == false){
-                sql = "INSERT INTO NganSach VALUES (null, " + Amount.text! + ", '" + AddBudgetViewController.date1! + "','" + AddBudgetViewController.date2! + "', \(AddBudgetViewController.CategoryCode), \(AddBudgetViewController.WalletCode))"
+                sql = "INSERT INTO NganSach VALUES (null, " + Amount.text! + ", '" + AddBudgetViewController.date1 + "','" + AddBudgetViewController.date2 + "', \(AddBudgetViewController.CategoryCode), \(AddBudgetViewController.WalletCode))"
             }
             else{
-                sql = "UPDATE NganSach SET TongGiaTri = " + Amount.text! + ", NgayBD = '" + AddBudgetViewController.date1! + "', NgayKT = '" + AddBudgetViewController.date2! + "', MaNhom = \(AddBudgetViewController.CategoryCode), MaVi = \(AddBudgetViewController.WalletCode)   WHERE Ma = \(AddBudgetViewController.Id)"
+                sql = "UPDATE NganSach SET TongGiaTri = " + Amount.text! + ", NgayBD = '" + AddBudgetViewController.date1 + "', NgayKT = '" + AddBudgetViewController.date2 + "', MaNhom = \(AddBudgetViewController.CategoryCode), MaVi = \(AddBudgetViewController.WalletCode)   WHERE Ma = \(AddBudgetViewController.Id)"
             }
             
             print(sql)

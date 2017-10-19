@@ -264,7 +264,7 @@ class AddTransaction_ViewController: UIViewController,UITableViewDataSource,UITa
     
     
     // nút done
-    func donePressed(){
+    @objc func donePressed(){
         if addTime != datePicker.date{
             addTime = datePicker.date.current
         }

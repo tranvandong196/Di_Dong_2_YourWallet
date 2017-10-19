@@ -181,7 +181,7 @@ class StatisticsViewController: UIViewController,UITableViewDataSource, UITableV
         }
         
         sum = 0.0;
-        for var i in 0..<valueArray.count{
+        for i in 0..<valueArray.count{
             if(valueArray[i] < 0){
                 valueArray[i] *= -1
             }

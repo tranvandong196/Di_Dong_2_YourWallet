@@ -56,35 +56,9 @@
 		0A9746D11EE2D39700B25346 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9746D01EE2D39700B25346 /* TabBarViewController.swift */; };
 		0AEB3E7A1EE2657300359619 /* SelectTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */; };
 		0AF34D551EF3A0C10064B243 /* SelectCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF34D541EF3A0C10064B243 /* SelectCurrencyViewController.swift */; };
-		231388981EEC88E0008029B1 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231388951EEC88C5008029B1 /* Charts.framework */; };
-		231388991EEC88E0008029B1 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231388951EEC88C5008029B1 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		23734D121EEB36A6007DD4EB /* AddWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23734D111EEB36A6007DD4EB /* AddWallet.swift */; };
 		CC34E8981F0B477200AD6896 /* SelectIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC34E8971F0B477200AD6896 /* SelectIconCell.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		231388941EEC88C5008029B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2313888F1EEC88C5008029B1 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06165F241D8110E600722320;
-			remoteInfo = Charts;
-		};
-		231388961EEC88C5008029B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2313888F1EEC88C5008029B1 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06165F2E1D8110E600722320;
-			remoteInfo = ChartsTests;
-		};
-		2313889A1EEC88E0008029B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2313888F1EEC88C5008029B1 /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 06165F231D8110E600722320;
-			remoteInfo = Charts;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		2313889C1EEC88E0008029B1 /* Embed Frameworks */ = {
@@ -93,7 +67,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				231388991EEC88E0008029B1 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,7 +126,6 @@
 		0A9746D01EE2D39700B25346 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0AEB3E791EE2657300359619 /* SelectTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTimeViewController.swift; sourceTree = "<group>"; };
 		0AF34D541EF3A0C10064B243 /* SelectCurrencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCurrencyViewController.swift; sourceTree = "<group>"; };
-		2313888F1EEC88C5008029B1 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-master/Charts.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		23734D111EEB36A6007DD4EB /* AddWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWallet.swift; sourceTree = "<group>"; };
 		CC34E8971F0B477200AD6896 /* SelectIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectIconCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,7 +136,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A384E831EDC7E42006CEAA9 /* libsqlite3.tbd in Frameworks */,
-				231388981EEC88E0008029B1 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				0A799C381EDF514A00A22A0C /* YourWallet-DB.sqlite */,
-				2313888F1EEC88C5008029B1 /* Charts.xcodeproj */,
 				0A384E781EDC7D51006CEAA9 /* SQLite.swift */,
 				0A384E841EDC7EAA006CEAA9 /* SQLite_Briding_header.h */,
 			);
@@ -352,15 +322,6 @@
 			name = More;
 			sourceTree = "<group>";
 		};
-		231388901EEC88C5008029B1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				231388951EEC88C5008029B1 /* Charts.framework */,
-				231388971EEC88C5008029B1 /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -376,7 +337,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2313889B1EEC88E0008029B1 /* PBXTargetDependency */,
 			);
 			name = YourWallet;
 			productName = YourWallet;
@@ -390,12 +350,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Tran Van Dong";
 				TargetAttributes = {
 					0A384E571EDC7CFF006CEAA9 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 49B65JV2Q3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -411,35 +372,12 @@
 			mainGroup = 0A384E4F1EDC7CFF006CEAA9;
 			productRefGroup = 0A384E591EDC7CFF006CEAA9 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 231388901EEC88C5008029B1 /* Products */;
-					ProjectRef = 2313888F1EEC88C5008029B1 /* Charts.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				0A384E571EDC7CFF006CEAA9 /* YourWallet */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		231388951EEC88C5008029B1 /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = 231388941EEC88C5008029B1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		231388971EEC88C5008029B1 /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = 231388961EEC88C5008029B1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0A384E561EDC7CFF006CEAA9 /* Resources */ = {
@@ -511,14 +449,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		2313889B1EEC88E0008029B1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Charts;
-			targetProxy = 2313889A1EEC88E0008029B1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		0A384E611EDC7CFF006CEAA9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -549,7 +479,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -557,7 +489,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -600,7 +536,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -608,7 +546,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -646,7 +588,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = M1412132.YourWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = YourWallet/Model/SQLite_Briding_header.h;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -662,7 +605,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = M1412132.YourWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = YourWallet/Model/SQLite_Briding_header.h;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

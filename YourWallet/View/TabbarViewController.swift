@@ -21,7 +21,7 @@ class TabBarViewController: UITabBarController,UITabBarControllerDelegate {
     }
 
     
-    func handleTouchTabbarCenter(sender : UIButton)
+    @objc func handleTouchTabbarCenter(sender : UIButton)
     {
         self.selectedIndex = 2
 //        if let count = self.tabBar.items?.count
